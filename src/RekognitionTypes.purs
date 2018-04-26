@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -30,8 +29,8 @@ instance encodeAccessDeniedException :: Encode AccessDeniedException where encod
 
 -- | <p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>
 newtype AgeRange = AgeRange 
-  { "Low" :: NullOrUndefined (UInteger)
-  , "High" :: NullOrUndefined (UInteger)
+  { "Low" :: Maybe (UInteger)
+  , "High" :: Maybe (UInteger)
   }
 derive instance newtypeAgeRange :: Newtype AgeRange _
 derive instance repGenericAgeRange :: Generic AgeRange _
@@ -41,12 +40,12 @@ instance encodeAgeRange :: Encode AgeRange where encode = genericEncode options
 
 -- | Constructs AgeRange from required parameters
 newAgeRange :: AgeRange
-newAgeRange  = AgeRange { "High": (NullOrUndefined Nothing), "Low": (NullOrUndefined Nothing) }
+newAgeRange  = AgeRange { "High": Nothing, "Low": Nothing }
 
 -- | Constructs AgeRange's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAgeRange' :: ( { "Low" :: NullOrUndefined (UInteger) , "High" :: NullOrUndefined (UInteger) } -> {"Low" :: NullOrUndefined (UInteger) , "High" :: NullOrUndefined (UInteger) } ) -> AgeRange
-newAgeRange'  customize = (AgeRange <<< customize) { "High": (NullOrUndefined Nothing), "Low": (NullOrUndefined Nothing) }
+newAgeRange' :: ( { "Low" :: Maybe (UInteger) , "High" :: Maybe (UInteger) } -> {"Low" :: Maybe (UInteger) , "High" :: Maybe (UInteger) } ) -> AgeRange
+newAgeRange'  customize = (AgeRange <<< customize) { "High": Nothing, "Low": Nothing }
 
 
 
@@ -70,8 +69,8 @@ instance encodeAttributes :: Encode Attributes where encode = genericEncode opti
 
 -- | <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
 newtype Beard = Beard 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeBeard :: Newtype Beard _
 derive instance repGenericBeard :: Generic Beard _
@@ -81,21 +80,21 @@ instance encodeBeard :: Encode Beard where encode = genericEncode options
 
 -- | Constructs Beard from required parameters
 newBeard :: Beard
-newBeard  = Beard { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newBeard  = Beard { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Beard's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBeard' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> Beard
-newBeard'  customize = (Beard <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newBeard' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> Beard
+newBeard'  customize = (Beard <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 -- | <p>Identifies the bounding box around the object, face or text. The <code>left</code> (x-coordinate) and <code>top</code> (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p>The <code>width</code> and <code>height</code> values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. </p> <note> <p> The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the <code>left</code> or <code>top</code> values. </p> </note>
 newtype BoundingBox = BoundingBox 
-  { "Width" :: NullOrUndefined (Number)
-  , "Height" :: NullOrUndefined (Number)
-  , "Left" :: NullOrUndefined (Number)
-  , "Top" :: NullOrUndefined (Number)
+  { "Width" :: Maybe (Number)
+  , "Height" :: Maybe (Number)
+  , "Left" :: Maybe (Number)
+  , "Top" :: Maybe (Number)
   }
 derive instance newtypeBoundingBox :: Newtype BoundingBox _
 derive instance repGenericBoundingBox :: Generic BoundingBox _
@@ -105,22 +104,22 @@ instance encodeBoundingBox :: Encode BoundingBox where encode = genericEncode op
 
 -- | Constructs BoundingBox from required parameters
 newBoundingBox :: BoundingBox
-newBoundingBox  = BoundingBox { "Height": (NullOrUndefined Nothing), "Left": (NullOrUndefined Nothing), "Top": (NullOrUndefined Nothing), "Width": (NullOrUndefined Nothing) }
+newBoundingBox  = BoundingBox { "Height": Nothing, "Left": Nothing, "Top": Nothing, "Width": Nothing }
 
 -- | Constructs BoundingBox's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBoundingBox' :: ( { "Width" :: NullOrUndefined (Number) , "Height" :: NullOrUndefined (Number) , "Left" :: NullOrUndefined (Number) , "Top" :: NullOrUndefined (Number) } -> {"Width" :: NullOrUndefined (Number) , "Height" :: NullOrUndefined (Number) , "Left" :: NullOrUndefined (Number) , "Top" :: NullOrUndefined (Number) } ) -> BoundingBox
-newBoundingBox'  customize = (BoundingBox <<< customize) { "Height": (NullOrUndefined Nothing), "Left": (NullOrUndefined Nothing), "Top": (NullOrUndefined Nothing), "Width": (NullOrUndefined Nothing) }
+newBoundingBox' :: ( { "Width" :: Maybe (Number) , "Height" :: Maybe (Number) , "Left" :: Maybe (Number) , "Top" :: Maybe (Number) } -> {"Width" :: Maybe (Number) , "Height" :: Maybe (Number) , "Left" :: Maybe (Number) , "Top" :: Maybe (Number) } ) -> BoundingBox
+newBoundingBox'  customize = (BoundingBox <<< customize) { "Height": Nothing, "Left": Nothing, "Top": Nothing, "Width": Nothing }
 
 
 
 -- | <p>Provides information about a celebrity recognized by the operation.</p>
 newtype Celebrity = Celebrity 
-  { "Urls" :: NullOrUndefined (Urls)
-  , "Name" :: NullOrUndefined (String)
-  , "Id" :: NullOrUndefined (RekognitionUniqueId)
-  , "Face" :: NullOrUndefined (ComparedFace)
-  , "MatchConfidence" :: NullOrUndefined (Percent)
+  { "Urls" :: Maybe (Urls)
+  , "Name" :: Maybe (String)
+  , "Id" :: Maybe (RekognitionUniqueId)
+  , "Face" :: Maybe (ComparedFace)
+  , "MatchConfidence" :: Maybe (Percent)
   }
 derive instance newtypeCelebrity :: Newtype Celebrity _
 derive instance repGenericCelebrity :: Generic Celebrity _
@@ -130,23 +129,23 @@ instance encodeCelebrity :: Encode Celebrity where encode = genericEncode option
 
 -- | Constructs Celebrity from required parameters
 newCelebrity :: Celebrity
-newCelebrity  = Celebrity { "Face": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "MatchConfidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newCelebrity  = Celebrity { "Face": Nothing, "Id": Nothing, "MatchConfidence": Nothing, "Name": Nothing, "Urls": Nothing }
 
 -- | Constructs Celebrity's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCelebrity' :: ( { "Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) , "Id" :: NullOrUndefined (RekognitionUniqueId) , "Face" :: NullOrUndefined (ComparedFace) , "MatchConfidence" :: NullOrUndefined (Percent) } -> {"Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) , "Id" :: NullOrUndefined (RekognitionUniqueId) , "Face" :: NullOrUndefined (ComparedFace) , "MatchConfidence" :: NullOrUndefined (Percent) } ) -> Celebrity
-newCelebrity'  customize = (Celebrity <<< customize) { "Face": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "MatchConfidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newCelebrity' :: ( { "Urls" :: Maybe (Urls) , "Name" :: Maybe (String) , "Id" :: Maybe (RekognitionUniqueId) , "Face" :: Maybe (ComparedFace) , "MatchConfidence" :: Maybe (Percent) } -> {"Urls" :: Maybe (Urls) , "Name" :: Maybe (String) , "Id" :: Maybe (RekognitionUniqueId) , "Face" :: Maybe (ComparedFace) , "MatchConfidence" :: Maybe (Percent) } ) -> Celebrity
+newCelebrity'  customize = (Celebrity <<< customize) { "Face": Nothing, "Id": Nothing, "MatchConfidence": Nothing, "Name": Nothing, "Urls": Nothing }
 
 
 
 -- | <p>Information about a recognized celebrity.</p>
 newtype CelebrityDetail = CelebrityDetail 
-  { "Urls" :: NullOrUndefined (Urls)
-  , "Name" :: NullOrUndefined (String)
-  , "Id" :: NullOrUndefined (RekognitionUniqueId)
-  , "Confidence" :: NullOrUndefined (Percent)
-  , "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "Face" :: NullOrUndefined (FaceDetail)
+  { "Urls" :: Maybe (Urls)
+  , "Name" :: Maybe (String)
+  , "Id" :: Maybe (RekognitionUniqueId)
+  , "Confidence" :: Maybe (Percent)
+  , "BoundingBox" :: Maybe (BoundingBox)
+  , "Face" :: Maybe (FaceDetail)
   }
 derive instance newtypeCelebrityDetail :: Newtype CelebrityDetail _
 derive instance repGenericCelebrityDetail :: Generic CelebrityDetail _
@@ -156,12 +155,12 @@ instance encodeCelebrityDetail :: Encode CelebrityDetail where encode = genericE
 
 -- | Constructs CelebrityDetail from required parameters
 newCelebrityDetail :: CelebrityDetail
-newCelebrityDetail  = CelebrityDetail { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Face": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newCelebrityDetail  = CelebrityDetail { "BoundingBox": Nothing, "Confidence": Nothing, "Face": Nothing, "Id": Nothing, "Name": Nothing, "Urls": Nothing }
 
 -- | Constructs CelebrityDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCelebrityDetail' :: ( { "Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) , "Id" :: NullOrUndefined (RekognitionUniqueId) , "Confidence" :: NullOrUndefined (Percent) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "Face" :: NullOrUndefined (FaceDetail) } -> {"Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) , "Id" :: NullOrUndefined (RekognitionUniqueId) , "Confidence" :: NullOrUndefined (Percent) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "Face" :: NullOrUndefined (FaceDetail) } ) -> CelebrityDetail
-newCelebrityDetail'  customize = (CelebrityDetail <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Face": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newCelebrityDetail' :: ( { "Urls" :: Maybe (Urls) , "Name" :: Maybe (String) , "Id" :: Maybe (RekognitionUniqueId) , "Confidence" :: Maybe (Percent) , "BoundingBox" :: Maybe (BoundingBox) , "Face" :: Maybe (FaceDetail) } -> {"Urls" :: Maybe (Urls) , "Name" :: Maybe (String) , "Id" :: Maybe (RekognitionUniqueId) , "Confidence" :: Maybe (Percent) , "BoundingBox" :: Maybe (BoundingBox) , "Face" :: Maybe (FaceDetail) } ) -> CelebrityDetail
+newCelebrityDetail'  customize = (CelebrityDetail <<< customize) { "BoundingBox": Nothing, "Confidence": Nothing, "Face": Nothing, "Id": Nothing, "Name": Nothing, "Urls": Nothing }
 
 
 
@@ -176,8 +175,8 @@ instance encodeCelebrityList :: Encode CelebrityList where encode = genericEncod
 
 -- | <p>Information about a detected celebrity and the time the celebrity was detected in a stored video. For more information, see .</p>
 newtype CelebrityRecognition = CelebrityRecognition 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Celebrity" :: NullOrUndefined (CelebrityDetail)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "Celebrity" :: Maybe (CelebrityDetail)
   }
 derive instance newtypeCelebrityRecognition :: Newtype CelebrityRecognition _
 derive instance repGenericCelebrityRecognition :: Generic CelebrityRecognition _
@@ -187,12 +186,12 @@ instance encodeCelebrityRecognition :: Encode CelebrityRecognition where encode 
 
 -- | Constructs CelebrityRecognition from required parameters
 newCelebrityRecognition :: CelebrityRecognition
-newCelebrityRecognition  = CelebrityRecognition { "Celebrity": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newCelebrityRecognition  = CelebrityRecognition { "Celebrity": Nothing, "Timestamp": Nothing }
 
 -- | Constructs CelebrityRecognition's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCelebrityRecognition' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "Celebrity" :: NullOrUndefined (CelebrityDetail) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "Celebrity" :: NullOrUndefined (CelebrityDetail) } ) -> CelebrityRecognition
-newCelebrityRecognition'  customize = (CelebrityRecognition <<< customize) { "Celebrity": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newCelebrityRecognition' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "Celebrity" :: Maybe (CelebrityDetail) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "Celebrity" :: Maybe (CelebrityDetail) } ) -> CelebrityRecognition
+newCelebrityRecognition'  customize = (CelebrityRecognition <<< customize) { "Celebrity": Nothing, "Timestamp": Nothing }
 
 
 
@@ -243,8 +242,8 @@ instance encodeCollectionIdList :: Encode CollectionIdList where encode = generi
 
 -- | <p>Provides information about a face in a target image that matches the source image face analysed by <code>CompareFaces</code>. The <code>Face</code> property contains the bounding box of the face in the target image. The <code>Similarity</code> property is the confidence that the source image face matches the face in the bounding box.</p>
 newtype CompareFacesMatch = CompareFacesMatch 
-  { "Similarity" :: NullOrUndefined (Percent)
-  , "Face" :: NullOrUndefined (ComparedFace)
+  { "Similarity" :: Maybe (Percent)
+  , "Face" :: Maybe (ComparedFace)
   }
 derive instance newtypeCompareFacesMatch :: Newtype CompareFacesMatch _
 derive instance repGenericCompareFacesMatch :: Generic CompareFacesMatch _
@@ -254,12 +253,12 @@ instance encodeCompareFacesMatch :: Encode CompareFacesMatch where encode = gene
 
 -- | Constructs CompareFacesMatch from required parameters
 newCompareFacesMatch :: CompareFacesMatch
-newCompareFacesMatch  = CompareFacesMatch { "Face": (NullOrUndefined Nothing), "Similarity": (NullOrUndefined Nothing) }
+newCompareFacesMatch  = CompareFacesMatch { "Face": Nothing, "Similarity": Nothing }
 
 -- | Constructs CompareFacesMatch's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompareFacesMatch' :: ( { "Similarity" :: NullOrUndefined (Percent) , "Face" :: NullOrUndefined (ComparedFace) } -> {"Similarity" :: NullOrUndefined (Percent) , "Face" :: NullOrUndefined (ComparedFace) } ) -> CompareFacesMatch
-newCompareFacesMatch'  customize = (CompareFacesMatch <<< customize) { "Face": (NullOrUndefined Nothing), "Similarity": (NullOrUndefined Nothing) }
+newCompareFacesMatch' :: ( { "Similarity" :: Maybe (Percent) , "Face" :: Maybe (ComparedFace) } -> {"Similarity" :: Maybe (Percent) , "Face" :: Maybe (ComparedFace) } ) -> CompareFacesMatch
+newCompareFacesMatch'  customize = (CompareFacesMatch <<< customize) { "Face": Nothing, "Similarity": Nothing }
 
 
 
@@ -275,7 +274,7 @@ instance encodeCompareFacesMatchList :: Encode CompareFacesMatchList where encod
 newtype CompareFacesRequest = CompareFacesRequest 
   { "SourceImage" :: (Image)
   , "TargetImage" :: (Image)
-  , "SimilarityThreshold" :: NullOrUndefined (Percent)
+  , "SimilarityThreshold" :: Maybe (Percent)
   }
 derive instance newtypeCompareFacesRequest :: Newtype CompareFacesRequest _
 derive instance repGenericCompareFacesRequest :: Generic CompareFacesRequest _
@@ -285,21 +284,21 @@ instance encodeCompareFacesRequest :: Encode CompareFacesRequest where encode = 
 
 -- | Constructs CompareFacesRequest from required parameters
 newCompareFacesRequest :: Image -> Image -> CompareFacesRequest
-newCompareFacesRequest _SourceImage _TargetImage = CompareFacesRequest { "SourceImage": _SourceImage, "TargetImage": _TargetImage, "SimilarityThreshold": (NullOrUndefined Nothing) }
+newCompareFacesRequest _SourceImage _TargetImage = CompareFacesRequest { "SourceImage": _SourceImage, "TargetImage": _TargetImage, "SimilarityThreshold": Nothing }
 
 -- | Constructs CompareFacesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompareFacesRequest' :: Image -> Image -> ( { "SourceImage" :: (Image) , "TargetImage" :: (Image) , "SimilarityThreshold" :: NullOrUndefined (Percent) } -> {"SourceImage" :: (Image) , "TargetImage" :: (Image) , "SimilarityThreshold" :: NullOrUndefined (Percent) } ) -> CompareFacesRequest
-newCompareFacesRequest' _SourceImage _TargetImage customize = (CompareFacesRequest <<< customize) { "SourceImage": _SourceImage, "TargetImage": _TargetImage, "SimilarityThreshold": (NullOrUndefined Nothing) }
+newCompareFacesRequest' :: Image -> Image -> ( { "SourceImage" :: (Image) , "TargetImage" :: (Image) , "SimilarityThreshold" :: Maybe (Percent) } -> {"SourceImage" :: (Image) , "TargetImage" :: (Image) , "SimilarityThreshold" :: Maybe (Percent) } ) -> CompareFacesRequest
+newCompareFacesRequest' _SourceImage _TargetImage customize = (CompareFacesRequest <<< customize) { "SourceImage": _SourceImage, "TargetImage": _TargetImage, "SimilarityThreshold": Nothing }
 
 
 
 newtype CompareFacesResponse = CompareFacesResponse 
-  { "SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace)
-  , "FaceMatches" :: NullOrUndefined (CompareFacesMatchList)
-  , "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList)
-  , "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection)
-  , "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection)
+  { "SourceImageFace" :: Maybe (ComparedSourceImageFace)
+  , "FaceMatches" :: Maybe (CompareFacesMatchList)
+  , "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList)
+  , "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection)
+  , "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection)
   }
 derive instance newtypeCompareFacesResponse :: Newtype CompareFacesResponse _
 derive instance repGenericCompareFacesResponse :: Generic CompareFacesResponse _
@@ -309,12 +308,12 @@ instance encodeCompareFacesResponse :: Encode CompareFacesResponse where encode 
 
 -- | Constructs CompareFacesResponse from required parameters
 newCompareFacesResponse :: CompareFacesResponse
-newCompareFacesResponse  = CompareFacesResponse { "FaceMatches": (NullOrUndefined Nothing), "SourceImageFace": (NullOrUndefined Nothing), "SourceImageOrientationCorrection": (NullOrUndefined Nothing), "TargetImageOrientationCorrection": (NullOrUndefined Nothing), "UnmatchedFaces": (NullOrUndefined Nothing) }
+newCompareFacesResponse  = CompareFacesResponse { "FaceMatches": Nothing, "SourceImageFace": Nothing, "SourceImageOrientationCorrection": Nothing, "TargetImageOrientationCorrection": Nothing, "UnmatchedFaces": Nothing }
 
 -- | Constructs CompareFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCompareFacesResponse' :: ( { "SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace) , "FaceMatches" :: NullOrUndefined (CompareFacesMatchList) , "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList) , "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) , "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> {"SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace) , "FaceMatches" :: NullOrUndefined (CompareFacesMatchList) , "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList) , "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) , "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) } ) -> CompareFacesResponse
-newCompareFacesResponse'  customize = (CompareFacesResponse <<< customize) { "FaceMatches": (NullOrUndefined Nothing), "SourceImageFace": (NullOrUndefined Nothing), "SourceImageOrientationCorrection": (NullOrUndefined Nothing), "TargetImageOrientationCorrection": (NullOrUndefined Nothing), "UnmatchedFaces": (NullOrUndefined Nothing) }
+newCompareFacesResponse' :: ( { "SourceImageFace" :: Maybe (ComparedSourceImageFace) , "FaceMatches" :: Maybe (CompareFacesMatchList) , "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList) , "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection) , "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection) } -> {"SourceImageFace" :: Maybe (ComparedSourceImageFace) , "FaceMatches" :: Maybe (CompareFacesMatchList) , "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList) , "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection) , "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection) } ) -> CompareFacesResponse
+newCompareFacesResponse'  customize = (CompareFacesResponse <<< customize) { "FaceMatches": Nothing, "SourceImageFace": Nothing, "SourceImageOrientationCorrection": Nothing, "TargetImageOrientationCorrection": Nothing, "UnmatchedFaces": Nothing }
 
 
 
@@ -329,11 +328,11 @@ instance encodeCompareFacesUnmatchList :: Encode CompareFacesUnmatchList where e
 
 -- | <p>Provides face metadata for target image faces that are analysed by <code>CompareFaces</code> and <code>RecognizeCelebrities</code>.</p>
 newtype ComparedFace = ComparedFace 
-  { "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "Confidence" :: NullOrUndefined (Percent)
-  , "Landmarks" :: NullOrUndefined (Landmarks)
-  , "Pose" :: NullOrUndefined (Pose)
-  , "Quality" :: NullOrUndefined (ImageQuality)
+  { "BoundingBox" :: Maybe (BoundingBox)
+  , "Confidence" :: Maybe (Percent)
+  , "Landmarks" :: Maybe (Landmarks)
+  , "Pose" :: Maybe (Pose)
+  , "Quality" :: Maybe (ImageQuality)
   }
 derive instance newtypeComparedFace :: Newtype ComparedFace _
 derive instance repGenericComparedFace :: Generic ComparedFace _
@@ -343,12 +342,12 @@ instance encodeComparedFace :: Encode ComparedFace where encode = genericEncode 
 
 -- | Constructs ComparedFace from required parameters
 newComparedFace :: ComparedFace
-newComparedFace  = ComparedFace { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Landmarks": (NullOrUndefined Nothing), "Pose": (NullOrUndefined Nothing), "Quality": (NullOrUndefined Nothing) }
+newComparedFace  = ComparedFace { "BoundingBox": Nothing, "Confidence": Nothing, "Landmarks": Nothing, "Pose": Nothing, "Quality": Nothing }
 
 -- | Constructs ComparedFace's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComparedFace' :: ( { "BoundingBox" :: NullOrUndefined (BoundingBox) , "Confidence" :: NullOrUndefined (Percent) , "Landmarks" :: NullOrUndefined (Landmarks) , "Pose" :: NullOrUndefined (Pose) , "Quality" :: NullOrUndefined (ImageQuality) } -> {"BoundingBox" :: NullOrUndefined (BoundingBox) , "Confidence" :: NullOrUndefined (Percent) , "Landmarks" :: NullOrUndefined (Landmarks) , "Pose" :: NullOrUndefined (Pose) , "Quality" :: NullOrUndefined (ImageQuality) } ) -> ComparedFace
-newComparedFace'  customize = (ComparedFace <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Landmarks": (NullOrUndefined Nothing), "Pose": (NullOrUndefined Nothing), "Quality": (NullOrUndefined Nothing) }
+newComparedFace' :: ( { "BoundingBox" :: Maybe (BoundingBox) , "Confidence" :: Maybe (Percent) , "Landmarks" :: Maybe (Landmarks) , "Pose" :: Maybe (Pose) , "Quality" :: Maybe (ImageQuality) } -> {"BoundingBox" :: Maybe (BoundingBox) , "Confidence" :: Maybe (Percent) , "Landmarks" :: Maybe (Landmarks) , "Pose" :: Maybe (Pose) , "Quality" :: Maybe (ImageQuality) } ) -> ComparedFace
+newComparedFace'  customize = (ComparedFace <<< customize) { "BoundingBox": Nothing, "Confidence": Nothing, "Landmarks": Nothing, "Pose": Nothing, "Quality": Nothing }
 
 
 
@@ -363,8 +362,8 @@ instance encodeComparedFaceList :: Encode ComparedFaceList where encode = generi
 
 -- | <p>Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. </p>
 newtype ComparedSourceImageFace = ComparedSourceImageFace 
-  { "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "BoundingBox" :: Maybe (BoundingBox)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeComparedSourceImageFace :: Newtype ComparedSourceImageFace _
 derive instance repGenericComparedSourceImageFace :: Generic ComparedSourceImageFace _
@@ -374,19 +373,19 @@ instance encodeComparedSourceImageFace :: Encode ComparedSourceImageFace where e
 
 -- | Constructs ComparedSourceImageFace from required parameters
 newComparedSourceImageFace :: ComparedSourceImageFace
-newComparedSourceImageFace  = ComparedSourceImageFace { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing) }
+newComparedSourceImageFace  = ComparedSourceImageFace { "BoundingBox": Nothing, "Confidence": Nothing }
 
 -- | Constructs ComparedSourceImageFace's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newComparedSourceImageFace' :: ( { "BoundingBox" :: NullOrUndefined (BoundingBox) , "Confidence" :: NullOrUndefined (Percent) } -> {"BoundingBox" :: NullOrUndefined (BoundingBox) , "Confidence" :: NullOrUndefined (Percent) } ) -> ComparedSourceImageFace
-newComparedSourceImageFace'  customize = (ComparedSourceImageFace <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing) }
+newComparedSourceImageFace' :: ( { "BoundingBox" :: Maybe (BoundingBox) , "Confidence" :: Maybe (Percent) } -> {"BoundingBox" :: Maybe (BoundingBox) , "Confidence" :: Maybe (Percent) } ) -> ComparedSourceImageFace
+newComparedSourceImageFace'  customize = (ComparedSourceImageFace <<< customize) { "BoundingBox": Nothing, "Confidence": Nothing }
 
 
 
 -- | <p>Information about a moderation label detection in a stored video.</p>
 newtype ContentModerationDetection = ContentModerationDetection 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "ModerationLabel" :: NullOrUndefined (ModerationLabel)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "ModerationLabel" :: Maybe (ModerationLabel)
   }
 derive instance newtypeContentModerationDetection :: Newtype ContentModerationDetection _
 derive instance repGenericContentModerationDetection :: Generic ContentModerationDetection _
@@ -396,12 +395,12 @@ instance encodeContentModerationDetection :: Encode ContentModerationDetection w
 
 -- | Constructs ContentModerationDetection from required parameters
 newContentModerationDetection :: ContentModerationDetection
-newContentModerationDetection  = ContentModerationDetection { "ModerationLabel": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newContentModerationDetection  = ContentModerationDetection { "ModerationLabel": Nothing, "Timestamp": Nothing }
 
 -- | Constructs ContentModerationDetection's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newContentModerationDetection' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "ModerationLabel" :: NullOrUndefined (ModerationLabel) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "ModerationLabel" :: NullOrUndefined (ModerationLabel) } ) -> ContentModerationDetection
-newContentModerationDetection'  customize = (ContentModerationDetection <<< customize) { "ModerationLabel": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newContentModerationDetection' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "ModerationLabel" :: Maybe (ModerationLabel) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "ModerationLabel" :: Maybe (ModerationLabel) } ) -> ContentModerationDetection
+newContentModerationDetection'  customize = (ContentModerationDetection <<< customize) { "ModerationLabel": Nothing, "Timestamp": Nothing }
 
 
 
@@ -444,9 +443,9 @@ newCreateCollectionRequest' _CollectionId customize = (CreateCollectionRequest <
 
 
 newtype CreateCollectionResponse = CreateCollectionResponse 
-  { "StatusCode" :: NullOrUndefined (UInteger)
-  , "CollectionArn" :: NullOrUndefined (String)
-  , "FaceModelVersion" :: NullOrUndefined (String)
+  { "StatusCode" :: Maybe (UInteger)
+  , "CollectionArn" :: Maybe (String)
+  , "FaceModelVersion" :: Maybe (String)
   }
 derive instance newtypeCreateCollectionResponse :: Newtype CreateCollectionResponse _
 derive instance repGenericCreateCollectionResponse :: Generic CreateCollectionResponse _
@@ -456,12 +455,12 @@ instance encodeCreateCollectionResponse :: Encode CreateCollectionResponse where
 
 -- | Constructs CreateCollectionResponse from required parameters
 newCreateCollectionResponse :: CreateCollectionResponse
-newCreateCollectionResponse  = CreateCollectionResponse { "CollectionArn": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "StatusCode": (NullOrUndefined Nothing) }
+newCreateCollectionResponse  = CreateCollectionResponse { "CollectionArn": Nothing, "FaceModelVersion": Nothing, "StatusCode": Nothing }
 
 -- | Constructs CreateCollectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateCollectionResponse' :: ( { "StatusCode" :: NullOrUndefined (UInteger) , "CollectionArn" :: NullOrUndefined (String) , "FaceModelVersion" :: NullOrUndefined (String) } -> {"StatusCode" :: NullOrUndefined (UInteger) , "CollectionArn" :: NullOrUndefined (String) , "FaceModelVersion" :: NullOrUndefined (String) } ) -> CreateCollectionResponse
-newCreateCollectionResponse'  customize = (CreateCollectionResponse <<< customize) { "CollectionArn": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "StatusCode": (NullOrUndefined Nothing) }
+newCreateCollectionResponse' :: ( { "StatusCode" :: Maybe (UInteger) , "CollectionArn" :: Maybe (String) , "FaceModelVersion" :: Maybe (String) } -> {"StatusCode" :: Maybe (UInteger) , "CollectionArn" :: Maybe (String) , "FaceModelVersion" :: Maybe (String) } ) -> CreateCollectionResponse
+newCreateCollectionResponse'  customize = (CreateCollectionResponse <<< customize) { "CollectionArn": Nothing, "FaceModelVersion": Nothing, "StatusCode": Nothing }
 
 
 
@@ -490,7 +489,7 @@ newCreateStreamProcessorRequest' _Input _Name _Output _RoleArn _Settings customi
 
 
 newtype CreateStreamProcessorResponse = CreateStreamProcessorResponse 
-  { "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn)
+  { "StreamProcessorArn" :: Maybe (StreamProcessorArn)
   }
 derive instance newtypeCreateStreamProcessorResponse :: Newtype CreateStreamProcessorResponse _
 derive instance repGenericCreateStreamProcessorResponse :: Generic CreateStreamProcessorResponse _
@@ -500,12 +499,12 @@ instance encodeCreateStreamProcessorResponse :: Encode CreateStreamProcessorResp
 
 -- | Constructs CreateStreamProcessorResponse from required parameters
 newCreateStreamProcessorResponse :: CreateStreamProcessorResponse
-newCreateStreamProcessorResponse  = CreateStreamProcessorResponse { "StreamProcessorArn": (NullOrUndefined Nothing) }
+newCreateStreamProcessorResponse  = CreateStreamProcessorResponse { "StreamProcessorArn": Nothing }
 
 -- | Constructs CreateStreamProcessorResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateStreamProcessorResponse' :: ( { "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) } -> {"StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) } ) -> CreateStreamProcessorResponse
-newCreateStreamProcessorResponse'  customize = (CreateStreamProcessorResponse <<< customize) { "StreamProcessorArn": (NullOrUndefined Nothing) }
+newCreateStreamProcessorResponse' :: ( { "StreamProcessorArn" :: Maybe (StreamProcessorArn) } -> {"StreamProcessorArn" :: Maybe (StreamProcessorArn) } ) -> CreateStreamProcessorResponse
+newCreateStreamProcessorResponse'  customize = (CreateStreamProcessorResponse <<< customize) { "StreamProcessorArn": Nothing }
 
 
 
@@ -548,7 +547,7 @@ newDeleteCollectionRequest' _CollectionId customize = (DeleteCollectionRequest <
 
 
 newtype DeleteCollectionResponse = DeleteCollectionResponse 
-  { "StatusCode" :: NullOrUndefined (UInteger)
+  { "StatusCode" :: Maybe (UInteger)
   }
 derive instance newtypeDeleteCollectionResponse :: Newtype DeleteCollectionResponse _
 derive instance repGenericDeleteCollectionResponse :: Generic DeleteCollectionResponse _
@@ -558,12 +557,12 @@ instance encodeDeleteCollectionResponse :: Encode DeleteCollectionResponse where
 
 -- | Constructs DeleteCollectionResponse from required parameters
 newDeleteCollectionResponse :: DeleteCollectionResponse
-newDeleteCollectionResponse  = DeleteCollectionResponse { "StatusCode": (NullOrUndefined Nothing) }
+newDeleteCollectionResponse  = DeleteCollectionResponse { "StatusCode": Nothing }
 
 -- | Constructs DeleteCollectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteCollectionResponse' :: ( { "StatusCode" :: NullOrUndefined (UInteger) } -> {"StatusCode" :: NullOrUndefined (UInteger) } ) -> DeleteCollectionResponse
-newDeleteCollectionResponse'  customize = (DeleteCollectionResponse <<< customize) { "StatusCode": (NullOrUndefined Nothing) }
+newDeleteCollectionResponse' :: ( { "StatusCode" :: Maybe (UInteger) } -> {"StatusCode" :: Maybe (UInteger) } ) -> DeleteCollectionResponse
+newDeleteCollectionResponse'  customize = (DeleteCollectionResponse <<< customize) { "StatusCode": Nothing }
 
 
 
@@ -589,7 +588,7 @@ newDeleteFacesRequest' _CollectionId _FaceIds customize = (DeleteFacesRequest <<
 
 
 newtype DeleteFacesResponse = DeleteFacesResponse 
-  { "DeletedFaces" :: NullOrUndefined (FaceIdList)
+  { "DeletedFaces" :: Maybe (FaceIdList)
   }
 derive instance newtypeDeleteFacesResponse :: Newtype DeleteFacesResponse _
 derive instance repGenericDeleteFacesResponse :: Generic DeleteFacesResponse _
@@ -599,12 +598,12 @@ instance encodeDeleteFacesResponse :: Encode DeleteFacesResponse where encode = 
 
 -- | Constructs DeleteFacesResponse from required parameters
 newDeleteFacesResponse :: DeleteFacesResponse
-newDeleteFacesResponse  = DeleteFacesResponse { "DeletedFaces": (NullOrUndefined Nothing) }
+newDeleteFacesResponse  = DeleteFacesResponse { "DeletedFaces": Nothing }
 
 -- | Constructs DeleteFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteFacesResponse' :: ( { "DeletedFaces" :: NullOrUndefined (FaceIdList) } -> {"DeletedFaces" :: NullOrUndefined (FaceIdList) } ) -> DeleteFacesResponse
-newDeleteFacesResponse'  customize = (DeleteFacesResponse <<< customize) { "DeletedFaces": (NullOrUndefined Nothing) }
+newDeleteFacesResponse' :: ( { "DeletedFaces" :: Maybe (FaceIdList) } -> {"DeletedFaces" :: Maybe (FaceIdList) } ) -> DeleteFacesResponse
+newDeleteFacesResponse'  customize = (DeleteFacesResponse <<< customize) { "DeletedFaces": Nothing }
 
 
 
@@ -658,16 +657,16 @@ newDescribeStreamProcessorRequest' _Name customize = (DescribeStreamProcessorReq
 
 
 newtype DescribeStreamProcessorResponse = DescribeStreamProcessorResponse 
-  { "Name" :: NullOrUndefined (StreamProcessorName)
-  , "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn)
-  , "Status" :: NullOrUndefined (StreamProcessorStatus)
-  , "StatusMessage" :: NullOrUndefined (String)
-  , "CreationTimestamp" :: NullOrUndefined (DateTime)
-  , "LastUpdateTimestamp" :: NullOrUndefined (DateTime)
-  , "Input" :: NullOrUndefined (StreamProcessorInput)
-  , "Output" :: NullOrUndefined (StreamProcessorOutput)
-  , "RoleArn" :: NullOrUndefined (RoleArn)
-  , "Settings" :: NullOrUndefined (StreamProcessorSettings)
+  { "Name" :: Maybe (StreamProcessorName)
+  , "StreamProcessorArn" :: Maybe (StreamProcessorArn)
+  , "Status" :: Maybe (StreamProcessorStatus)
+  , "StatusMessage" :: Maybe (String)
+  , "CreationTimestamp" :: Maybe (DateTime)
+  , "LastUpdateTimestamp" :: Maybe (DateTime)
+  , "Input" :: Maybe (StreamProcessorInput)
+  , "Output" :: Maybe (StreamProcessorOutput)
+  , "RoleArn" :: Maybe (RoleArn)
+  , "Settings" :: Maybe (StreamProcessorSettings)
   }
 derive instance newtypeDescribeStreamProcessorResponse :: Newtype DescribeStreamProcessorResponse _
 derive instance repGenericDescribeStreamProcessorResponse :: Generic DescribeStreamProcessorResponse _
@@ -677,18 +676,18 @@ instance encodeDescribeStreamProcessorResponse :: Encode DescribeStreamProcessor
 
 -- | Constructs DescribeStreamProcessorResponse from required parameters
 newDescribeStreamProcessorResponse :: DescribeStreamProcessorResponse
-newDescribeStreamProcessorResponse  = DescribeStreamProcessorResponse { "CreationTimestamp": (NullOrUndefined Nothing), "Input": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Output": (NullOrUndefined Nothing), "RoleArn": (NullOrUndefined Nothing), "Settings": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "StreamProcessorArn": (NullOrUndefined Nothing) }
+newDescribeStreamProcessorResponse  = DescribeStreamProcessorResponse { "CreationTimestamp": Nothing, "Input": Nothing, "LastUpdateTimestamp": Nothing, "Name": Nothing, "Output": Nothing, "RoleArn": Nothing, "Settings": Nothing, "Status": Nothing, "StatusMessage": Nothing, "StreamProcessorArn": Nothing }
 
 -- | Constructs DescribeStreamProcessorResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeStreamProcessorResponse' :: ( { "Name" :: NullOrUndefined (StreamProcessorName) , "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) , "Status" :: NullOrUndefined (StreamProcessorStatus) , "StatusMessage" :: NullOrUndefined (String) , "CreationTimestamp" :: NullOrUndefined (DateTime) , "LastUpdateTimestamp" :: NullOrUndefined (DateTime) , "Input" :: NullOrUndefined (StreamProcessorInput) , "Output" :: NullOrUndefined (StreamProcessorOutput) , "RoleArn" :: NullOrUndefined (RoleArn) , "Settings" :: NullOrUndefined (StreamProcessorSettings) } -> {"Name" :: NullOrUndefined (StreamProcessorName) , "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) , "Status" :: NullOrUndefined (StreamProcessorStatus) , "StatusMessage" :: NullOrUndefined (String) , "CreationTimestamp" :: NullOrUndefined (DateTime) , "LastUpdateTimestamp" :: NullOrUndefined (DateTime) , "Input" :: NullOrUndefined (StreamProcessorInput) , "Output" :: NullOrUndefined (StreamProcessorOutput) , "RoleArn" :: NullOrUndefined (RoleArn) , "Settings" :: NullOrUndefined (StreamProcessorSettings) } ) -> DescribeStreamProcessorResponse
-newDescribeStreamProcessorResponse'  customize = (DescribeStreamProcessorResponse <<< customize) { "CreationTimestamp": (NullOrUndefined Nothing), "Input": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Output": (NullOrUndefined Nothing), "RoleArn": (NullOrUndefined Nothing), "Settings": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "StreamProcessorArn": (NullOrUndefined Nothing) }
+newDescribeStreamProcessorResponse' :: ( { "Name" :: Maybe (StreamProcessorName) , "StreamProcessorArn" :: Maybe (StreamProcessorArn) , "Status" :: Maybe (StreamProcessorStatus) , "StatusMessage" :: Maybe (String) , "CreationTimestamp" :: Maybe (DateTime) , "LastUpdateTimestamp" :: Maybe (DateTime) , "Input" :: Maybe (StreamProcessorInput) , "Output" :: Maybe (StreamProcessorOutput) , "RoleArn" :: Maybe (RoleArn) , "Settings" :: Maybe (StreamProcessorSettings) } -> {"Name" :: Maybe (StreamProcessorName) , "StreamProcessorArn" :: Maybe (StreamProcessorArn) , "Status" :: Maybe (StreamProcessorStatus) , "StatusMessage" :: Maybe (String) , "CreationTimestamp" :: Maybe (DateTime) , "LastUpdateTimestamp" :: Maybe (DateTime) , "Input" :: Maybe (StreamProcessorInput) , "Output" :: Maybe (StreamProcessorOutput) , "RoleArn" :: Maybe (RoleArn) , "Settings" :: Maybe (StreamProcessorSettings) } ) -> DescribeStreamProcessorResponse
+newDescribeStreamProcessorResponse'  customize = (DescribeStreamProcessorResponse <<< customize) { "CreationTimestamp": Nothing, "Input": Nothing, "LastUpdateTimestamp": Nothing, "Name": Nothing, "Output": Nothing, "RoleArn": Nothing, "Settings": Nothing, "Status": Nothing, "StatusMessage": Nothing, "StreamProcessorArn": Nothing }
 
 
 
 newtype DetectFacesRequest = DetectFacesRequest 
   { "Image" :: (Image)
-  , "Attributes" :: NullOrUndefined (Attributes)
+  , "Attributes" :: Maybe (Attributes)
   }
 derive instance newtypeDetectFacesRequest :: Newtype DetectFacesRequest _
 derive instance repGenericDetectFacesRequest :: Generic DetectFacesRequest _
@@ -698,18 +697,18 @@ instance encodeDetectFacesRequest :: Encode DetectFacesRequest where encode = ge
 
 -- | Constructs DetectFacesRequest from required parameters
 newDetectFacesRequest :: Image -> DetectFacesRequest
-newDetectFacesRequest _Image = DetectFacesRequest { "Image": _Image, "Attributes": (NullOrUndefined Nothing) }
+newDetectFacesRequest _Image = DetectFacesRequest { "Image": _Image, "Attributes": Nothing }
 
 -- | Constructs DetectFacesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectFacesRequest' :: Image -> ( { "Image" :: (Image) , "Attributes" :: NullOrUndefined (Attributes) } -> {"Image" :: (Image) , "Attributes" :: NullOrUndefined (Attributes) } ) -> DetectFacesRequest
-newDetectFacesRequest' _Image customize = (DetectFacesRequest <<< customize) { "Image": _Image, "Attributes": (NullOrUndefined Nothing) }
+newDetectFacesRequest' :: Image -> ( { "Image" :: (Image) , "Attributes" :: Maybe (Attributes) } -> {"Image" :: (Image) , "Attributes" :: Maybe (Attributes) } ) -> DetectFacesRequest
+newDetectFacesRequest' _Image customize = (DetectFacesRequest <<< customize) { "Image": _Image, "Attributes": Nothing }
 
 
 
 newtype DetectFacesResponse = DetectFacesResponse 
-  { "FaceDetails" :: NullOrUndefined (FaceDetailList)
-  , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
+  { "FaceDetails" :: Maybe (FaceDetailList)
+  , "OrientationCorrection" :: Maybe (OrientationCorrection)
   }
 derive instance newtypeDetectFacesResponse :: Newtype DetectFacesResponse _
 derive instance repGenericDetectFacesResponse :: Generic DetectFacesResponse _
@@ -719,19 +718,19 @@ instance encodeDetectFacesResponse :: Encode DetectFacesResponse where encode = 
 
 -- | Constructs DetectFacesResponse from required parameters
 newDetectFacesResponse :: DetectFacesResponse
-newDetectFacesResponse  = DetectFacesResponse { "FaceDetails": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newDetectFacesResponse  = DetectFacesResponse { "FaceDetails": Nothing, "OrientationCorrection": Nothing }
 
 -- | Constructs DetectFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectFacesResponse' :: ( { "FaceDetails" :: NullOrUndefined (FaceDetailList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> {"FaceDetails" :: NullOrUndefined (FaceDetailList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } ) -> DetectFacesResponse
-newDetectFacesResponse'  customize = (DetectFacesResponse <<< customize) { "FaceDetails": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newDetectFacesResponse' :: ( { "FaceDetails" :: Maybe (FaceDetailList) , "OrientationCorrection" :: Maybe (OrientationCorrection) } -> {"FaceDetails" :: Maybe (FaceDetailList) , "OrientationCorrection" :: Maybe (OrientationCorrection) } ) -> DetectFacesResponse
+newDetectFacesResponse'  customize = (DetectFacesResponse <<< customize) { "FaceDetails": Nothing, "OrientationCorrection": Nothing }
 
 
 
 newtype DetectLabelsRequest = DetectLabelsRequest 
   { "Image" :: (Image)
-  , "MaxLabels" :: NullOrUndefined (UInteger)
-  , "MinConfidence" :: NullOrUndefined (Percent)
+  , "MaxLabels" :: Maybe (UInteger)
+  , "MinConfidence" :: Maybe (Percent)
   }
 derive instance newtypeDetectLabelsRequest :: Newtype DetectLabelsRequest _
 derive instance repGenericDetectLabelsRequest :: Generic DetectLabelsRequest _
@@ -741,18 +740,18 @@ instance encodeDetectLabelsRequest :: Encode DetectLabelsRequest where encode = 
 
 -- | Constructs DetectLabelsRequest from required parameters
 newDetectLabelsRequest :: Image -> DetectLabelsRequest
-newDetectLabelsRequest _Image = DetectLabelsRequest { "Image": _Image, "MaxLabels": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing) }
+newDetectLabelsRequest _Image = DetectLabelsRequest { "Image": _Image, "MaxLabels": Nothing, "MinConfidence": Nothing }
 
 -- | Constructs DetectLabelsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectLabelsRequest' :: Image -> ( { "Image" :: (Image) , "MaxLabels" :: NullOrUndefined (UInteger) , "MinConfidence" :: NullOrUndefined (Percent) } -> {"Image" :: (Image) , "MaxLabels" :: NullOrUndefined (UInteger) , "MinConfidence" :: NullOrUndefined (Percent) } ) -> DetectLabelsRequest
-newDetectLabelsRequest' _Image customize = (DetectLabelsRequest <<< customize) { "Image": _Image, "MaxLabels": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing) }
+newDetectLabelsRequest' :: Image -> ( { "Image" :: (Image) , "MaxLabels" :: Maybe (UInteger) , "MinConfidence" :: Maybe (Percent) } -> {"Image" :: (Image) , "MaxLabels" :: Maybe (UInteger) , "MinConfidence" :: Maybe (Percent) } ) -> DetectLabelsRequest
+newDetectLabelsRequest' _Image customize = (DetectLabelsRequest <<< customize) { "Image": _Image, "MaxLabels": Nothing, "MinConfidence": Nothing }
 
 
 
 newtype DetectLabelsResponse = DetectLabelsResponse 
-  { "Labels" :: NullOrUndefined (Labels)
-  , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
+  { "Labels" :: Maybe (Labels)
+  , "OrientationCorrection" :: Maybe (OrientationCorrection)
   }
 derive instance newtypeDetectLabelsResponse :: Newtype DetectLabelsResponse _
 derive instance repGenericDetectLabelsResponse :: Generic DetectLabelsResponse _
@@ -762,18 +761,18 @@ instance encodeDetectLabelsResponse :: Encode DetectLabelsResponse where encode 
 
 -- | Constructs DetectLabelsResponse from required parameters
 newDetectLabelsResponse :: DetectLabelsResponse
-newDetectLabelsResponse  = DetectLabelsResponse { "Labels": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newDetectLabelsResponse  = DetectLabelsResponse { "Labels": Nothing, "OrientationCorrection": Nothing }
 
 -- | Constructs DetectLabelsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectLabelsResponse' :: ( { "Labels" :: NullOrUndefined (Labels) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> {"Labels" :: NullOrUndefined (Labels) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } ) -> DetectLabelsResponse
-newDetectLabelsResponse'  customize = (DetectLabelsResponse <<< customize) { "Labels": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newDetectLabelsResponse' :: ( { "Labels" :: Maybe (Labels) , "OrientationCorrection" :: Maybe (OrientationCorrection) } -> {"Labels" :: Maybe (Labels) , "OrientationCorrection" :: Maybe (OrientationCorrection) } ) -> DetectLabelsResponse
+newDetectLabelsResponse'  customize = (DetectLabelsResponse <<< customize) { "Labels": Nothing, "OrientationCorrection": Nothing }
 
 
 
 newtype DetectModerationLabelsRequest = DetectModerationLabelsRequest 
   { "Image" :: (Image)
-  , "MinConfidence" :: NullOrUndefined (Percent)
+  , "MinConfidence" :: Maybe (Percent)
   }
 derive instance newtypeDetectModerationLabelsRequest :: Newtype DetectModerationLabelsRequest _
 derive instance repGenericDetectModerationLabelsRequest :: Generic DetectModerationLabelsRequest _
@@ -783,17 +782,17 @@ instance encodeDetectModerationLabelsRequest :: Encode DetectModerationLabelsReq
 
 -- | Constructs DetectModerationLabelsRequest from required parameters
 newDetectModerationLabelsRequest :: Image -> DetectModerationLabelsRequest
-newDetectModerationLabelsRequest _Image = DetectModerationLabelsRequest { "Image": _Image, "MinConfidence": (NullOrUndefined Nothing) }
+newDetectModerationLabelsRequest _Image = DetectModerationLabelsRequest { "Image": _Image, "MinConfidence": Nothing }
 
 -- | Constructs DetectModerationLabelsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectModerationLabelsRequest' :: Image -> ( { "Image" :: (Image) , "MinConfidence" :: NullOrUndefined (Percent) } -> {"Image" :: (Image) , "MinConfidence" :: NullOrUndefined (Percent) } ) -> DetectModerationLabelsRequest
-newDetectModerationLabelsRequest' _Image customize = (DetectModerationLabelsRequest <<< customize) { "Image": _Image, "MinConfidence": (NullOrUndefined Nothing) }
+newDetectModerationLabelsRequest' :: Image -> ( { "Image" :: (Image) , "MinConfidence" :: Maybe (Percent) } -> {"Image" :: (Image) , "MinConfidence" :: Maybe (Percent) } ) -> DetectModerationLabelsRequest
+newDetectModerationLabelsRequest' _Image customize = (DetectModerationLabelsRequest <<< customize) { "Image": _Image, "MinConfidence": Nothing }
 
 
 
 newtype DetectModerationLabelsResponse = DetectModerationLabelsResponse 
-  { "ModerationLabels" :: NullOrUndefined (ModerationLabels)
+  { "ModerationLabels" :: Maybe (ModerationLabels)
   }
 derive instance newtypeDetectModerationLabelsResponse :: Newtype DetectModerationLabelsResponse _
 derive instance repGenericDetectModerationLabelsResponse :: Generic DetectModerationLabelsResponse _
@@ -803,12 +802,12 @@ instance encodeDetectModerationLabelsResponse :: Encode DetectModerationLabelsRe
 
 -- | Constructs DetectModerationLabelsResponse from required parameters
 newDetectModerationLabelsResponse :: DetectModerationLabelsResponse
-newDetectModerationLabelsResponse  = DetectModerationLabelsResponse { "ModerationLabels": (NullOrUndefined Nothing) }
+newDetectModerationLabelsResponse  = DetectModerationLabelsResponse { "ModerationLabels": Nothing }
 
 -- | Constructs DetectModerationLabelsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectModerationLabelsResponse' :: ( { "ModerationLabels" :: NullOrUndefined (ModerationLabels) } -> {"ModerationLabels" :: NullOrUndefined (ModerationLabels) } ) -> DetectModerationLabelsResponse
-newDetectModerationLabelsResponse'  customize = (DetectModerationLabelsResponse <<< customize) { "ModerationLabels": (NullOrUndefined Nothing) }
+newDetectModerationLabelsResponse' :: ( { "ModerationLabels" :: Maybe (ModerationLabels) } -> {"ModerationLabels" :: Maybe (ModerationLabels) } ) -> DetectModerationLabelsResponse
+newDetectModerationLabelsResponse'  customize = (DetectModerationLabelsResponse <<< customize) { "ModerationLabels": Nothing }
 
 
 
@@ -833,7 +832,7 @@ newDetectTextRequest' _Image customize = (DetectTextRequest <<< customize) { "Im
 
 
 newtype DetectTextResponse = DetectTextResponse 
-  { "TextDetections" :: NullOrUndefined (TextDetectionList)
+  { "TextDetections" :: Maybe (TextDetectionList)
   }
 derive instance newtypeDetectTextResponse :: Newtype DetectTextResponse _
 derive instance repGenericDetectTextResponse :: Generic DetectTextResponse _
@@ -843,19 +842,19 @@ instance encodeDetectTextResponse :: Encode DetectTextResponse where encode = ge
 
 -- | Constructs DetectTextResponse from required parameters
 newDetectTextResponse :: DetectTextResponse
-newDetectTextResponse  = DetectTextResponse { "TextDetections": (NullOrUndefined Nothing) }
+newDetectTextResponse  = DetectTextResponse { "TextDetections": Nothing }
 
 -- | Constructs DetectTextResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDetectTextResponse' :: ( { "TextDetections" :: NullOrUndefined (TextDetectionList) } -> {"TextDetections" :: NullOrUndefined (TextDetectionList) } ) -> DetectTextResponse
-newDetectTextResponse'  customize = (DetectTextResponse <<< customize) { "TextDetections": (NullOrUndefined Nothing) }
+newDetectTextResponse' :: ( { "TextDetections" :: Maybe (TextDetectionList) } -> {"TextDetections" :: Maybe (TextDetectionList) } ) -> DetectTextResponse
+newDetectTextResponse'  customize = (DetectTextResponse <<< customize) { "TextDetections": Nothing }
 
 
 
 -- | <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>
 newtype Emotion = Emotion 
-  { "Type" :: NullOrUndefined (EmotionName)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Type" :: Maybe (EmotionName)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeEmotion :: Newtype Emotion _
 derive instance repGenericEmotion :: Generic Emotion _
@@ -865,12 +864,12 @@ instance encodeEmotion :: Encode Emotion where encode = genericEncode options
 
 -- | Constructs Emotion from required parameters
 newEmotion :: Emotion
-newEmotion  = Emotion { "Confidence": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newEmotion  = Emotion { "Confidence": Nothing, "Type": Nothing }
 
 -- | Constructs Emotion's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEmotion' :: ( { "Type" :: NullOrUndefined (EmotionName) , "Confidence" :: NullOrUndefined (Percent) } -> {"Type" :: NullOrUndefined (EmotionName) , "Confidence" :: NullOrUndefined (Percent) } ) -> Emotion
-newEmotion'  customize = (Emotion <<< customize) { "Confidence": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newEmotion' :: ( { "Type" :: Maybe (EmotionName) , "Confidence" :: Maybe (Percent) } -> {"Type" :: Maybe (EmotionName) , "Confidence" :: Maybe (Percent) } ) -> Emotion
+newEmotion'  customize = (Emotion <<< customize) { "Confidence": Nothing, "Type": Nothing }
 
 
 
@@ -903,8 +902,8 @@ instance encodeExternalImageId :: Encode ExternalImageId where encode = genericE
 
 -- | <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
 newtype EyeOpen = EyeOpen 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeEyeOpen :: Newtype EyeOpen _
 derive instance repGenericEyeOpen :: Generic EyeOpen _
@@ -914,19 +913,19 @@ instance encodeEyeOpen :: Encode EyeOpen where encode = genericEncode options
 
 -- | Constructs EyeOpen from required parameters
 newEyeOpen :: EyeOpen
-newEyeOpen  = EyeOpen { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEyeOpen  = EyeOpen { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs EyeOpen's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEyeOpen' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> EyeOpen
-newEyeOpen'  customize = (EyeOpen <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEyeOpen' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> EyeOpen
+newEyeOpen'  customize = (EyeOpen <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 -- | <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
 newtype Eyeglasses = Eyeglasses 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeEyeglasses :: Newtype Eyeglasses _
 derive instance repGenericEyeglasses :: Generic Eyeglasses _
@@ -936,22 +935,22 @@ instance encodeEyeglasses :: Encode Eyeglasses where encode = genericEncode opti
 
 -- | Constructs Eyeglasses from required parameters
 newEyeglasses :: Eyeglasses
-newEyeglasses  = Eyeglasses { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEyeglasses  = Eyeglasses { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Eyeglasses's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEyeglasses' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> Eyeglasses
-newEyeglasses'  customize = (Eyeglasses <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newEyeglasses' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> Eyeglasses
+newEyeglasses'  customize = (Eyeglasses <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 -- | <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
 newtype Face = Face 
-  { "FaceId" :: NullOrUndefined (FaceId)
-  , "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "ImageId" :: NullOrUndefined (ImageId)
-  , "ExternalImageId" :: NullOrUndefined (ExternalImageId)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "FaceId" :: Maybe (FaceId)
+  , "BoundingBox" :: Maybe (BoundingBox)
+  , "ImageId" :: Maybe (ImageId)
+  , "ExternalImageId" :: Maybe (ExternalImageId)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeFace :: Newtype Face _
 derive instance repGenericFace :: Generic Face _
@@ -961,12 +960,12 @@ instance encodeFace :: Encode Face where encode = genericEncode options
 
 -- | Constructs Face from required parameters
 newFace :: Face
-newFace  = Face { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "ExternalImageId": (NullOrUndefined Nothing), "FaceId": (NullOrUndefined Nothing), "ImageId": (NullOrUndefined Nothing) }
+newFace  = Face { "BoundingBox": Nothing, "Confidence": Nothing, "ExternalImageId": Nothing, "FaceId": Nothing, "ImageId": Nothing }
 
 -- | Constructs Face's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFace' :: ( { "FaceId" :: NullOrUndefined (FaceId) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "ImageId" :: NullOrUndefined (ImageId) , "ExternalImageId" :: NullOrUndefined (ExternalImageId) , "Confidence" :: NullOrUndefined (Percent) } -> {"FaceId" :: NullOrUndefined (FaceId) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "ImageId" :: NullOrUndefined (ImageId) , "ExternalImageId" :: NullOrUndefined (ExternalImageId) , "Confidence" :: NullOrUndefined (Percent) } ) -> Face
-newFace'  customize = (Face <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "ExternalImageId": (NullOrUndefined Nothing), "FaceId": (NullOrUndefined Nothing), "ImageId": (NullOrUndefined Nothing) }
+newFace' :: ( { "FaceId" :: Maybe (FaceId) , "BoundingBox" :: Maybe (BoundingBox) , "ImageId" :: Maybe (ImageId) , "ExternalImageId" :: Maybe (ExternalImageId) , "Confidence" :: Maybe (Percent) } -> {"FaceId" :: Maybe (FaceId) , "BoundingBox" :: Maybe (BoundingBox) , "ImageId" :: Maybe (ImageId) , "ExternalImageId" :: Maybe (ExternalImageId) , "Confidence" :: Maybe (Percent) } ) -> Face
+newFace'  customize = (Face <<< customize) { "BoundingBox": Nothing, "Confidence": Nothing, "ExternalImageId": Nothing, "FaceId": Nothing, "ImageId": Nothing }
 
 
 
@@ -981,21 +980,21 @@ instance encodeFaceAttributes :: Encode FaceAttributes where encode = genericEnc
 
 -- | <p>Structure containing attributes of the face that the algorithm detected.</p>
 newtype FaceDetail = FaceDetail 
-  { "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "AgeRange" :: NullOrUndefined (AgeRange)
-  , "Smile" :: NullOrUndefined (Smile)
-  , "Eyeglasses" :: NullOrUndefined (Eyeglasses)
-  , "Sunglasses" :: NullOrUndefined (Sunglasses)
-  , "Gender" :: NullOrUndefined (Gender)
-  , "Beard" :: NullOrUndefined (Beard)
-  , "Mustache" :: NullOrUndefined (Mustache)
-  , "EyesOpen" :: NullOrUndefined (EyeOpen)
-  , "MouthOpen" :: NullOrUndefined (MouthOpen)
-  , "Emotions" :: NullOrUndefined (Emotions)
-  , "Landmarks" :: NullOrUndefined (Landmarks)
-  , "Pose" :: NullOrUndefined (Pose)
-  , "Quality" :: NullOrUndefined (ImageQuality)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "BoundingBox" :: Maybe (BoundingBox)
+  , "AgeRange" :: Maybe (AgeRange)
+  , "Smile" :: Maybe (Smile)
+  , "Eyeglasses" :: Maybe (Eyeglasses)
+  , "Sunglasses" :: Maybe (Sunglasses)
+  , "Gender" :: Maybe (Gender)
+  , "Beard" :: Maybe (Beard)
+  , "Mustache" :: Maybe (Mustache)
+  , "EyesOpen" :: Maybe (EyeOpen)
+  , "MouthOpen" :: Maybe (MouthOpen)
+  , "Emotions" :: Maybe (Emotions)
+  , "Landmarks" :: Maybe (Landmarks)
+  , "Pose" :: Maybe (Pose)
+  , "Quality" :: Maybe (ImageQuality)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeFaceDetail :: Newtype FaceDetail _
 derive instance repGenericFaceDetail :: Generic FaceDetail _
@@ -1005,12 +1004,12 @@ instance encodeFaceDetail :: Encode FaceDetail where encode = genericEncode opti
 
 -- | Constructs FaceDetail from required parameters
 newFaceDetail :: FaceDetail
-newFaceDetail  = FaceDetail { "AgeRange": (NullOrUndefined Nothing), "Beard": (NullOrUndefined Nothing), "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Emotions": (NullOrUndefined Nothing), "Eyeglasses": (NullOrUndefined Nothing), "EyesOpen": (NullOrUndefined Nothing), "Gender": (NullOrUndefined Nothing), "Landmarks": (NullOrUndefined Nothing), "MouthOpen": (NullOrUndefined Nothing), "Mustache": (NullOrUndefined Nothing), "Pose": (NullOrUndefined Nothing), "Quality": (NullOrUndefined Nothing), "Smile": (NullOrUndefined Nothing), "Sunglasses": (NullOrUndefined Nothing) }
+newFaceDetail  = FaceDetail { "AgeRange": Nothing, "Beard": Nothing, "BoundingBox": Nothing, "Confidence": Nothing, "Emotions": Nothing, "Eyeglasses": Nothing, "EyesOpen": Nothing, "Gender": Nothing, "Landmarks": Nothing, "MouthOpen": Nothing, "Mustache": Nothing, "Pose": Nothing, "Quality": Nothing, "Smile": Nothing, "Sunglasses": Nothing }
 
 -- | Constructs FaceDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFaceDetail' :: ( { "BoundingBox" :: NullOrUndefined (BoundingBox) , "AgeRange" :: NullOrUndefined (AgeRange) , "Smile" :: NullOrUndefined (Smile) , "Eyeglasses" :: NullOrUndefined (Eyeglasses) , "Sunglasses" :: NullOrUndefined (Sunglasses) , "Gender" :: NullOrUndefined (Gender) , "Beard" :: NullOrUndefined (Beard) , "Mustache" :: NullOrUndefined (Mustache) , "EyesOpen" :: NullOrUndefined (EyeOpen) , "MouthOpen" :: NullOrUndefined (MouthOpen) , "Emotions" :: NullOrUndefined (Emotions) , "Landmarks" :: NullOrUndefined (Landmarks) , "Pose" :: NullOrUndefined (Pose) , "Quality" :: NullOrUndefined (ImageQuality) , "Confidence" :: NullOrUndefined (Percent) } -> {"BoundingBox" :: NullOrUndefined (BoundingBox) , "AgeRange" :: NullOrUndefined (AgeRange) , "Smile" :: NullOrUndefined (Smile) , "Eyeglasses" :: NullOrUndefined (Eyeglasses) , "Sunglasses" :: NullOrUndefined (Sunglasses) , "Gender" :: NullOrUndefined (Gender) , "Beard" :: NullOrUndefined (Beard) , "Mustache" :: NullOrUndefined (Mustache) , "EyesOpen" :: NullOrUndefined (EyeOpen) , "MouthOpen" :: NullOrUndefined (MouthOpen) , "Emotions" :: NullOrUndefined (Emotions) , "Landmarks" :: NullOrUndefined (Landmarks) , "Pose" :: NullOrUndefined (Pose) , "Quality" :: NullOrUndefined (ImageQuality) , "Confidence" :: NullOrUndefined (Percent) } ) -> FaceDetail
-newFaceDetail'  customize = (FaceDetail <<< customize) { "AgeRange": (NullOrUndefined Nothing), "Beard": (NullOrUndefined Nothing), "BoundingBox": (NullOrUndefined Nothing), "Confidence": (NullOrUndefined Nothing), "Emotions": (NullOrUndefined Nothing), "Eyeglasses": (NullOrUndefined Nothing), "EyesOpen": (NullOrUndefined Nothing), "Gender": (NullOrUndefined Nothing), "Landmarks": (NullOrUndefined Nothing), "MouthOpen": (NullOrUndefined Nothing), "Mustache": (NullOrUndefined Nothing), "Pose": (NullOrUndefined Nothing), "Quality": (NullOrUndefined Nothing), "Smile": (NullOrUndefined Nothing), "Sunglasses": (NullOrUndefined Nothing) }
+newFaceDetail' :: ( { "BoundingBox" :: Maybe (BoundingBox) , "AgeRange" :: Maybe (AgeRange) , "Smile" :: Maybe (Smile) , "Eyeglasses" :: Maybe (Eyeglasses) , "Sunglasses" :: Maybe (Sunglasses) , "Gender" :: Maybe (Gender) , "Beard" :: Maybe (Beard) , "Mustache" :: Maybe (Mustache) , "EyesOpen" :: Maybe (EyeOpen) , "MouthOpen" :: Maybe (MouthOpen) , "Emotions" :: Maybe (Emotions) , "Landmarks" :: Maybe (Landmarks) , "Pose" :: Maybe (Pose) , "Quality" :: Maybe (ImageQuality) , "Confidence" :: Maybe (Percent) } -> {"BoundingBox" :: Maybe (BoundingBox) , "AgeRange" :: Maybe (AgeRange) , "Smile" :: Maybe (Smile) , "Eyeglasses" :: Maybe (Eyeglasses) , "Sunglasses" :: Maybe (Sunglasses) , "Gender" :: Maybe (Gender) , "Beard" :: Maybe (Beard) , "Mustache" :: Maybe (Mustache) , "EyesOpen" :: Maybe (EyeOpen) , "MouthOpen" :: Maybe (MouthOpen) , "Emotions" :: Maybe (Emotions) , "Landmarks" :: Maybe (Landmarks) , "Pose" :: Maybe (Pose) , "Quality" :: Maybe (ImageQuality) , "Confidence" :: Maybe (Percent) } ) -> FaceDetail
+newFaceDetail'  customize = (FaceDetail <<< customize) { "AgeRange": Nothing, "Beard": Nothing, "BoundingBox": Nothing, "Confidence": Nothing, "Emotions": Nothing, "Eyeglasses": Nothing, "EyesOpen": Nothing, "Gender": Nothing, "Landmarks": Nothing, "MouthOpen": Nothing, "Mustache": Nothing, "Pose": Nothing, "Quality": Nothing, "Smile": Nothing, "Sunglasses": Nothing }
 
 
 
@@ -1025,8 +1024,8 @@ instance encodeFaceDetailList :: Encode FaceDetailList where encode = genericEnc
 
 -- | <p>Information about a face detected in a video analysis request and the time the face was detected in the video. </p>
 newtype FaceDetection = FaceDetection 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Face" :: NullOrUndefined (FaceDetail)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "Face" :: Maybe (FaceDetail)
   }
 derive instance newtypeFaceDetection :: Newtype FaceDetection _
 derive instance repGenericFaceDetection :: Generic FaceDetection _
@@ -1036,12 +1035,12 @@ instance encodeFaceDetection :: Encode FaceDetection where encode = genericEncod
 
 -- | Constructs FaceDetection from required parameters
 newFaceDetection :: FaceDetection
-newFaceDetection  = FaceDetection { "Face": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newFaceDetection  = FaceDetection { "Face": Nothing, "Timestamp": Nothing }
 
 -- | Constructs FaceDetection's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFaceDetection' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "Face" :: NullOrUndefined (FaceDetail) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "Face" :: NullOrUndefined (FaceDetail) } ) -> FaceDetection
-newFaceDetection'  customize = (FaceDetection <<< customize) { "Face": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newFaceDetection' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "Face" :: Maybe (FaceDetail) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "Face" :: Maybe (FaceDetail) } ) -> FaceDetection
+newFaceDetection'  customize = (FaceDetection <<< customize) { "Face": Nothing, "Timestamp": Nothing }
 
 
 
@@ -1083,8 +1082,8 @@ instance encodeFaceList :: Encode FaceList where encode = genericEncode options
 
 -- | <p>Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.</p>
 newtype FaceMatch = FaceMatch 
-  { "Similarity" :: NullOrUndefined (Percent)
-  , "Face" :: NullOrUndefined (Face)
+  { "Similarity" :: Maybe (Percent)
+  , "Face" :: Maybe (Face)
   }
 derive instance newtypeFaceMatch :: Newtype FaceMatch _
 derive instance repGenericFaceMatch :: Generic FaceMatch _
@@ -1094,12 +1093,12 @@ instance encodeFaceMatch :: Encode FaceMatch where encode = genericEncode option
 
 -- | Constructs FaceMatch from required parameters
 newFaceMatch :: FaceMatch
-newFaceMatch  = FaceMatch { "Face": (NullOrUndefined Nothing), "Similarity": (NullOrUndefined Nothing) }
+newFaceMatch  = FaceMatch { "Face": Nothing, "Similarity": Nothing }
 
 -- | Constructs FaceMatch's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFaceMatch' :: ( { "Similarity" :: NullOrUndefined (Percent) , "Face" :: NullOrUndefined (Face) } -> {"Similarity" :: NullOrUndefined (Percent) , "Face" :: NullOrUndefined (Face) } ) -> FaceMatch
-newFaceMatch'  customize = (FaceMatch <<< customize) { "Face": (NullOrUndefined Nothing), "Similarity": (NullOrUndefined Nothing) }
+newFaceMatch' :: ( { "Similarity" :: Maybe (Percent) , "Face" :: Maybe (Face) } -> {"Similarity" :: Maybe (Percent) , "Face" :: Maybe (Face) } ) -> FaceMatch
+newFaceMatch'  customize = (FaceMatch <<< customize) { "Face": Nothing, "Similarity": Nothing }
 
 
 
@@ -1123,8 +1122,8 @@ instance encodeFaceModelVersionList :: Encode FaceModelVersionList where encode 
 
 -- | <p>Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.</p>
 newtype FaceRecord = FaceRecord 
-  { "Face" :: NullOrUndefined (Face)
-  , "FaceDetail" :: NullOrUndefined (FaceDetail)
+  { "Face" :: Maybe (Face)
+  , "FaceDetail" :: Maybe (FaceDetail)
   }
 derive instance newtypeFaceRecord :: Newtype FaceRecord _
 derive instance repGenericFaceRecord :: Generic FaceRecord _
@@ -1134,12 +1133,12 @@ instance encodeFaceRecord :: Encode FaceRecord where encode = genericEncode opti
 
 -- | Constructs FaceRecord from required parameters
 newFaceRecord :: FaceRecord
-newFaceRecord  = FaceRecord { "Face": (NullOrUndefined Nothing), "FaceDetail": (NullOrUndefined Nothing) }
+newFaceRecord  = FaceRecord { "Face": Nothing, "FaceDetail": Nothing }
 
 -- | Constructs FaceRecord's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFaceRecord' :: ( { "Face" :: NullOrUndefined (Face) , "FaceDetail" :: NullOrUndefined (FaceDetail) } -> {"Face" :: NullOrUndefined (Face) , "FaceDetail" :: NullOrUndefined (FaceDetail) } ) -> FaceRecord
-newFaceRecord'  customize = (FaceRecord <<< customize) { "Face": (NullOrUndefined Nothing), "FaceDetail": (NullOrUndefined Nothing) }
+newFaceRecord' :: ( { "Face" :: Maybe (Face) , "FaceDetail" :: Maybe (FaceDetail) } -> {"Face" :: Maybe (Face) , "FaceDetail" :: Maybe (FaceDetail) } ) -> FaceRecord
+newFaceRecord'  customize = (FaceRecord <<< customize) { "Face": Nothing, "FaceDetail": Nothing }
 
 
 
@@ -1154,8 +1153,8 @@ instance encodeFaceRecordList :: Encode FaceRecordList where encode = genericEnc
 
 -- | <p>Input face recognition parameters for an Amazon Rekognition stream processor. <code>FaceRecognitionSettings</code> is a request parameter for .</p>
 newtype FaceSearchSettings = FaceSearchSettings 
-  { "CollectionId" :: NullOrUndefined (CollectionId)
-  , "FaceMatchThreshold" :: NullOrUndefined (Percent)
+  { "CollectionId" :: Maybe (CollectionId)
+  , "FaceMatchThreshold" :: Maybe (Percent)
   }
 derive instance newtypeFaceSearchSettings :: Newtype FaceSearchSettings _
 derive instance repGenericFaceSearchSettings :: Generic FaceSearchSettings _
@@ -1165,12 +1164,12 @@ instance encodeFaceSearchSettings :: Encode FaceSearchSettings where encode = ge
 
 -- | Constructs FaceSearchSettings from required parameters
 newFaceSearchSettings :: FaceSearchSettings
-newFaceSearchSettings  = FaceSearchSettings { "CollectionId": (NullOrUndefined Nothing), "FaceMatchThreshold": (NullOrUndefined Nothing) }
+newFaceSearchSettings  = FaceSearchSettings { "CollectionId": Nothing, "FaceMatchThreshold": Nothing }
 
 -- | Constructs FaceSearchSettings's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFaceSearchSettings' :: ( { "CollectionId" :: NullOrUndefined (CollectionId) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> {"CollectionId" :: NullOrUndefined (CollectionId) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } ) -> FaceSearchSettings
-newFaceSearchSettings'  customize = (FaceSearchSettings <<< customize) { "CollectionId": (NullOrUndefined Nothing), "FaceMatchThreshold": (NullOrUndefined Nothing) }
+newFaceSearchSettings' :: ( { "CollectionId" :: Maybe (CollectionId) , "FaceMatchThreshold" :: Maybe (Percent) } -> {"CollectionId" :: Maybe (CollectionId) , "FaceMatchThreshold" :: Maybe (Percent) } ) -> FaceSearchSettings
+newFaceSearchSettings'  customize = (FaceSearchSettings <<< customize) { "CollectionId": Nothing, "FaceMatchThreshold": Nothing }
 
 
 
@@ -1185,8 +1184,8 @@ instance encodeFaceSearchSortBy :: Encode FaceSearchSortBy where encode = generi
 
 -- | <p>Gender of the face and the confidence level in the determination.</p>
 newtype Gender = Gender 
-  { "Value" :: NullOrUndefined (GenderType)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (GenderType)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeGender :: Newtype Gender _
 derive instance repGenericGender :: Generic Gender _
@@ -1196,12 +1195,12 @@ instance encodeGender :: Encode Gender where encode = genericEncode options
 
 -- | Constructs Gender from required parameters
 newGender :: Gender
-newGender  = Gender { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newGender  = Gender { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Gender's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGender' :: ( { "Value" :: NullOrUndefined (GenderType) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (GenderType) , "Confidence" :: NullOrUndefined (Percent) } ) -> Gender
-newGender'  customize = (Gender <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newGender' :: ( { "Value" :: Maybe (GenderType) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (GenderType) , "Confidence" :: Maybe (Percent) } ) -> Gender
+newGender'  customize = (Gender <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
@@ -1216,8 +1215,8 @@ instance encodeGenderType :: Encode GenderType where encode = genericEncode opti
 
 -- | <p>Information about where text detected by is located on an image.</p>
 newtype Geometry = Geometry 
-  { "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "Polygon" :: NullOrUndefined (Polygon)
+  { "BoundingBox" :: Maybe (BoundingBox)
+  , "Polygon" :: Maybe (Polygon)
   }
 derive instance newtypeGeometry :: Newtype Geometry _
 derive instance repGenericGeometry :: Generic Geometry _
@@ -1227,12 +1226,12 @@ instance encodeGeometry :: Encode Geometry where encode = genericEncode options
 
 -- | Constructs Geometry from required parameters
 newGeometry :: Geometry
-newGeometry  = Geometry { "BoundingBox": (NullOrUndefined Nothing), "Polygon": (NullOrUndefined Nothing) }
+newGeometry  = Geometry { "BoundingBox": Nothing, "Polygon": Nothing }
 
 -- | Constructs Geometry's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGeometry' :: ( { "BoundingBox" :: NullOrUndefined (BoundingBox) , "Polygon" :: NullOrUndefined (Polygon) } -> {"BoundingBox" :: NullOrUndefined (BoundingBox) , "Polygon" :: NullOrUndefined (Polygon) } ) -> Geometry
-newGeometry'  customize = (Geometry <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Polygon": (NullOrUndefined Nothing) }
+newGeometry' :: ( { "BoundingBox" :: Maybe (BoundingBox) , "Polygon" :: Maybe (Polygon) } -> {"BoundingBox" :: Maybe (BoundingBox) , "Polygon" :: Maybe (Polygon) } ) -> Geometry
+newGeometry'  customize = (Geometry <<< customize) { "BoundingBox": Nothing, "Polygon": Nothing }
 
 
 
@@ -1257,8 +1256,8 @@ newGetCelebrityInfoRequest' _Id customize = (GetCelebrityInfoRequest <<< customi
 
 
 newtype GetCelebrityInfoResponse = GetCelebrityInfoResponse 
-  { "Urls" :: NullOrUndefined (Urls)
-  , "Name" :: NullOrUndefined (String)
+  { "Urls" :: Maybe (Urls)
+  , "Name" :: Maybe (String)
   }
 derive instance newtypeGetCelebrityInfoResponse :: Newtype GetCelebrityInfoResponse _
 derive instance repGenericGetCelebrityInfoResponse :: Generic GetCelebrityInfoResponse _
@@ -1268,20 +1267,20 @@ instance encodeGetCelebrityInfoResponse :: Encode GetCelebrityInfoResponse where
 
 -- | Constructs GetCelebrityInfoResponse from required parameters
 newGetCelebrityInfoResponse :: GetCelebrityInfoResponse
-newGetCelebrityInfoResponse  = GetCelebrityInfoResponse { "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newGetCelebrityInfoResponse  = GetCelebrityInfoResponse { "Name": Nothing, "Urls": Nothing }
 
 -- | Constructs GetCelebrityInfoResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetCelebrityInfoResponse' :: ( { "Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) } -> {"Urls" :: NullOrUndefined (Urls) , "Name" :: NullOrUndefined (String) } ) -> GetCelebrityInfoResponse
-newGetCelebrityInfoResponse'  customize = (GetCelebrityInfoResponse <<< customize) { "Name": (NullOrUndefined Nothing), "Urls": (NullOrUndefined Nothing) }
+newGetCelebrityInfoResponse' :: ( { "Urls" :: Maybe (Urls) , "Name" :: Maybe (String) } -> {"Urls" :: Maybe (Urls) , "Name" :: Maybe (String) } ) -> GetCelebrityInfoResponse
+newGetCelebrityInfoResponse'  customize = (GetCelebrityInfoResponse <<< customize) { "Name": Nothing, "Urls": Nothing }
 
 
 
 newtype GetCelebrityRecognitionRequest = GetCelebrityRecognitionRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "SortBy" :: Maybe (CelebrityRecognitionSortBy)
   }
 derive instance newtypeGetCelebrityRecognitionRequest :: Newtype GetCelebrityRecognitionRequest _
 derive instance repGenericGetCelebrityRecognitionRequest :: Generic GetCelebrityRecognitionRequest _
@@ -1291,21 +1290,21 @@ instance encodeGetCelebrityRecognitionRequest :: Encode GetCelebrityRecognitionR
 
 -- | Constructs GetCelebrityRecognitionRequest from required parameters
 newGetCelebrityRecognitionRequest :: JobId -> GetCelebrityRecognitionRequest
-newGetCelebrityRecognitionRequest _JobId = GetCelebrityRecognitionRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetCelebrityRecognitionRequest _JobId = GetCelebrityRecognitionRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 -- | Constructs GetCelebrityRecognitionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetCelebrityRecognitionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy) } ) -> GetCelebrityRecognitionRequest
-newGetCelebrityRecognitionRequest' _JobId customize = (GetCelebrityRecognitionRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetCelebrityRecognitionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (CelebrityRecognitionSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (CelebrityRecognitionSortBy) } ) -> GetCelebrityRecognitionRequest
+newGetCelebrityRecognitionRequest' _JobId customize = (GetCelebrityRecognitionRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 
 
 newtype GetCelebrityRecognitionResponse = GetCelebrityRecognitionResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "Celebrities" :: NullOrUndefined (CelebrityRecognitions)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "Celebrities" :: Maybe (CelebrityRecognitions)
   }
 derive instance newtypeGetCelebrityRecognitionResponse :: Newtype GetCelebrityRecognitionResponse _
 derive instance repGenericGetCelebrityRecognitionResponse :: Generic GetCelebrityRecognitionResponse _
@@ -1315,20 +1314,20 @@ instance encodeGetCelebrityRecognitionResponse :: Encode GetCelebrityRecognition
 
 -- | Constructs GetCelebrityRecognitionResponse from required parameters
 newGetCelebrityRecognitionResponse :: GetCelebrityRecognitionResponse
-newGetCelebrityRecognitionResponse  = GetCelebrityRecognitionResponse { "Celebrities": (NullOrUndefined Nothing), "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetCelebrityRecognitionResponse  = GetCelebrityRecognitionResponse { "Celebrities": Nothing, "JobStatus": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetCelebrityRecognitionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetCelebrityRecognitionResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Celebrities" :: NullOrUndefined (CelebrityRecognitions) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Celebrities" :: NullOrUndefined (CelebrityRecognitions) } ) -> GetCelebrityRecognitionResponse
-newGetCelebrityRecognitionResponse'  customize = (GetCelebrityRecognitionResponse <<< customize) { "Celebrities": (NullOrUndefined Nothing), "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetCelebrityRecognitionResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Celebrities" :: Maybe (CelebrityRecognitions) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Celebrities" :: Maybe (CelebrityRecognitions) } ) -> GetCelebrityRecognitionResponse
+newGetCelebrityRecognitionResponse'  customize = (GetCelebrityRecognitionResponse <<< customize) { "Celebrities": Nothing, "JobStatus": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
 newtype GetContentModerationRequest = GetContentModerationRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "SortBy" :: NullOrUndefined (ContentModerationSortBy)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "SortBy" :: Maybe (ContentModerationSortBy)
   }
 derive instance newtypeGetContentModerationRequest :: Newtype GetContentModerationRequest _
 derive instance repGenericGetContentModerationRequest :: Generic GetContentModerationRequest _
@@ -1338,21 +1337,21 @@ instance encodeGetContentModerationRequest :: Encode GetContentModerationRequest
 
 -- | Constructs GetContentModerationRequest from required parameters
 newGetContentModerationRequest :: JobId -> GetContentModerationRequest
-newGetContentModerationRequest _JobId = GetContentModerationRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetContentModerationRequest _JobId = GetContentModerationRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 -- | Constructs GetContentModerationRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetContentModerationRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (ContentModerationSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (ContentModerationSortBy) } ) -> GetContentModerationRequest
-newGetContentModerationRequest' _JobId customize = (GetContentModerationRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetContentModerationRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (ContentModerationSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (ContentModerationSortBy) } ) -> GetContentModerationRequest
+newGetContentModerationRequest' _JobId customize = (GetContentModerationRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 
 
 newtype GetContentModerationResponse = GetContentModerationResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "ModerationLabels" :: NullOrUndefined (ContentModerationDetections)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "ModerationLabels" :: Maybe (ContentModerationDetections)
+  , "NextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeGetContentModerationResponse :: Newtype GetContentModerationResponse _
 derive instance repGenericGetContentModerationResponse :: Generic GetContentModerationResponse _
@@ -1362,19 +1361,19 @@ instance encodeGetContentModerationResponse :: Encode GetContentModerationRespon
 
 -- | Constructs GetContentModerationResponse from required parameters
 newGetContentModerationResponse :: GetContentModerationResponse
-newGetContentModerationResponse  = GetContentModerationResponse { "JobStatus": (NullOrUndefined Nothing), "ModerationLabels": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetContentModerationResponse  = GetContentModerationResponse { "JobStatus": Nothing, "ModerationLabels": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetContentModerationResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetContentModerationResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "ModerationLabels" :: NullOrUndefined (ContentModerationDetections) , "NextToken" :: NullOrUndefined (PaginationToken) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "ModerationLabels" :: NullOrUndefined (ContentModerationDetections) , "NextToken" :: NullOrUndefined (PaginationToken) } ) -> GetContentModerationResponse
-newGetContentModerationResponse'  customize = (GetContentModerationResponse <<< customize) { "JobStatus": (NullOrUndefined Nothing), "ModerationLabels": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetContentModerationResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "ModerationLabels" :: Maybe (ContentModerationDetections) , "NextToken" :: Maybe (PaginationToken) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "ModerationLabels" :: Maybe (ContentModerationDetections) , "NextToken" :: Maybe (PaginationToken) } ) -> GetContentModerationResponse
+newGetContentModerationResponse'  customize = (GetContentModerationResponse <<< customize) { "JobStatus": Nothing, "ModerationLabels": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
 newtype GetFaceDetectionRequest = GetFaceDetectionRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeGetFaceDetectionRequest :: Newtype GetFaceDetectionRequest _
 derive instance repGenericGetFaceDetectionRequest :: Generic GetFaceDetectionRequest _
@@ -1384,21 +1383,21 @@ instance encodeGetFaceDetectionRequest :: Encode GetFaceDetectionRequest where e
 
 -- | Constructs GetFaceDetectionRequest from required parameters
 newGetFaceDetectionRequest :: JobId -> GetFaceDetectionRequest
-newGetFaceDetectionRequest _JobId = GetFaceDetectionRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetFaceDetectionRequest _JobId = GetFaceDetectionRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs GetFaceDetectionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetFaceDetectionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) } ) -> GetFaceDetectionRequest
-newGetFaceDetectionRequest' _JobId customize = (GetFaceDetectionRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newGetFaceDetectionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) } ) -> GetFaceDetectionRequest
+newGetFaceDetectionRequest' _JobId customize = (GetFaceDetectionRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype GetFaceDetectionResponse = GetFaceDetectionResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "Faces" :: NullOrUndefined (FaceDetections)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "Faces" :: Maybe (FaceDetections)
   }
 derive instance newtypeGetFaceDetectionResponse :: Newtype GetFaceDetectionResponse _
 derive instance repGenericGetFaceDetectionResponse :: Generic GetFaceDetectionResponse _
@@ -1408,20 +1407,20 @@ instance encodeGetFaceDetectionResponse :: Encode GetFaceDetectionResponse where
 
 -- | Constructs GetFaceDetectionResponse from required parameters
 newGetFaceDetectionResponse :: GetFaceDetectionResponse
-newGetFaceDetectionResponse  = GetFaceDetectionResponse { "Faces": (NullOrUndefined Nothing), "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetFaceDetectionResponse  = GetFaceDetectionResponse { "Faces": Nothing, "JobStatus": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetFaceDetectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetFaceDetectionResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Faces" :: NullOrUndefined (FaceDetections) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Faces" :: NullOrUndefined (FaceDetections) } ) -> GetFaceDetectionResponse
-newGetFaceDetectionResponse'  customize = (GetFaceDetectionResponse <<< customize) { "Faces": (NullOrUndefined Nothing), "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetFaceDetectionResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Faces" :: Maybe (FaceDetections) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Faces" :: Maybe (FaceDetections) } ) -> GetFaceDetectionResponse
+newGetFaceDetectionResponse'  customize = (GetFaceDetectionResponse <<< customize) { "Faces": Nothing, "JobStatus": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
 newtype GetFaceSearchRequest = GetFaceSearchRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "SortBy" :: NullOrUndefined (FaceSearchSortBy)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "SortBy" :: Maybe (FaceSearchSortBy)
   }
 derive instance newtypeGetFaceSearchRequest :: Newtype GetFaceSearchRequest _
 derive instance repGenericGetFaceSearchRequest :: Generic GetFaceSearchRequest _
@@ -1431,21 +1430,21 @@ instance encodeGetFaceSearchRequest :: Encode GetFaceSearchRequest where encode 
 
 -- | Constructs GetFaceSearchRequest from required parameters
 newGetFaceSearchRequest :: JobId -> GetFaceSearchRequest
-newGetFaceSearchRequest _JobId = GetFaceSearchRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetFaceSearchRequest _JobId = GetFaceSearchRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 -- | Constructs GetFaceSearchRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetFaceSearchRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (FaceSearchSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (FaceSearchSortBy) } ) -> GetFaceSearchRequest
-newGetFaceSearchRequest' _JobId customize = (GetFaceSearchRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetFaceSearchRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (FaceSearchSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (FaceSearchSortBy) } ) -> GetFaceSearchRequest
+newGetFaceSearchRequest' _JobId customize = (GetFaceSearchRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 
 
 newtype GetFaceSearchResponse = GetFaceSearchResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "Persons" :: NullOrUndefined (PersonMatches)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "Persons" :: Maybe (PersonMatches)
   }
 derive instance newtypeGetFaceSearchResponse :: Newtype GetFaceSearchResponse _
 derive instance repGenericGetFaceSearchResponse :: Generic GetFaceSearchResponse _
@@ -1455,20 +1454,20 @@ instance encodeGetFaceSearchResponse :: Encode GetFaceSearchResponse where encod
 
 -- | Constructs GetFaceSearchResponse from required parameters
 newGetFaceSearchResponse :: GetFaceSearchResponse
-newGetFaceSearchResponse  = GetFaceSearchResponse { "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Persons": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetFaceSearchResponse  = GetFaceSearchResponse { "JobStatus": Nothing, "NextToken": Nothing, "Persons": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetFaceSearchResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetFaceSearchResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "NextToken" :: NullOrUndefined (PaginationToken) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "Persons" :: NullOrUndefined (PersonMatches) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "NextToken" :: NullOrUndefined (PaginationToken) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "Persons" :: NullOrUndefined (PersonMatches) } ) -> GetFaceSearchResponse
-newGetFaceSearchResponse'  customize = (GetFaceSearchResponse <<< customize) { "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Persons": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetFaceSearchResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "NextToken" :: Maybe (PaginationToken) , "VideoMetadata" :: Maybe (VideoMetadata) , "Persons" :: Maybe (PersonMatches) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "NextToken" :: Maybe (PaginationToken) , "VideoMetadata" :: Maybe (VideoMetadata) , "Persons" :: Maybe (PersonMatches) } ) -> GetFaceSearchResponse
+newGetFaceSearchResponse'  customize = (GetFaceSearchResponse <<< customize) { "JobStatus": Nothing, "NextToken": Nothing, "Persons": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
 newtype GetLabelDetectionRequest = GetLabelDetectionRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "SortBy" :: NullOrUndefined (LabelDetectionSortBy)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "SortBy" :: Maybe (LabelDetectionSortBy)
   }
 derive instance newtypeGetLabelDetectionRequest :: Newtype GetLabelDetectionRequest _
 derive instance repGenericGetLabelDetectionRequest :: Generic GetLabelDetectionRequest _
@@ -1478,21 +1477,21 @@ instance encodeGetLabelDetectionRequest :: Encode GetLabelDetectionRequest where
 
 -- | Constructs GetLabelDetectionRequest from required parameters
 newGetLabelDetectionRequest :: JobId -> GetLabelDetectionRequest
-newGetLabelDetectionRequest _JobId = GetLabelDetectionRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetLabelDetectionRequest _JobId = GetLabelDetectionRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 -- | Constructs GetLabelDetectionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLabelDetectionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (LabelDetectionSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (LabelDetectionSortBy) } ) -> GetLabelDetectionRequest
-newGetLabelDetectionRequest' _JobId customize = (GetLabelDetectionRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetLabelDetectionRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (LabelDetectionSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (LabelDetectionSortBy) } ) -> GetLabelDetectionRequest
+newGetLabelDetectionRequest' _JobId customize = (GetLabelDetectionRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 
 
 newtype GetLabelDetectionResponse = GetLabelDetectionResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "Labels" :: NullOrUndefined (LabelDetections)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "Labels" :: Maybe (LabelDetections)
   }
 derive instance newtypeGetLabelDetectionResponse :: Newtype GetLabelDetectionResponse _
 derive instance repGenericGetLabelDetectionResponse :: Generic GetLabelDetectionResponse _
@@ -1502,20 +1501,20 @@ instance encodeGetLabelDetectionResponse :: Encode GetLabelDetectionResponse whe
 
 -- | Constructs GetLabelDetectionResponse from required parameters
 newGetLabelDetectionResponse :: GetLabelDetectionResponse
-newGetLabelDetectionResponse  = GetLabelDetectionResponse { "JobStatus": (NullOrUndefined Nothing), "Labels": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetLabelDetectionResponse  = GetLabelDetectionResponse { "JobStatus": Nothing, "Labels": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetLabelDetectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetLabelDetectionResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Labels" :: NullOrUndefined (LabelDetections) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Labels" :: NullOrUndefined (LabelDetections) } ) -> GetLabelDetectionResponse
-newGetLabelDetectionResponse'  customize = (GetLabelDetectionResponse <<< customize) { "JobStatus": (NullOrUndefined Nothing), "Labels": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetLabelDetectionResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Labels" :: Maybe (LabelDetections) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Labels" :: Maybe (LabelDetections) } ) -> GetLabelDetectionResponse
+newGetLabelDetectionResponse'  customize = (GetLabelDetectionResponse <<< customize) { "JobStatus": Nothing, "Labels": Nothing, "NextToken": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
 newtype GetPersonTrackingRequest = GetPersonTrackingRequest 
   { "JobId" :: (JobId)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "SortBy" :: NullOrUndefined (PersonTrackingSortBy)
+  , "MaxResults" :: Maybe (MaxResults)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "SortBy" :: Maybe (PersonTrackingSortBy)
   }
 derive instance newtypeGetPersonTrackingRequest :: Newtype GetPersonTrackingRequest _
 derive instance repGenericGetPersonTrackingRequest :: Generic GetPersonTrackingRequest _
@@ -1525,21 +1524,21 @@ instance encodeGetPersonTrackingRequest :: Encode GetPersonTrackingRequest where
 
 -- | Constructs GetPersonTrackingRequest from required parameters
 newGetPersonTrackingRequest :: JobId -> GetPersonTrackingRequest
-newGetPersonTrackingRequest _JobId = GetPersonTrackingRequest { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetPersonTrackingRequest _JobId = GetPersonTrackingRequest { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 -- | Constructs GetPersonTrackingRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetPersonTrackingRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (PersonTrackingSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: NullOrUndefined (MaxResults) , "NextToken" :: NullOrUndefined (PaginationToken) , "SortBy" :: NullOrUndefined (PersonTrackingSortBy) } ) -> GetPersonTrackingRequest
-newGetPersonTrackingRequest' _JobId customize = (GetPersonTrackingRequest <<< customize) { "JobId": _JobId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "SortBy": (NullOrUndefined Nothing) }
+newGetPersonTrackingRequest' :: JobId -> ( { "JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (PersonTrackingSortBy) } -> {"JobId" :: (JobId) , "MaxResults" :: Maybe (MaxResults) , "NextToken" :: Maybe (PaginationToken) , "SortBy" :: Maybe (PersonTrackingSortBy) } ) -> GetPersonTrackingRequest
+newGetPersonTrackingRequest' _JobId customize = (GetPersonTrackingRequest <<< customize) { "JobId": _JobId, "MaxResults": Nothing, "NextToken": Nothing, "SortBy": Nothing }
 
 
 
 newtype GetPersonTrackingResponse = GetPersonTrackingResponse 
-  { "JobStatus" :: NullOrUndefined (VideoJobStatus)
-  , "StatusMessage" :: NullOrUndefined (StatusMessage)
-  , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "Persons" :: NullOrUndefined (PersonDetections)
+  { "JobStatus" :: Maybe (VideoJobStatus)
+  , "StatusMessage" :: Maybe (StatusMessage)
+  , "VideoMetadata" :: Maybe (VideoMetadata)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "Persons" :: Maybe (PersonDetections)
   }
 derive instance newtypeGetPersonTrackingResponse :: Newtype GetPersonTrackingResponse _
 derive instance repGenericGetPersonTrackingResponse :: Generic GetPersonTrackingResponse _
@@ -1549,12 +1548,12 @@ instance encodeGetPersonTrackingResponse :: Encode GetPersonTrackingResponse whe
 
 -- | Constructs GetPersonTrackingResponse from required parameters
 newGetPersonTrackingResponse :: GetPersonTrackingResponse
-newGetPersonTrackingResponse  = GetPersonTrackingResponse { "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Persons": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetPersonTrackingResponse  = GetPersonTrackingResponse { "JobStatus": Nothing, "NextToken": Nothing, "Persons": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 -- | Constructs GetPersonTrackingResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetPersonTrackingResponse' :: ( { "JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Persons" :: NullOrUndefined (PersonDetections) } -> {"JobStatus" :: NullOrUndefined (VideoJobStatus) , "StatusMessage" :: NullOrUndefined (StatusMessage) , "VideoMetadata" :: NullOrUndefined (VideoMetadata) , "NextToken" :: NullOrUndefined (PaginationToken) , "Persons" :: NullOrUndefined (PersonDetections) } ) -> GetPersonTrackingResponse
-newGetPersonTrackingResponse'  customize = (GetPersonTrackingResponse <<< customize) { "JobStatus": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing), "Persons": (NullOrUndefined Nothing), "StatusMessage": (NullOrUndefined Nothing), "VideoMetadata": (NullOrUndefined Nothing) }
+newGetPersonTrackingResponse' :: ( { "JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Persons" :: Maybe (PersonDetections) } -> {"JobStatus" :: Maybe (VideoJobStatus) , "StatusMessage" :: Maybe (StatusMessage) , "VideoMetadata" :: Maybe (VideoMetadata) , "NextToken" :: Maybe (PaginationToken) , "Persons" :: Maybe (PersonDetections) } ) -> GetPersonTrackingResponse
+newGetPersonTrackingResponse'  customize = (GetPersonTrackingResponse <<< customize) { "JobStatus": Nothing, "NextToken": Nothing, "Persons": Nothing, "StatusMessage": Nothing, "VideoMetadata": Nothing }
 
 
 
@@ -1570,8 +1569,8 @@ instance encodeIdempotentParameterMismatchException :: Encode IdempotentParamete
 
 -- | <p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>images-bytes</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
 newtype Image = Image 
-  { "Bytes" :: NullOrUndefined (ImageBlob)
-  , "S3Object" :: NullOrUndefined (S3Object)
+  { "Bytes" :: Maybe (ImageBlob)
+  , "S3Object" :: Maybe (S3Object)
   }
 derive instance newtypeImage :: Newtype Image _
 derive instance repGenericImage :: Generic Image _
@@ -1581,12 +1580,12 @@ instance encodeImage :: Encode Image where encode = genericEncode options
 
 -- | Constructs Image from required parameters
 newImage :: Image
-newImage  = Image { "Bytes": (NullOrUndefined Nothing), "S3Object": (NullOrUndefined Nothing) }
+newImage  = Image { "Bytes": Nothing, "S3Object": Nothing }
 
 -- | Constructs Image's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImage' :: ( { "Bytes" :: NullOrUndefined (ImageBlob) , "S3Object" :: NullOrUndefined (S3Object) } -> {"Bytes" :: NullOrUndefined (ImageBlob) , "S3Object" :: NullOrUndefined (S3Object) } ) -> Image
-newImage'  customize = (Image <<< customize) { "Bytes": (NullOrUndefined Nothing), "S3Object": (NullOrUndefined Nothing) }
+newImage' :: ( { "Bytes" :: Maybe (ImageBlob) , "S3Object" :: Maybe (S3Object) } -> {"Bytes" :: Maybe (ImageBlob) , "S3Object" :: Maybe (S3Object) } ) -> Image
+newImage'  customize = (Image <<< customize) { "Bytes": Nothing, "S3Object": Nothing }
 
 
 
@@ -1610,8 +1609,8 @@ instance encodeImageId :: Encode ImageId where encode = genericEncode options
 
 -- | <p>Identifies face image brightness and sharpness. </p>
 newtype ImageQuality = ImageQuality 
-  { "Brightness" :: NullOrUndefined (Number)
-  , "Sharpness" :: NullOrUndefined (Number)
+  { "Brightness" :: Maybe (Number)
+  , "Sharpness" :: Maybe (Number)
   }
 derive instance newtypeImageQuality :: Newtype ImageQuality _
 derive instance repGenericImageQuality :: Generic ImageQuality _
@@ -1621,12 +1620,12 @@ instance encodeImageQuality :: Encode ImageQuality where encode = genericEncode 
 
 -- | Constructs ImageQuality from required parameters
 newImageQuality :: ImageQuality
-newImageQuality  = ImageQuality { "Brightness": (NullOrUndefined Nothing), "Sharpness": (NullOrUndefined Nothing) }
+newImageQuality  = ImageQuality { "Brightness": Nothing, "Sharpness": Nothing }
 
 -- | Constructs ImageQuality's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newImageQuality' :: ( { "Brightness" :: NullOrUndefined (Number) , "Sharpness" :: NullOrUndefined (Number) } -> {"Brightness" :: NullOrUndefined (Number) , "Sharpness" :: NullOrUndefined (Number) } ) -> ImageQuality
-newImageQuality'  customize = (ImageQuality <<< customize) { "Brightness": (NullOrUndefined Nothing), "Sharpness": (NullOrUndefined Nothing) }
+newImageQuality' :: ( { "Brightness" :: Maybe (Number) , "Sharpness" :: Maybe (Number) } -> {"Brightness" :: Maybe (Number) , "Sharpness" :: Maybe (Number) } ) -> ImageQuality
+newImageQuality'  customize = (ImageQuality <<< customize) { "Brightness": Nothing, "Sharpness": Nothing }
 
 
 
@@ -1643,8 +1642,8 @@ instance encodeImageTooLargeException :: Encode ImageTooLargeException where enc
 newtype IndexFacesRequest = IndexFacesRequest 
   { "CollectionId" :: (CollectionId)
   , "Image" :: (Image)
-  , "ExternalImageId" :: NullOrUndefined (ExternalImageId)
-  , "DetectionAttributes" :: NullOrUndefined (Attributes)
+  , "ExternalImageId" :: Maybe (ExternalImageId)
+  , "DetectionAttributes" :: Maybe (Attributes)
   }
 derive instance newtypeIndexFacesRequest :: Newtype IndexFacesRequest _
 derive instance repGenericIndexFacesRequest :: Generic IndexFacesRequest _
@@ -1654,19 +1653,19 @@ instance encodeIndexFacesRequest :: Encode IndexFacesRequest where encode = gene
 
 -- | Constructs IndexFacesRequest from required parameters
 newIndexFacesRequest :: CollectionId -> Image -> IndexFacesRequest
-newIndexFacesRequest _CollectionId _Image = IndexFacesRequest { "CollectionId": _CollectionId, "Image": _Image, "DetectionAttributes": (NullOrUndefined Nothing), "ExternalImageId": (NullOrUndefined Nothing) }
+newIndexFacesRequest _CollectionId _Image = IndexFacesRequest { "CollectionId": _CollectionId, "Image": _Image, "DetectionAttributes": Nothing, "ExternalImageId": Nothing }
 
 -- | Constructs IndexFacesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newIndexFacesRequest' :: CollectionId -> Image -> ( { "CollectionId" :: (CollectionId) , "Image" :: (Image) , "ExternalImageId" :: NullOrUndefined (ExternalImageId) , "DetectionAttributes" :: NullOrUndefined (Attributes) } -> {"CollectionId" :: (CollectionId) , "Image" :: (Image) , "ExternalImageId" :: NullOrUndefined (ExternalImageId) , "DetectionAttributes" :: NullOrUndefined (Attributes) } ) -> IndexFacesRequest
-newIndexFacesRequest' _CollectionId _Image customize = (IndexFacesRequest <<< customize) { "CollectionId": _CollectionId, "Image": _Image, "DetectionAttributes": (NullOrUndefined Nothing), "ExternalImageId": (NullOrUndefined Nothing) }
+newIndexFacesRequest' :: CollectionId -> Image -> ( { "CollectionId" :: (CollectionId) , "Image" :: (Image) , "ExternalImageId" :: Maybe (ExternalImageId) , "DetectionAttributes" :: Maybe (Attributes) } -> {"CollectionId" :: (CollectionId) , "Image" :: (Image) , "ExternalImageId" :: Maybe (ExternalImageId) , "DetectionAttributes" :: Maybe (Attributes) } ) -> IndexFacesRequest
+newIndexFacesRequest' _CollectionId _Image customize = (IndexFacesRequest <<< customize) { "CollectionId": _CollectionId, "Image": _Image, "DetectionAttributes": Nothing, "ExternalImageId": Nothing }
 
 
 
 newtype IndexFacesResponse = IndexFacesResponse 
-  { "FaceRecords" :: NullOrUndefined (FaceRecordList)
-  , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
-  , "FaceModelVersion" :: NullOrUndefined (String)
+  { "FaceRecords" :: Maybe (FaceRecordList)
+  , "OrientationCorrection" :: Maybe (OrientationCorrection)
+  , "FaceModelVersion" :: Maybe (String)
   }
 derive instance newtypeIndexFacesResponse :: Newtype IndexFacesResponse _
 derive instance repGenericIndexFacesResponse :: Generic IndexFacesResponse _
@@ -1676,12 +1675,12 @@ instance encodeIndexFacesResponse :: Encode IndexFacesResponse where encode = ge
 
 -- | Constructs IndexFacesResponse from required parameters
 newIndexFacesResponse :: IndexFacesResponse
-newIndexFacesResponse  = IndexFacesResponse { "FaceModelVersion": (NullOrUndefined Nothing), "FaceRecords": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newIndexFacesResponse  = IndexFacesResponse { "FaceModelVersion": Nothing, "FaceRecords": Nothing, "OrientationCorrection": Nothing }
 
 -- | Constructs IndexFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newIndexFacesResponse' :: ( { "FaceRecords" :: NullOrUndefined (FaceRecordList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) , "FaceModelVersion" :: NullOrUndefined (String) } -> {"FaceRecords" :: NullOrUndefined (FaceRecordList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) , "FaceModelVersion" :: NullOrUndefined (String) } ) -> IndexFacesResponse
-newIndexFacesResponse'  customize = (IndexFacesResponse <<< customize) { "FaceModelVersion": (NullOrUndefined Nothing), "FaceRecords": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing) }
+newIndexFacesResponse' :: ( { "FaceRecords" :: Maybe (FaceRecordList) , "OrientationCorrection" :: Maybe (OrientationCorrection) , "FaceModelVersion" :: Maybe (String) } -> {"FaceRecords" :: Maybe (FaceRecordList) , "OrientationCorrection" :: Maybe (OrientationCorrection) , "FaceModelVersion" :: Maybe (String) } ) -> IndexFacesResponse
+newIndexFacesResponse'  customize = (IndexFacesResponse <<< customize) { "FaceModelVersion": Nothing, "FaceRecords": Nothing, "OrientationCorrection": Nothing }
 
 
 
@@ -1764,7 +1763,7 @@ instance encodeKinesisDataArn :: Encode KinesisDataArn where encode = genericEnc
 
 -- | <p>The Kinesis data stream Amazon Rekognition to which the analysis results of a Amazon Rekognition stream processor are streamed. For more information, see .</p>
 newtype KinesisDataStream = KinesisDataStream 
-  { "Arn" :: NullOrUndefined (KinesisDataArn)
+  { "Arn" :: Maybe (KinesisDataArn)
   }
 derive instance newtypeKinesisDataStream :: Newtype KinesisDataStream _
 derive instance repGenericKinesisDataStream :: Generic KinesisDataStream _
@@ -1774,12 +1773,12 @@ instance encodeKinesisDataStream :: Encode KinesisDataStream where encode = gene
 
 -- | Constructs KinesisDataStream from required parameters
 newKinesisDataStream :: KinesisDataStream
-newKinesisDataStream  = KinesisDataStream { "Arn": (NullOrUndefined Nothing) }
+newKinesisDataStream  = KinesisDataStream { "Arn": Nothing }
 
 -- | Constructs KinesisDataStream's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisDataStream' :: ( { "Arn" :: NullOrUndefined (KinesisDataArn) } -> {"Arn" :: NullOrUndefined (KinesisDataArn) } ) -> KinesisDataStream
-newKinesisDataStream'  customize = (KinesisDataStream <<< customize) { "Arn": (NullOrUndefined Nothing) }
+newKinesisDataStream' :: ( { "Arn" :: Maybe (KinesisDataArn) } -> {"Arn" :: Maybe (KinesisDataArn) } ) -> KinesisDataStream
+newKinesisDataStream'  customize = (KinesisDataStream <<< customize) { "Arn": Nothing }
 
 
 
@@ -1794,7 +1793,7 @@ instance encodeKinesisVideoArn :: Encode KinesisVideoArn where encode = genericE
 
 -- | <p>Kinesis video stream stream that provides the source streaming video for a Rekognition Video stream processor. For more information, see .</p>
 newtype KinesisVideoStream = KinesisVideoStream 
-  { "Arn" :: NullOrUndefined (KinesisVideoArn)
+  { "Arn" :: Maybe (KinesisVideoArn)
   }
 derive instance newtypeKinesisVideoStream :: Newtype KinesisVideoStream _
 derive instance repGenericKinesisVideoStream :: Generic KinesisVideoStream _
@@ -1804,19 +1803,19 @@ instance encodeKinesisVideoStream :: Encode KinesisVideoStream where encode = ge
 
 -- | Constructs KinesisVideoStream from required parameters
 newKinesisVideoStream :: KinesisVideoStream
-newKinesisVideoStream  = KinesisVideoStream { "Arn": (NullOrUndefined Nothing) }
+newKinesisVideoStream  = KinesisVideoStream { "Arn": Nothing }
 
 -- | Constructs KinesisVideoStream's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisVideoStream' :: ( { "Arn" :: NullOrUndefined (KinesisVideoArn) } -> {"Arn" :: NullOrUndefined (KinesisVideoArn) } ) -> KinesisVideoStream
-newKinesisVideoStream'  customize = (KinesisVideoStream <<< customize) { "Arn": (NullOrUndefined Nothing) }
+newKinesisVideoStream' :: ( { "Arn" :: Maybe (KinesisVideoArn) } -> {"Arn" :: Maybe (KinesisVideoArn) } ) -> KinesisVideoStream
+newKinesisVideoStream'  customize = (KinesisVideoStream <<< customize) { "Arn": Nothing }
 
 
 
 -- | <p>Structure containing details about the detected label, including name, and level of confidence.</p>
 newtype Label = Label 
-  { "Name" :: NullOrUndefined (String)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Name" :: Maybe (String)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeLabel :: Newtype Label _
 derive instance repGenericLabel :: Generic Label _
@@ -1826,19 +1825,19 @@ instance encodeLabel :: Encode Label where encode = genericEncode options
 
 -- | Constructs Label from required parameters
 newLabel :: Label
-newLabel  = Label { "Confidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newLabel  = Label { "Confidence": Nothing, "Name": Nothing }
 
 -- | Constructs Label's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLabel' :: ( { "Name" :: NullOrUndefined (String) , "Confidence" :: NullOrUndefined (Percent) } -> {"Name" :: NullOrUndefined (String) , "Confidence" :: NullOrUndefined (Percent) } ) -> Label
-newLabel'  customize = (Label <<< customize) { "Confidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newLabel' :: ( { "Name" :: Maybe (String) , "Confidence" :: Maybe (Percent) } -> {"Name" :: Maybe (String) , "Confidence" :: Maybe (Percent) } ) -> Label
+newLabel'  customize = (Label <<< customize) { "Confidence": Nothing, "Name": Nothing }
 
 
 
 -- | <p>Information about a label detected in a video analysis request and the time the label was detected in the video. </p>
 newtype LabelDetection = LabelDetection 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Label" :: NullOrUndefined (Label)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "Label" :: Maybe (Label)
   }
 derive instance newtypeLabelDetection :: Newtype LabelDetection _
 derive instance repGenericLabelDetection :: Generic LabelDetection _
@@ -1848,12 +1847,12 @@ instance encodeLabelDetection :: Encode LabelDetection where encode = genericEnc
 
 -- | Constructs LabelDetection from required parameters
 newLabelDetection :: LabelDetection
-newLabelDetection  = LabelDetection { "Label": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newLabelDetection  = LabelDetection { "Label": Nothing, "Timestamp": Nothing }
 
 -- | Constructs LabelDetection's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLabelDetection' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "Label" :: NullOrUndefined (Label) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "Label" :: NullOrUndefined (Label) } ) -> LabelDetection
-newLabelDetection'  customize = (LabelDetection <<< customize) { "Label": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newLabelDetection' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "Label" :: Maybe (Label) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "Label" :: Maybe (Label) } ) -> LabelDetection
+newLabelDetection'  customize = (LabelDetection <<< customize) { "Label": Nothing, "Timestamp": Nothing }
 
 
 
@@ -1886,9 +1885,9 @@ instance encodeLabels :: Encode Labels where encode = genericEncode options
 
 -- | <p>Indicates the location of the landmark on the face.</p>
 newtype Landmark = Landmark 
-  { "Type" :: NullOrUndefined (LandmarkType)
-  , "X" :: NullOrUndefined (Number)
-  , "Y" :: NullOrUndefined (Number)
+  { "Type" :: Maybe (LandmarkType)
+  , "X" :: Maybe (Number)
+  , "Y" :: Maybe (Number)
   }
 derive instance newtypeLandmark :: Newtype Landmark _
 derive instance repGenericLandmark :: Generic Landmark _
@@ -1898,12 +1897,12 @@ instance encodeLandmark :: Encode Landmark where encode = genericEncode options
 
 -- | Constructs Landmark from required parameters
 newLandmark :: Landmark
-newLandmark  = Landmark { "Type": (NullOrUndefined Nothing), "X": (NullOrUndefined Nothing), "Y": (NullOrUndefined Nothing) }
+newLandmark  = Landmark { "Type": Nothing, "X": Nothing, "Y": Nothing }
 
 -- | Constructs Landmark's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLandmark' :: ( { "Type" :: NullOrUndefined (LandmarkType) , "X" :: NullOrUndefined (Number) , "Y" :: NullOrUndefined (Number) } -> {"Type" :: NullOrUndefined (LandmarkType) , "X" :: NullOrUndefined (Number) , "Y" :: NullOrUndefined (Number) } ) -> Landmark
-newLandmark'  customize = (Landmark <<< customize) { "Type": (NullOrUndefined Nothing), "X": (NullOrUndefined Nothing), "Y": (NullOrUndefined Nothing) }
+newLandmark' :: ( { "Type" :: Maybe (LandmarkType) , "X" :: Maybe (Number) , "Y" :: Maybe (Number) } -> {"Type" :: Maybe (LandmarkType) , "X" :: Maybe (Number) , "Y" :: Maybe (Number) } ) -> Landmark
+newLandmark'  customize = (Landmark <<< customize) { "Type": Nothing, "X": Nothing, "Y": Nothing }
 
 
 
@@ -1936,8 +1935,8 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 
 newtype ListCollectionsRequest = ListCollectionsRequest 
-  { "NextToken" :: NullOrUndefined (PaginationToken)
-  , "MaxResults" :: NullOrUndefined (PageSize)
+  { "NextToken" :: Maybe (PaginationToken)
+  , "MaxResults" :: Maybe (PageSize)
   }
 derive instance newtypeListCollectionsRequest :: Newtype ListCollectionsRequest _
 derive instance repGenericListCollectionsRequest :: Generic ListCollectionsRequest _
@@ -1947,19 +1946,19 @@ instance encodeListCollectionsRequest :: Encode ListCollectionsRequest where enc
 
 -- | Constructs ListCollectionsRequest from required parameters
 newListCollectionsRequest :: ListCollectionsRequest
-newListCollectionsRequest  = ListCollectionsRequest { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCollectionsRequest  = ListCollectionsRequest { "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListCollectionsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListCollectionsRequest' :: ( { "NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (PageSize) } -> {"NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (PageSize) } ) -> ListCollectionsRequest
-newListCollectionsRequest'  customize = (ListCollectionsRequest <<< customize) { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCollectionsRequest' :: ( { "NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (PageSize) } -> {"NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (PageSize) } ) -> ListCollectionsRequest
+newListCollectionsRequest'  customize = (ListCollectionsRequest <<< customize) { "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListCollectionsResponse = ListCollectionsResponse 
-  { "CollectionIds" :: NullOrUndefined (CollectionIdList)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList)
+  { "CollectionIds" :: Maybe (CollectionIdList)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "FaceModelVersions" :: Maybe (FaceModelVersionList)
   }
 derive instance newtypeListCollectionsResponse :: Newtype ListCollectionsResponse _
 derive instance repGenericListCollectionsResponse :: Generic ListCollectionsResponse _
@@ -1969,19 +1968,19 @@ instance encodeListCollectionsResponse :: Encode ListCollectionsResponse where e
 
 -- | Constructs ListCollectionsResponse from required parameters
 newListCollectionsResponse :: ListCollectionsResponse
-newListCollectionsResponse  = ListCollectionsResponse { "CollectionIds": (NullOrUndefined Nothing), "FaceModelVersions": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCollectionsResponse  = ListCollectionsResponse { "CollectionIds": Nothing, "FaceModelVersions": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListCollectionsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListCollectionsResponse' :: ( { "CollectionIds" :: NullOrUndefined (CollectionIdList) , "NextToken" :: NullOrUndefined (PaginationToken) , "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList) } -> {"CollectionIds" :: NullOrUndefined (CollectionIdList) , "NextToken" :: NullOrUndefined (PaginationToken) , "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList) } ) -> ListCollectionsResponse
-newListCollectionsResponse'  customize = (ListCollectionsResponse <<< customize) { "CollectionIds": (NullOrUndefined Nothing), "FaceModelVersions": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCollectionsResponse' :: ( { "CollectionIds" :: Maybe (CollectionIdList) , "NextToken" :: Maybe (PaginationToken) , "FaceModelVersions" :: Maybe (FaceModelVersionList) } -> {"CollectionIds" :: Maybe (CollectionIdList) , "NextToken" :: Maybe (PaginationToken) , "FaceModelVersions" :: Maybe (FaceModelVersionList) } ) -> ListCollectionsResponse
+newListCollectionsResponse'  customize = (ListCollectionsResponse <<< customize) { "CollectionIds": Nothing, "FaceModelVersions": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListFacesRequest = ListFacesRequest 
   { "CollectionId" :: (CollectionId)
-  , "NextToken" :: NullOrUndefined (PaginationToken)
-  , "MaxResults" :: NullOrUndefined (PageSize)
+  , "NextToken" :: Maybe (PaginationToken)
+  , "MaxResults" :: Maybe (PageSize)
   }
 derive instance newtypeListFacesRequest :: Newtype ListFacesRequest _
 derive instance repGenericListFacesRequest :: Generic ListFacesRequest _
@@ -1991,19 +1990,19 @@ instance encodeListFacesRequest :: Encode ListFacesRequest where encode = generi
 
 -- | Constructs ListFacesRequest from required parameters
 newListFacesRequest :: CollectionId -> ListFacesRequest
-newListFacesRequest _CollectionId = ListFacesRequest { "CollectionId": _CollectionId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListFacesRequest _CollectionId = ListFacesRequest { "CollectionId": _CollectionId, "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListFacesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListFacesRequest' :: CollectionId -> ( { "CollectionId" :: (CollectionId) , "NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (PageSize) } -> {"CollectionId" :: (CollectionId) , "NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (PageSize) } ) -> ListFacesRequest
-newListFacesRequest' _CollectionId customize = (ListFacesRequest <<< customize) { "CollectionId": _CollectionId, "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListFacesRequest' :: CollectionId -> ( { "CollectionId" :: (CollectionId) , "NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (PageSize) } -> {"CollectionId" :: (CollectionId) , "NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (PageSize) } ) -> ListFacesRequest
+newListFacesRequest' _CollectionId customize = (ListFacesRequest <<< customize) { "CollectionId": _CollectionId, "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListFacesResponse = ListFacesResponse 
-  { "Faces" :: NullOrUndefined (FaceList)
-  , "NextToken" :: NullOrUndefined (String)
-  , "FaceModelVersion" :: NullOrUndefined (String)
+  { "Faces" :: Maybe (FaceList)
+  , "NextToken" :: Maybe (String)
+  , "FaceModelVersion" :: Maybe (String)
   }
 derive instance newtypeListFacesResponse :: Newtype ListFacesResponse _
 derive instance repGenericListFacesResponse :: Generic ListFacesResponse _
@@ -2013,18 +2012,18 @@ instance encodeListFacesResponse :: Encode ListFacesResponse where encode = gene
 
 -- | Constructs ListFacesResponse from required parameters
 newListFacesResponse :: ListFacesResponse
-newListFacesResponse  = ListFacesResponse { "FaceModelVersion": (NullOrUndefined Nothing), "Faces": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListFacesResponse  = ListFacesResponse { "FaceModelVersion": Nothing, "Faces": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListFacesResponse' :: ( { "Faces" :: NullOrUndefined (FaceList) , "NextToken" :: NullOrUndefined (String) , "FaceModelVersion" :: NullOrUndefined (String) } -> {"Faces" :: NullOrUndefined (FaceList) , "NextToken" :: NullOrUndefined (String) , "FaceModelVersion" :: NullOrUndefined (String) } ) -> ListFacesResponse
-newListFacesResponse'  customize = (ListFacesResponse <<< customize) { "FaceModelVersion": (NullOrUndefined Nothing), "Faces": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListFacesResponse' :: ( { "Faces" :: Maybe (FaceList) , "NextToken" :: Maybe (String) , "FaceModelVersion" :: Maybe (String) } -> {"Faces" :: Maybe (FaceList) , "NextToken" :: Maybe (String) , "FaceModelVersion" :: Maybe (String) } ) -> ListFacesResponse
+newListFacesResponse'  customize = (ListFacesResponse <<< customize) { "FaceModelVersion": Nothing, "Faces": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListStreamProcessorsRequest = ListStreamProcessorsRequest 
-  { "NextToken" :: NullOrUndefined (PaginationToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
+  { "NextToken" :: Maybe (PaginationToken)
+  , "MaxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeListStreamProcessorsRequest :: Newtype ListStreamProcessorsRequest _
 derive instance repGenericListStreamProcessorsRequest :: Generic ListStreamProcessorsRequest _
@@ -2034,18 +2033,18 @@ instance encodeListStreamProcessorsRequest :: Encode ListStreamProcessorsRequest
 
 -- | Constructs ListStreamProcessorsRequest from required parameters
 newListStreamProcessorsRequest :: ListStreamProcessorsRequest
-newListStreamProcessorsRequest  = ListStreamProcessorsRequest { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStreamProcessorsRequest  = ListStreamProcessorsRequest { "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListStreamProcessorsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStreamProcessorsRequest' :: ( { "NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (MaxResults) } -> {"NextToken" :: NullOrUndefined (PaginationToken) , "MaxResults" :: NullOrUndefined (MaxResults) } ) -> ListStreamProcessorsRequest
-newListStreamProcessorsRequest'  customize = (ListStreamProcessorsRequest <<< customize) { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListStreamProcessorsRequest' :: ( { "NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (MaxResults) } -> {"NextToken" :: Maybe (PaginationToken) , "MaxResults" :: Maybe (MaxResults) } ) -> ListStreamProcessorsRequest
+newListStreamProcessorsRequest'  customize = (ListStreamProcessorsRequest <<< customize) { "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListStreamProcessorsResponse = ListStreamProcessorsResponse 
-  { "NextToken" :: NullOrUndefined (PaginationToken)
-  , "StreamProcessors" :: NullOrUndefined (StreamProcessorList)
+  { "NextToken" :: Maybe (PaginationToken)
+  , "StreamProcessors" :: Maybe (StreamProcessorList)
   }
 derive instance newtypeListStreamProcessorsResponse :: Newtype ListStreamProcessorsResponse _
 derive instance repGenericListStreamProcessorsResponse :: Generic ListStreamProcessorsResponse _
@@ -2055,12 +2054,12 @@ instance encodeListStreamProcessorsResponse :: Encode ListStreamProcessorsRespon
 
 -- | Constructs ListStreamProcessorsResponse from required parameters
 newListStreamProcessorsResponse :: ListStreamProcessorsResponse
-newListStreamProcessorsResponse  = ListStreamProcessorsResponse { "NextToken": (NullOrUndefined Nothing), "StreamProcessors": (NullOrUndefined Nothing) }
+newListStreamProcessorsResponse  = ListStreamProcessorsResponse { "NextToken": Nothing, "StreamProcessors": Nothing }
 
 -- | Constructs ListStreamProcessorsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListStreamProcessorsResponse' :: ( { "NextToken" :: NullOrUndefined (PaginationToken) , "StreamProcessors" :: NullOrUndefined (StreamProcessorList) } -> {"NextToken" :: NullOrUndefined (PaginationToken) , "StreamProcessors" :: NullOrUndefined (StreamProcessorList) } ) -> ListStreamProcessorsResponse
-newListStreamProcessorsResponse'  customize = (ListStreamProcessorsResponse <<< customize) { "NextToken": (NullOrUndefined Nothing), "StreamProcessors": (NullOrUndefined Nothing) }
+newListStreamProcessorsResponse' :: ( { "NextToken" :: Maybe (PaginationToken) , "StreamProcessors" :: Maybe (StreamProcessorList) } -> {"NextToken" :: Maybe (PaginationToken) , "StreamProcessors" :: Maybe (StreamProcessorList) } ) -> ListStreamProcessorsResponse
+newListStreamProcessorsResponse'  customize = (ListStreamProcessorsResponse <<< customize) { "NextToken": Nothing, "StreamProcessors": Nothing }
 
 
 
@@ -2084,9 +2083,9 @@ instance encodeMaxResults :: Encode MaxResults where encode = genericEncode opti
 
 -- | <p>Provides information about a single type of moderated content found in an image or video. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see <a>moderation</a>.</p>
 newtype ModerationLabel = ModerationLabel 
-  { "Confidence" :: NullOrUndefined (Percent)
-  , "Name" :: NullOrUndefined (String)
-  , "ParentName" :: NullOrUndefined (String)
+  { "Confidence" :: Maybe (Percent)
+  , "Name" :: Maybe (String)
+  , "ParentName" :: Maybe (String)
   }
 derive instance newtypeModerationLabel :: Newtype ModerationLabel _
 derive instance repGenericModerationLabel :: Generic ModerationLabel _
@@ -2096,12 +2095,12 @@ instance encodeModerationLabel :: Encode ModerationLabel where encode = genericE
 
 -- | Constructs ModerationLabel from required parameters
 newModerationLabel :: ModerationLabel
-newModerationLabel  = ModerationLabel { "Confidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "ParentName": (NullOrUndefined Nothing) }
+newModerationLabel  = ModerationLabel { "Confidence": Nothing, "Name": Nothing, "ParentName": Nothing }
 
 -- | Constructs ModerationLabel's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newModerationLabel' :: ( { "Confidence" :: NullOrUndefined (Percent) , "Name" :: NullOrUndefined (String) , "ParentName" :: NullOrUndefined (String) } -> {"Confidence" :: NullOrUndefined (Percent) , "Name" :: NullOrUndefined (String) , "ParentName" :: NullOrUndefined (String) } ) -> ModerationLabel
-newModerationLabel'  customize = (ModerationLabel <<< customize) { "Confidence": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "ParentName": (NullOrUndefined Nothing) }
+newModerationLabel' :: ( { "Confidence" :: Maybe (Percent) , "Name" :: Maybe (String) , "ParentName" :: Maybe (String) } -> {"Confidence" :: Maybe (Percent) , "Name" :: Maybe (String) , "ParentName" :: Maybe (String) } ) -> ModerationLabel
+newModerationLabel'  customize = (ModerationLabel <<< customize) { "Confidence": Nothing, "Name": Nothing, "ParentName": Nothing }
 
 
 
@@ -2116,8 +2115,8 @@ instance encodeModerationLabels :: Encode ModerationLabels where encode = generi
 
 -- | <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
 newtype MouthOpen = MouthOpen 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeMouthOpen :: Newtype MouthOpen _
 derive instance repGenericMouthOpen :: Generic MouthOpen _
@@ -2127,19 +2126,19 @@ instance encodeMouthOpen :: Encode MouthOpen where encode = genericEncode option
 
 -- | Constructs MouthOpen from required parameters
 newMouthOpen :: MouthOpen
-newMouthOpen  = MouthOpen { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newMouthOpen  = MouthOpen { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs MouthOpen's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMouthOpen' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> MouthOpen
-newMouthOpen'  customize = (MouthOpen <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newMouthOpen' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> MouthOpen
+newMouthOpen'  customize = (MouthOpen <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 -- | <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
 newtype Mustache = Mustache 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeMustache :: Newtype Mustache _
 derive instance repGenericMustache :: Generic Mustache _
@@ -2149,12 +2148,12 @@ instance encodeMustache :: Encode Mustache where encode = genericEncode options
 
 -- | Constructs Mustache from required parameters
 newMustache :: Mustache
-newMustache  = Mustache { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newMustache  = Mustache { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Mustache's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMustache' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> Mustache
-newMustache'  customize = (Mustache <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newMustache' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> Mustache
+newMustache'  customize = (Mustache <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
@@ -2218,9 +2217,9 @@ instance encodePercent :: Encode Percent where encode = genericEncode options
 
 -- | <p>Details about a person detected in a video analysis request.</p>
 newtype PersonDetail = PersonDetail 
-  { "Index" :: NullOrUndefined (PersonIndex)
-  , "BoundingBox" :: NullOrUndefined (BoundingBox)
-  , "Face" :: NullOrUndefined (FaceDetail)
+  { "Index" :: Maybe (PersonIndex)
+  , "BoundingBox" :: Maybe (BoundingBox)
+  , "Face" :: Maybe (FaceDetail)
   }
 derive instance newtypePersonDetail :: Newtype PersonDetail _
 derive instance repGenericPersonDetail :: Generic PersonDetail _
@@ -2230,19 +2229,19 @@ instance encodePersonDetail :: Encode PersonDetail where encode = genericEncode 
 
 -- | Constructs PersonDetail from required parameters
 newPersonDetail :: PersonDetail
-newPersonDetail  = PersonDetail { "BoundingBox": (NullOrUndefined Nothing), "Face": (NullOrUndefined Nothing), "Index": (NullOrUndefined Nothing) }
+newPersonDetail  = PersonDetail { "BoundingBox": Nothing, "Face": Nothing, "Index": Nothing }
 
 -- | Constructs PersonDetail's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPersonDetail' :: ( { "Index" :: NullOrUndefined (PersonIndex) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "Face" :: NullOrUndefined (FaceDetail) } -> {"Index" :: NullOrUndefined (PersonIndex) , "BoundingBox" :: NullOrUndefined (BoundingBox) , "Face" :: NullOrUndefined (FaceDetail) } ) -> PersonDetail
-newPersonDetail'  customize = (PersonDetail <<< customize) { "BoundingBox": (NullOrUndefined Nothing), "Face": (NullOrUndefined Nothing), "Index": (NullOrUndefined Nothing) }
+newPersonDetail' :: ( { "Index" :: Maybe (PersonIndex) , "BoundingBox" :: Maybe (BoundingBox) , "Face" :: Maybe (FaceDetail) } -> {"Index" :: Maybe (PersonIndex) , "BoundingBox" :: Maybe (BoundingBox) , "Face" :: Maybe (FaceDetail) } ) -> PersonDetail
+newPersonDetail'  customize = (PersonDetail <<< customize) { "BoundingBox": Nothing, "Face": Nothing, "Index": Nothing }
 
 
 
 -- | <p>Details and tracking information for a single time a person is tracked in a video. Amazon Rekognition operations that track persons return an array of <code>PersonDetection</code> objects with elements for each time a person is tracked in a video. For more information, see . </p>
 newtype PersonDetection = PersonDetection 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Person" :: NullOrUndefined (PersonDetail)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "Person" :: Maybe (PersonDetail)
   }
 derive instance newtypePersonDetection :: Newtype PersonDetection _
 derive instance repGenericPersonDetection :: Generic PersonDetection _
@@ -2252,12 +2251,12 @@ instance encodePersonDetection :: Encode PersonDetection where encode = genericE
 
 -- | Constructs PersonDetection from required parameters
 newPersonDetection :: PersonDetection
-newPersonDetection  = PersonDetection { "Person": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newPersonDetection  = PersonDetection { "Person": Nothing, "Timestamp": Nothing }
 
 -- | Constructs PersonDetection's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPersonDetection' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "Person" :: NullOrUndefined (PersonDetail) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "Person" :: NullOrUndefined (PersonDetail) } ) -> PersonDetection
-newPersonDetection'  customize = (PersonDetection <<< customize) { "Person": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newPersonDetection' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "Person" :: Maybe (PersonDetail) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "Person" :: Maybe (PersonDetail) } ) -> PersonDetection
+newPersonDetection'  customize = (PersonDetection <<< customize) { "Person": Nothing, "Timestamp": Nothing }
 
 
 
@@ -2281,9 +2280,9 @@ instance encodePersonIndex :: Encode PersonIndex where encode = genericEncode op
 
 -- | <p>Information about a person whose face matches a face(s) in a Amazon Rekognition collection. Includes information about the faces in the Amazon Rekognition collection (,information about the person (<a>PersonDetail</a>) and the timestamp for when the person was detected in a video. An array of <code>PersonMatch</code> objects is returned by . </p>
 newtype PersonMatch = PersonMatch 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Person" :: NullOrUndefined (PersonDetail)
-  , "FaceMatches" :: NullOrUndefined (FaceMatchList)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "Person" :: Maybe (PersonDetail)
+  , "FaceMatches" :: Maybe (FaceMatchList)
   }
 derive instance newtypePersonMatch :: Newtype PersonMatch _
 derive instance repGenericPersonMatch :: Generic PersonMatch _
@@ -2293,12 +2292,12 @@ instance encodePersonMatch :: Encode PersonMatch where encode = genericEncode op
 
 -- | Constructs PersonMatch from required parameters
 newPersonMatch :: PersonMatch
-newPersonMatch  = PersonMatch { "FaceMatches": (NullOrUndefined Nothing), "Person": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newPersonMatch  = PersonMatch { "FaceMatches": Nothing, "Person": Nothing, "Timestamp": Nothing }
 
 -- | Constructs PersonMatch's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPersonMatch' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "Person" :: NullOrUndefined (PersonDetail) , "FaceMatches" :: NullOrUndefined (FaceMatchList) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "Person" :: NullOrUndefined (PersonDetail) , "FaceMatches" :: NullOrUndefined (FaceMatchList) } ) -> PersonMatch
-newPersonMatch'  customize = (PersonMatch <<< customize) { "FaceMatches": (NullOrUndefined Nothing), "Person": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newPersonMatch' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "Person" :: Maybe (PersonDetail) , "FaceMatches" :: Maybe (FaceMatchList) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "Person" :: Maybe (PersonDetail) , "FaceMatches" :: Maybe (FaceMatchList) } ) -> PersonMatch
+newPersonMatch'  customize = (PersonMatch <<< customize) { "FaceMatches": Nothing, "Person": Nothing, "Timestamp": Nothing }
 
 
 
@@ -2322,8 +2321,8 @@ instance encodePersonTrackingSortBy :: Encode PersonTrackingSortBy where encode 
 
 -- | <p>The X and Y coordinates of a point on an image. The X and Y values returned are ratios of the overall image size. For example, if the input image is 700x200 and the operation returns X=0.5 and Y=0.25, then the point is at the (350,50) pixel coordinate on the image.</p> <p>An array of <code>Point</code> objects, <code>Polygon</code>, is returned by . <code>Polygon</code> represents a fine-grained polygon around detected text. For more information, see . </p>
 newtype Point = Point 
-  { "X" :: NullOrUndefined (Number)
-  , "Y" :: NullOrUndefined (Number)
+  { "X" :: Maybe (Number)
+  , "Y" :: Maybe (Number)
   }
 derive instance newtypePoint :: Newtype Point _
 derive instance repGenericPoint :: Generic Point _
@@ -2333,12 +2332,12 @@ instance encodePoint :: Encode Point where encode = genericEncode options
 
 -- | Constructs Point from required parameters
 newPoint :: Point
-newPoint  = Point { "X": (NullOrUndefined Nothing), "Y": (NullOrUndefined Nothing) }
+newPoint  = Point { "X": Nothing, "Y": Nothing }
 
 -- | Constructs Point's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPoint' :: ( { "X" :: NullOrUndefined (Number) , "Y" :: NullOrUndefined (Number) } -> {"X" :: NullOrUndefined (Number) , "Y" :: NullOrUndefined (Number) } ) -> Point
-newPoint'  customize = (Point <<< customize) { "X": (NullOrUndefined Nothing), "Y": (NullOrUndefined Nothing) }
+newPoint' :: ( { "X" :: Maybe (Number) , "Y" :: Maybe (Number) } -> {"X" :: Maybe (Number) , "Y" :: Maybe (Number) } ) -> Point
+newPoint'  customize = (Point <<< customize) { "X": Nothing, "Y": Nothing }
 
 
 
@@ -2353,9 +2352,9 @@ instance encodePolygon :: Encode Polygon where encode = genericEncode options
 
 -- | <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
 newtype Pose = Pose 
-  { "Roll" :: NullOrUndefined (Degree)
-  , "Yaw" :: NullOrUndefined (Degree)
-  , "Pitch" :: NullOrUndefined (Degree)
+  { "Roll" :: Maybe (Degree)
+  , "Yaw" :: Maybe (Degree)
+  , "Pitch" :: Maybe (Degree)
   }
 derive instance newtypePose :: Newtype Pose _
 derive instance repGenericPose :: Generic Pose _
@@ -2365,12 +2364,12 @@ instance encodePose :: Encode Pose where encode = genericEncode options
 
 -- | Constructs Pose from required parameters
 newPose :: Pose
-newPose  = Pose { "Pitch": (NullOrUndefined Nothing), "Roll": (NullOrUndefined Nothing), "Yaw": (NullOrUndefined Nothing) }
+newPose  = Pose { "Pitch": Nothing, "Roll": Nothing, "Yaw": Nothing }
 
 -- | Constructs Pose's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPose' :: ( { "Roll" :: NullOrUndefined (Degree) , "Yaw" :: NullOrUndefined (Degree) , "Pitch" :: NullOrUndefined (Degree) } -> {"Roll" :: NullOrUndefined (Degree) , "Yaw" :: NullOrUndefined (Degree) , "Pitch" :: NullOrUndefined (Degree) } ) -> Pose
-newPose'  customize = (Pose <<< customize) { "Pitch": (NullOrUndefined Nothing), "Roll": (NullOrUndefined Nothing), "Yaw": (NullOrUndefined Nothing) }
+newPose' :: ( { "Roll" :: Maybe (Degree) , "Yaw" :: Maybe (Degree) , "Pitch" :: Maybe (Degree) } -> {"Roll" :: Maybe (Degree) , "Yaw" :: Maybe (Degree) , "Pitch" :: Maybe (Degree) } ) -> Pose
+newPose'  customize = (Pose <<< customize) { "Pitch": Nothing, "Roll": Nothing, "Yaw": Nothing }
 
 
 
@@ -2405,9 +2404,9 @@ newRecognizeCelebritiesRequest' _Image customize = (RecognizeCelebritiesRequest 
 
 
 newtype RecognizeCelebritiesResponse = RecognizeCelebritiesResponse 
-  { "CelebrityFaces" :: NullOrUndefined (CelebrityList)
-  , "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList)
-  , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
+  { "CelebrityFaces" :: Maybe (CelebrityList)
+  , "UnrecognizedFaces" :: Maybe (ComparedFaceList)
+  , "OrientationCorrection" :: Maybe (OrientationCorrection)
   }
 derive instance newtypeRecognizeCelebritiesResponse :: Newtype RecognizeCelebritiesResponse _
 derive instance repGenericRecognizeCelebritiesResponse :: Generic RecognizeCelebritiesResponse _
@@ -2417,12 +2416,12 @@ instance encodeRecognizeCelebritiesResponse :: Encode RecognizeCelebritiesRespon
 
 -- | Constructs RecognizeCelebritiesResponse from required parameters
 newRecognizeCelebritiesResponse :: RecognizeCelebritiesResponse
-newRecognizeCelebritiesResponse  = RecognizeCelebritiesResponse { "CelebrityFaces": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing), "UnrecognizedFaces": (NullOrUndefined Nothing) }
+newRecognizeCelebritiesResponse  = RecognizeCelebritiesResponse { "CelebrityFaces": Nothing, "OrientationCorrection": Nothing, "UnrecognizedFaces": Nothing }
 
 -- | Constructs RecognizeCelebritiesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRecognizeCelebritiesResponse' :: ( { "CelebrityFaces" :: NullOrUndefined (CelebrityList) , "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> {"CelebrityFaces" :: NullOrUndefined (CelebrityList) , "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList) , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } ) -> RecognizeCelebritiesResponse
-newRecognizeCelebritiesResponse'  customize = (RecognizeCelebritiesResponse <<< customize) { "CelebrityFaces": (NullOrUndefined Nothing), "OrientationCorrection": (NullOrUndefined Nothing), "UnrecognizedFaces": (NullOrUndefined Nothing) }
+newRecognizeCelebritiesResponse' :: ( { "CelebrityFaces" :: Maybe (CelebrityList) , "UnrecognizedFaces" :: Maybe (ComparedFaceList) , "OrientationCorrection" :: Maybe (OrientationCorrection) } -> {"CelebrityFaces" :: Maybe (CelebrityList) , "UnrecognizedFaces" :: Maybe (ComparedFaceList) , "OrientationCorrection" :: Maybe (OrientationCorrection) } ) -> RecognizeCelebritiesResponse
+newRecognizeCelebritiesResponse'  customize = (RecognizeCelebritiesResponse <<< customize) { "CelebrityFaces": Nothing, "OrientationCorrection": Nothing, "UnrecognizedFaces": Nothing }
 
 
 
@@ -2485,9 +2484,9 @@ instance encodeS3Bucket :: Encode S3Bucket where encode = genericEncode options
 
 -- | <p>Provides the S3 bucket name and object name.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
 newtype S3Object = S3Object 
-  { "Bucket" :: NullOrUndefined (S3Bucket)
-  , "Name" :: NullOrUndefined (S3ObjectName)
-  , "Version" :: NullOrUndefined (S3ObjectVersion)
+  { "Bucket" :: Maybe (S3Bucket)
+  , "Name" :: Maybe (S3ObjectName)
+  , "Version" :: Maybe (S3ObjectVersion)
   }
 derive instance newtypeS3Object :: Newtype S3Object _
 derive instance repGenericS3Object :: Generic S3Object _
@@ -2497,12 +2496,12 @@ instance encodeS3Object :: Encode S3Object where encode = genericEncode options
 
 -- | Constructs S3Object from required parameters
 newS3Object :: S3Object
-newS3Object  = S3Object { "Bucket": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Version": (NullOrUndefined Nothing) }
+newS3Object  = S3Object { "Bucket": Nothing, "Name": Nothing, "Version": Nothing }
 
 -- | Constructs S3Object's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3Object' :: ( { "Bucket" :: NullOrUndefined (S3Bucket) , "Name" :: NullOrUndefined (S3ObjectName) , "Version" :: NullOrUndefined (S3ObjectVersion) } -> {"Bucket" :: NullOrUndefined (S3Bucket) , "Name" :: NullOrUndefined (S3ObjectName) , "Version" :: NullOrUndefined (S3ObjectVersion) } ) -> S3Object
-newS3Object'  customize = (S3Object <<< customize) { "Bucket": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Version": (NullOrUndefined Nothing) }
+newS3Object' :: ( { "Bucket" :: Maybe (S3Bucket) , "Name" :: Maybe (S3ObjectName) , "Version" :: Maybe (S3ObjectVersion) } -> {"Bucket" :: Maybe (S3Bucket) , "Name" :: Maybe (S3ObjectName) , "Version" :: Maybe (S3ObjectVersion) } ) -> S3Object
+newS3Object'  customize = (S3Object <<< customize) { "Bucket": Nothing, "Name": Nothing, "Version": Nothing }
 
 
 
@@ -2536,8 +2535,8 @@ instance encodeSNSTopicArn :: Encode SNSTopicArn where encode = genericEncode op
 newtype SearchFacesByImageRequest = SearchFacesByImageRequest 
   { "CollectionId" :: (CollectionId)
   , "Image" :: (Image)
-  , "MaxFaces" :: NullOrUndefined (MaxFaces)
-  , "FaceMatchThreshold" :: NullOrUndefined (Percent)
+  , "MaxFaces" :: Maybe (MaxFaces)
+  , "FaceMatchThreshold" :: Maybe (Percent)
   }
 derive instance newtypeSearchFacesByImageRequest :: Newtype SearchFacesByImageRequest _
 derive instance repGenericSearchFacesByImageRequest :: Generic SearchFacesByImageRequest _
@@ -2547,20 +2546,20 @@ instance encodeSearchFacesByImageRequest :: Encode SearchFacesByImageRequest whe
 
 -- | Constructs SearchFacesByImageRequest from required parameters
 newSearchFacesByImageRequest :: CollectionId -> Image -> SearchFacesByImageRequest
-newSearchFacesByImageRequest _CollectionId _Image = SearchFacesByImageRequest { "CollectionId": _CollectionId, "Image": _Image, "FaceMatchThreshold": (NullOrUndefined Nothing), "MaxFaces": (NullOrUndefined Nothing) }
+newSearchFacesByImageRequest _CollectionId _Image = SearchFacesByImageRequest { "CollectionId": _CollectionId, "Image": _Image, "FaceMatchThreshold": Nothing, "MaxFaces": Nothing }
 
 -- | Constructs SearchFacesByImageRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchFacesByImageRequest' :: CollectionId -> Image -> ( { "CollectionId" :: (CollectionId) , "Image" :: (Image) , "MaxFaces" :: NullOrUndefined (MaxFaces) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> {"CollectionId" :: (CollectionId) , "Image" :: (Image) , "MaxFaces" :: NullOrUndefined (MaxFaces) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } ) -> SearchFacesByImageRequest
-newSearchFacesByImageRequest' _CollectionId _Image customize = (SearchFacesByImageRequest <<< customize) { "CollectionId": _CollectionId, "Image": _Image, "FaceMatchThreshold": (NullOrUndefined Nothing), "MaxFaces": (NullOrUndefined Nothing) }
+newSearchFacesByImageRequest' :: CollectionId -> Image -> ( { "CollectionId" :: (CollectionId) , "Image" :: (Image) , "MaxFaces" :: Maybe (MaxFaces) , "FaceMatchThreshold" :: Maybe (Percent) } -> {"CollectionId" :: (CollectionId) , "Image" :: (Image) , "MaxFaces" :: Maybe (MaxFaces) , "FaceMatchThreshold" :: Maybe (Percent) } ) -> SearchFacesByImageRequest
+newSearchFacesByImageRequest' _CollectionId _Image customize = (SearchFacesByImageRequest <<< customize) { "CollectionId": _CollectionId, "Image": _Image, "FaceMatchThreshold": Nothing, "MaxFaces": Nothing }
 
 
 
 newtype SearchFacesByImageResponse = SearchFacesByImageResponse 
-  { "SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox)
-  , "SearchedFaceConfidence" :: NullOrUndefined (Percent)
-  , "FaceMatches" :: NullOrUndefined (FaceMatchList)
-  , "FaceModelVersion" :: NullOrUndefined (String)
+  { "SearchedFaceBoundingBox" :: Maybe (BoundingBox)
+  , "SearchedFaceConfidence" :: Maybe (Percent)
+  , "FaceMatches" :: Maybe (FaceMatchList)
+  , "FaceModelVersion" :: Maybe (String)
   }
 derive instance newtypeSearchFacesByImageResponse :: Newtype SearchFacesByImageResponse _
 derive instance repGenericSearchFacesByImageResponse :: Generic SearchFacesByImageResponse _
@@ -2570,20 +2569,20 @@ instance encodeSearchFacesByImageResponse :: Encode SearchFacesByImageResponse w
 
 -- | Constructs SearchFacesByImageResponse from required parameters
 newSearchFacesByImageResponse :: SearchFacesByImageResponse
-newSearchFacesByImageResponse  = SearchFacesByImageResponse { "FaceMatches": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "SearchedFaceBoundingBox": (NullOrUndefined Nothing), "SearchedFaceConfidence": (NullOrUndefined Nothing) }
+newSearchFacesByImageResponse  = SearchFacesByImageResponse { "FaceMatches": Nothing, "FaceModelVersion": Nothing, "SearchedFaceBoundingBox": Nothing, "SearchedFaceConfidence": Nothing }
 
 -- | Constructs SearchFacesByImageResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchFacesByImageResponse' :: ( { "SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox) , "SearchedFaceConfidence" :: NullOrUndefined (Percent) , "FaceMatches" :: NullOrUndefined (FaceMatchList) , "FaceModelVersion" :: NullOrUndefined (String) } -> {"SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox) , "SearchedFaceConfidence" :: NullOrUndefined (Percent) , "FaceMatches" :: NullOrUndefined (FaceMatchList) , "FaceModelVersion" :: NullOrUndefined (String) } ) -> SearchFacesByImageResponse
-newSearchFacesByImageResponse'  customize = (SearchFacesByImageResponse <<< customize) { "FaceMatches": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "SearchedFaceBoundingBox": (NullOrUndefined Nothing), "SearchedFaceConfidence": (NullOrUndefined Nothing) }
+newSearchFacesByImageResponse' :: ( { "SearchedFaceBoundingBox" :: Maybe (BoundingBox) , "SearchedFaceConfidence" :: Maybe (Percent) , "FaceMatches" :: Maybe (FaceMatchList) , "FaceModelVersion" :: Maybe (String) } -> {"SearchedFaceBoundingBox" :: Maybe (BoundingBox) , "SearchedFaceConfidence" :: Maybe (Percent) , "FaceMatches" :: Maybe (FaceMatchList) , "FaceModelVersion" :: Maybe (String) } ) -> SearchFacesByImageResponse
+newSearchFacesByImageResponse'  customize = (SearchFacesByImageResponse <<< customize) { "FaceMatches": Nothing, "FaceModelVersion": Nothing, "SearchedFaceBoundingBox": Nothing, "SearchedFaceConfidence": Nothing }
 
 
 
 newtype SearchFacesRequest = SearchFacesRequest 
   { "CollectionId" :: (CollectionId)
   , "FaceId" :: (FaceId)
-  , "MaxFaces" :: NullOrUndefined (MaxFaces)
-  , "FaceMatchThreshold" :: NullOrUndefined (Percent)
+  , "MaxFaces" :: Maybe (MaxFaces)
+  , "FaceMatchThreshold" :: Maybe (Percent)
   }
 derive instance newtypeSearchFacesRequest :: Newtype SearchFacesRequest _
 derive instance repGenericSearchFacesRequest :: Generic SearchFacesRequest _
@@ -2593,19 +2592,19 @@ instance encodeSearchFacesRequest :: Encode SearchFacesRequest where encode = ge
 
 -- | Constructs SearchFacesRequest from required parameters
 newSearchFacesRequest :: CollectionId -> FaceId -> SearchFacesRequest
-newSearchFacesRequest _CollectionId _FaceId = SearchFacesRequest { "CollectionId": _CollectionId, "FaceId": _FaceId, "FaceMatchThreshold": (NullOrUndefined Nothing), "MaxFaces": (NullOrUndefined Nothing) }
+newSearchFacesRequest _CollectionId _FaceId = SearchFacesRequest { "CollectionId": _CollectionId, "FaceId": _FaceId, "FaceMatchThreshold": Nothing, "MaxFaces": Nothing }
 
 -- | Constructs SearchFacesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchFacesRequest' :: CollectionId -> FaceId -> ( { "CollectionId" :: (CollectionId) , "FaceId" :: (FaceId) , "MaxFaces" :: NullOrUndefined (MaxFaces) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> {"CollectionId" :: (CollectionId) , "FaceId" :: (FaceId) , "MaxFaces" :: NullOrUndefined (MaxFaces) , "FaceMatchThreshold" :: NullOrUndefined (Percent) } ) -> SearchFacesRequest
-newSearchFacesRequest' _CollectionId _FaceId customize = (SearchFacesRequest <<< customize) { "CollectionId": _CollectionId, "FaceId": _FaceId, "FaceMatchThreshold": (NullOrUndefined Nothing), "MaxFaces": (NullOrUndefined Nothing) }
+newSearchFacesRequest' :: CollectionId -> FaceId -> ( { "CollectionId" :: (CollectionId) , "FaceId" :: (FaceId) , "MaxFaces" :: Maybe (MaxFaces) , "FaceMatchThreshold" :: Maybe (Percent) } -> {"CollectionId" :: (CollectionId) , "FaceId" :: (FaceId) , "MaxFaces" :: Maybe (MaxFaces) , "FaceMatchThreshold" :: Maybe (Percent) } ) -> SearchFacesRequest
+newSearchFacesRequest' _CollectionId _FaceId customize = (SearchFacesRequest <<< customize) { "CollectionId": _CollectionId, "FaceId": _FaceId, "FaceMatchThreshold": Nothing, "MaxFaces": Nothing }
 
 
 
 newtype SearchFacesResponse = SearchFacesResponse 
-  { "SearchedFaceId" :: NullOrUndefined (FaceId)
-  , "FaceMatches" :: NullOrUndefined (FaceMatchList)
-  , "FaceModelVersion" :: NullOrUndefined (String)
+  { "SearchedFaceId" :: Maybe (FaceId)
+  , "FaceMatches" :: Maybe (FaceMatchList)
+  , "FaceModelVersion" :: Maybe (String)
   }
 derive instance newtypeSearchFacesResponse :: Newtype SearchFacesResponse _
 derive instance repGenericSearchFacesResponse :: Generic SearchFacesResponse _
@@ -2615,19 +2614,19 @@ instance encodeSearchFacesResponse :: Encode SearchFacesResponse where encode = 
 
 -- | Constructs SearchFacesResponse from required parameters
 newSearchFacesResponse :: SearchFacesResponse
-newSearchFacesResponse  = SearchFacesResponse { "FaceMatches": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "SearchedFaceId": (NullOrUndefined Nothing) }
+newSearchFacesResponse  = SearchFacesResponse { "FaceMatches": Nothing, "FaceModelVersion": Nothing, "SearchedFaceId": Nothing }
 
 -- | Constructs SearchFacesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSearchFacesResponse' :: ( { "SearchedFaceId" :: NullOrUndefined (FaceId) , "FaceMatches" :: NullOrUndefined (FaceMatchList) , "FaceModelVersion" :: NullOrUndefined (String) } -> {"SearchedFaceId" :: NullOrUndefined (FaceId) , "FaceMatches" :: NullOrUndefined (FaceMatchList) , "FaceModelVersion" :: NullOrUndefined (String) } ) -> SearchFacesResponse
-newSearchFacesResponse'  customize = (SearchFacesResponse <<< customize) { "FaceMatches": (NullOrUndefined Nothing), "FaceModelVersion": (NullOrUndefined Nothing), "SearchedFaceId": (NullOrUndefined Nothing) }
+newSearchFacesResponse' :: ( { "SearchedFaceId" :: Maybe (FaceId) , "FaceMatches" :: Maybe (FaceMatchList) , "FaceModelVersion" :: Maybe (String) } -> {"SearchedFaceId" :: Maybe (FaceId) , "FaceMatches" :: Maybe (FaceMatchList) , "FaceModelVersion" :: Maybe (String) } ) -> SearchFacesResponse
+newSearchFacesResponse'  customize = (SearchFacesResponse <<< customize) { "FaceMatches": Nothing, "FaceModelVersion": Nothing, "SearchedFaceId": Nothing }
 
 
 
 -- | <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
 newtype Smile = Smile 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeSmile :: Newtype Smile _
 derive instance repGenericSmile :: Generic Smile _
@@ -2637,20 +2636,20 @@ instance encodeSmile :: Encode Smile where encode = genericEncode options
 
 -- | Constructs Smile from required parameters
 newSmile :: Smile
-newSmile  = Smile { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newSmile  = Smile { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Smile's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSmile' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> Smile
-newSmile'  customize = (Smile <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newSmile' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> Smile
+newSmile'  customize = (Smile <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 newtype StartCelebrityRecognitionRequest = StartCelebrityRecognitionRequest 
   { "Video" :: (Video)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartCelebrityRecognitionRequest :: Newtype StartCelebrityRecognitionRequest _
 derive instance repGenericStartCelebrityRecognitionRequest :: Generic StartCelebrityRecognitionRequest _
@@ -2660,17 +2659,17 @@ instance encodeStartCelebrityRecognitionRequest :: Encode StartCelebrityRecognit
 
 -- | Constructs StartCelebrityRecognitionRequest from required parameters
 newStartCelebrityRecognitionRequest :: Video -> StartCelebrityRecognitionRequest
-newStartCelebrityRecognitionRequest _Video = StartCelebrityRecognitionRequest { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartCelebrityRecognitionRequest _Video = StartCelebrityRecognitionRequest { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartCelebrityRecognitionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartCelebrityRecognitionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartCelebrityRecognitionRequest
-newStartCelebrityRecognitionRequest' _Video customize = (StartCelebrityRecognitionRequest <<< customize) { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartCelebrityRecognitionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } ) -> StartCelebrityRecognitionRequest
+newStartCelebrityRecognitionRequest' _Video customize = (StartCelebrityRecognitionRequest <<< customize) { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartCelebrityRecognitionResponse = StartCelebrityRecognitionResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartCelebrityRecognitionResponse :: Newtype StartCelebrityRecognitionResponse _
 derive instance repGenericStartCelebrityRecognitionResponse :: Generic StartCelebrityRecognitionResponse _
@@ -2680,21 +2679,21 @@ instance encodeStartCelebrityRecognitionResponse :: Encode StartCelebrityRecogni
 
 -- | Constructs StartCelebrityRecognitionResponse from required parameters
 newStartCelebrityRecognitionResponse :: StartCelebrityRecognitionResponse
-newStartCelebrityRecognitionResponse  = StartCelebrityRecognitionResponse { "JobId": (NullOrUndefined Nothing) }
+newStartCelebrityRecognitionResponse  = StartCelebrityRecognitionResponse { "JobId": Nothing }
 
 -- | Constructs StartCelebrityRecognitionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartCelebrityRecognitionResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartCelebrityRecognitionResponse
-newStartCelebrityRecognitionResponse'  customize = (StartCelebrityRecognitionResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartCelebrityRecognitionResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartCelebrityRecognitionResponse
+newStartCelebrityRecognitionResponse'  customize = (StartCelebrityRecognitionResponse <<< customize) { "JobId": Nothing }
 
 
 
 newtype StartContentModerationRequest = StartContentModerationRequest 
   { "Video" :: (Video)
-  , "MinConfidence" :: NullOrUndefined (Percent)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "MinConfidence" :: Maybe (Percent)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartContentModerationRequest :: Newtype StartContentModerationRequest _
 derive instance repGenericStartContentModerationRequest :: Generic StartContentModerationRequest _
@@ -2704,17 +2703,17 @@ instance encodeStartContentModerationRequest :: Encode StartContentModerationReq
 
 -- | Constructs StartContentModerationRequest from required parameters
 newStartContentModerationRequest :: Video -> StartContentModerationRequest
-newStartContentModerationRequest _Video = StartContentModerationRequest { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartContentModerationRequest _Video = StartContentModerationRequest { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "MinConfidence": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartContentModerationRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartContentModerationRequest' :: Video -> ( { "Video" :: (Video) , "MinConfidence" :: NullOrUndefined (Percent) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "MinConfidence" :: NullOrUndefined (Percent) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartContentModerationRequest
-newStartContentModerationRequest' _Video customize = (StartContentModerationRequest <<< customize) { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartContentModerationRequest' :: Video -> ( { "Video" :: (Video) , "MinConfidence" :: Maybe (Percent) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "MinConfidence" :: Maybe (Percent) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } ) -> StartContentModerationRequest
+newStartContentModerationRequest' _Video customize = (StartContentModerationRequest <<< customize) { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "MinConfidence": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartContentModerationResponse = StartContentModerationResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartContentModerationResponse :: Newtype StartContentModerationResponse _
 derive instance repGenericStartContentModerationResponse :: Generic StartContentModerationResponse _
@@ -2724,21 +2723,21 @@ instance encodeStartContentModerationResponse :: Encode StartContentModerationRe
 
 -- | Constructs StartContentModerationResponse from required parameters
 newStartContentModerationResponse :: StartContentModerationResponse
-newStartContentModerationResponse  = StartContentModerationResponse { "JobId": (NullOrUndefined Nothing) }
+newStartContentModerationResponse  = StartContentModerationResponse { "JobId": Nothing }
 
 -- | Constructs StartContentModerationResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartContentModerationResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartContentModerationResponse
-newStartContentModerationResponse'  customize = (StartContentModerationResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartContentModerationResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartContentModerationResponse
+newStartContentModerationResponse'  customize = (StartContentModerationResponse <<< customize) { "JobId": Nothing }
 
 
 
 newtype StartFaceDetectionRequest = StartFaceDetectionRequest 
   { "Video" :: (Video)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "FaceAttributes" :: NullOrUndefined (FaceAttributes)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "FaceAttributes" :: Maybe (FaceAttributes)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartFaceDetectionRequest :: Newtype StartFaceDetectionRequest _
 derive instance repGenericStartFaceDetectionRequest :: Generic StartFaceDetectionRequest _
@@ -2748,17 +2747,17 @@ instance encodeStartFaceDetectionRequest :: Encode StartFaceDetectionRequest whe
 
 -- | Constructs StartFaceDetectionRequest from required parameters
 newStartFaceDetectionRequest :: Video -> StartFaceDetectionRequest
-newStartFaceDetectionRequest _Video = StartFaceDetectionRequest { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "FaceAttributes": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartFaceDetectionRequest _Video = StartFaceDetectionRequest { "Video": _Video, "ClientRequestToken": Nothing, "FaceAttributes": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartFaceDetectionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartFaceDetectionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "FaceAttributes" :: NullOrUndefined (FaceAttributes) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "FaceAttributes" :: NullOrUndefined (FaceAttributes) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartFaceDetectionRequest
-newStartFaceDetectionRequest' _Video customize = (StartFaceDetectionRequest <<< customize) { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "FaceAttributes": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartFaceDetectionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "FaceAttributes" :: Maybe (FaceAttributes) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "FaceAttributes" :: Maybe (FaceAttributes) , "JobTag" :: Maybe (JobTag) } ) -> StartFaceDetectionRequest
+newStartFaceDetectionRequest' _Video customize = (StartFaceDetectionRequest <<< customize) { "Video": _Video, "ClientRequestToken": Nothing, "FaceAttributes": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartFaceDetectionResponse = StartFaceDetectionResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartFaceDetectionResponse :: Newtype StartFaceDetectionResponse _
 derive instance repGenericStartFaceDetectionResponse :: Generic StartFaceDetectionResponse _
@@ -2768,22 +2767,22 @@ instance encodeStartFaceDetectionResponse :: Encode StartFaceDetectionResponse w
 
 -- | Constructs StartFaceDetectionResponse from required parameters
 newStartFaceDetectionResponse :: StartFaceDetectionResponse
-newStartFaceDetectionResponse  = StartFaceDetectionResponse { "JobId": (NullOrUndefined Nothing) }
+newStartFaceDetectionResponse  = StartFaceDetectionResponse { "JobId": Nothing }
 
 -- | Constructs StartFaceDetectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartFaceDetectionResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartFaceDetectionResponse
-newStartFaceDetectionResponse'  customize = (StartFaceDetectionResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartFaceDetectionResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartFaceDetectionResponse
+newStartFaceDetectionResponse'  customize = (StartFaceDetectionResponse <<< customize) { "JobId": Nothing }
 
 
 
 newtype StartFaceSearchRequest = StartFaceSearchRequest 
   { "Video" :: (Video)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "FaceMatchThreshold" :: NullOrUndefined (Percent)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "FaceMatchThreshold" :: Maybe (Percent)
   , "CollectionId" :: (CollectionId)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartFaceSearchRequest :: Newtype StartFaceSearchRequest _
 derive instance repGenericStartFaceSearchRequest :: Generic StartFaceSearchRequest _
@@ -2793,17 +2792,17 @@ instance encodeStartFaceSearchRequest :: Encode StartFaceSearchRequest where enc
 
 -- | Constructs StartFaceSearchRequest from required parameters
 newStartFaceSearchRequest :: CollectionId -> Video -> StartFaceSearchRequest
-newStartFaceSearchRequest _CollectionId _Video = StartFaceSearchRequest { "CollectionId": _CollectionId, "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "FaceMatchThreshold": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartFaceSearchRequest _CollectionId _Video = StartFaceSearchRequest { "CollectionId": _CollectionId, "Video": _Video, "ClientRequestToken": Nothing, "FaceMatchThreshold": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartFaceSearchRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartFaceSearchRequest' :: CollectionId -> Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "FaceMatchThreshold" :: NullOrUndefined (Percent) , "CollectionId" :: (CollectionId) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "FaceMatchThreshold" :: NullOrUndefined (Percent) , "CollectionId" :: (CollectionId) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartFaceSearchRequest
-newStartFaceSearchRequest' _CollectionId _Video customize = (StartFaceSearchRequest <<< customize) { "CollectionId": _CollectionId, "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "FaceMatchThreshold": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartFaceSearchRequest' :: CollectionId -> Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "FaceMatchThreshold" :: Maybe (Percent) , "CollectionId" :: (CollectionId) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "FaceMatchThreshold" :: Maybe (Percent) , "CollectionId" :: (CollectionId) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } ) -> StartFaceSearchRequest
+newStartFaceSearchRequest' _CollectionId _Video customize = (StartFaceSearchRequest <<< customize) { "CollectionId": _CollectionId, "Video": _Video, "ClientRequestToken": Nothing, "FaceMatchThreshold": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartFaceSearchResponse = StartFaceSearchResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartFaceSearchResponse :: Newtype StartFaceSearchResponse _
 derive instance repGenericStartFaceSearchResponse :: Generic StartFaceSearchResponse _
@@ -2813,21 +2812,21 @@ instance encodeStartFaceSearchResponse :: Encode StartFaceSearchResponse where e
 
 -- | Constructs StartFaceSearchResponse from required parameters
 newStartFaceSearchResponse :: StartFaceSearchResponse
-newStartFaceSearchResponse  = StartFaceSearchResponse { "JobId": (NullOrUndefined Nothing) }
+newStartFaceSearchResponse  = StartFaceSearchResponse { "JobId": Nothing }
 
 -- | Constructs StartFaceSearchResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartFaceSearchResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartFaceSearchResponse
-newStartFaceSearchResponse'  customize = (StartFaceSearchResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartFaceSearchResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartFaceSearchResponse
+newStartFaceSearchResponse'  customize = (StartFaceSearchResponse <<< customize) { "JobId": Nothing }
 
 
 
 newtype StartLabelDetectionRequest = StartLabelDetectionRequest 
   { "Video" :: (Video)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "MinConfidence" :: NullOrUndefined (Percent)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "MinConfidence" :: Maybe (Percent)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartLabelDetectionRequest :: Newtype StartLabelDetectionRequest _
 derive instance repGenericStartLabelDetectionRequest :: Generic StartLabelDetectionRequest _
@@ -2837,17 +2836,17 @@ instance encodeStartLabelDetectionRequest :: Encode StartLabelDetectionRequest w
 
 -- | Constructs StartLabelDetectionRequest from required parameters
 newStartLabelDetectionRequest :: Video -> StartLabelDetectionRequest
-newStartLabelDetectionRequest _Video = StartLabelDetectionRequest { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartLabelDetectionRequest _Video = StartLabelDetectionRequest { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "MinConfidence": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartLabelDetectionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartLabelDetectionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "MinConfidence" :: NullOrUndefined (Percent) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "MinConfidence" :: NullOrUndefined (Percent) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartLabelDetectionRequest
-newStartLabelDetectionRequest' _Video customize = (StartLabelDetectionRequest <<< customize) { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "MinConfidence": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartLabelDetectionRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "MinConfidence" :: Maybe (Percent) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "MinConfidence" :: Maybe (Percent) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } ) -> StartLabelDetectionRequest
+newStartLabelDetectionRequest' _Video customize = (StartLabelDetectionRequest <<< customize) { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "MinConfidence": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartLabelDetectionResponse = StartLabelDetectionResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartLabelDetectionResponse :: Newtype StartLabelDetectionResponse _
 derive instance repGenericStartLabelDetectionResponse :: Generic StartLabelDetectionResponse _
@@ -2857,20 +2856,20 @@ instance encodeStartLabelDetectionResponse :: Encode StartLabelDetectionResponse
 
 -- | Constructs StartLabelDetectionResponse from required parameters
 newStartLabelDetectionResponse :: StartLabelDetectionResponse
-newStartLabelDetectionResponse  = StartLabelDetectionResponse { "JobId": (NullOrUndefined Nothing) }
+newStartLabelDetectionResponse  = StartLabelDetectionResponse { "JobId": Nothing }
 
 -- | Constructs StartLabelDetectionResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartLabelDetectionResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartLabelDetectionResponse
-newStartLabelDetectionResponse'  customize = (StartLabelDetectionResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartLabelDetectionResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartLabelDetectionResponse
+newStartLabelDetectionResponse'  customize = (StartLabelDetectionResponse <<< customize) { "JobId": Nothing }
 
 
 
 newtype StartPersonTrackingRequest = StartPersonTrackingRequest 
   { "Video" :: (Video)
-  , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
-  , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
-  , "JobTag" :: NullOrUndefined (JobTag)
+  , "ClientRequestToken" :: Maybe (ClientRequestToken)
+  , "NotificationChannel" :: Maybe (NotificationChannel)
+  , "JobTag" :: Maybe (JobTag)
   }
 derive instance newtypeStartPersonTrackingRequest :: Newtype StartPersonTrackingRequest _
 derive instance repGenericStartPersonTrackingRequest :: Generic StartPersonTrackingRequest _
@@ -2880,17 +2879,17 @@ instance encodeStartPersonTrackingRequest :: Encode StartPersonTrackingRequest w
 
 -- | Constructs StartPersonTrackingRequest from required parameters
 newStartPersonTrackingRequest :: Video -> StartPersonTrackingRequest
-newStartPersonTrackingRequest _Video = StartPersonTrackingRequest { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartPersonTrackingRequest _Video = StartPersonTrackingRequest { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 -- | Constructs StartPersonTrackingRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartPersonTrackingRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken) , "NotificationChannel" :: NullOrUndefined (NotificationChannel) , "JobTag" :: NullOrUndefined (JobTag) } ) -> StartPersonTrackingRequest
-newStartPersonTrackingRequest' _Video customize = (StartPersonTrackingRequest <<< customize) { "Video": _Video, "ClientRequestToken": (NullOrUndefined Nothing), "JobTag": (NullOrUndefined Nothing), "NotificationChannel": (NullOrUndefined Nothing) }
+newStartPersonTrackingRequest' :: Video -> ( { "Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } -> {"Video" :: (Video) , "ClientRequestToken" :: Maybe (ClientRequestToken) , "NotificationChannel" :: Maybe (NotificationChannel) , "JobTag" :: Maybe (JobTag) } ) -> StartPersonTrackingRequest
+newStartPersonTrackingRequest' _Video customize = (StartPersonTrackingRequest <<< customize) { "Video": _Video, "ClientRequestToken": Nothing, "JobTag": Nothing, "NotificationChannel": Nothing }
 
 
 
 newtype StartPersonTrackingResponse = StartPersonTrackingResponse 
-  { "JobId" :: NullOrUndefined (JobId)
+  { "JobId" :: Maybe (JobId)
   }
 derive instance newtypeStartPersonTrackingResponse :: Newtype StartPersonTrackingResponse _
 derive instance repGenericStartPersonTrackingResponse :: Generic StartPersonTrackingResponse _
@@ -2900,12 +2899,12 @@ instance encodeStartPersonTrackingResponse :: Encode StartPersonTrackingResponse
 
 -- | Constructs StartPersonTrackingResponse from required parameters
 newStartPersonTrackingResponse :: StartPersonTrackingResponse
-newStartPersonTrackingResponse  = StartPersonTrackingResponse { "JobId": (NullOrUndefined Nothing) }
+newStartPersonTrackingResponse  = StartPersonTrackingResponse { "JobId": Nothing }
 
 -- | Constructs StartPersonTrackingResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartPersonTrackingResponse' :: ( { "JobId" :: NullOrUndefined (JobId) } -> {"JobId" :: NullOrUndefined (JobId) } ) -> StartPersonTrackingResponse
-newStartPersonTrackingResponse'  customize = (StartPersonTrackingResponse <<< customize) { "JobId": (NullOrUndefined Nothing) }
+newStartPersonTrackingResponse' :: ( { "JobId" :: Maybe (JobId) } -> {"JobId" :: Maybe (JobId) } ) -> StartPersonTrackingResponse
+newStartPersonTrackingResponse'  customize = (StartPersonTrackingResponse <<< customize) { "JobId": Nothing }
 
 
 
@@ -2978,8 +2977,8 @@ instance encodeStopStreamProcessorResponse :: Encode StopStreamProcessorResponse
 
 -- | <p>An object that recognizes faces in a streaming video. An Amazon Rekognition stream processor is created by a call to . The request parameters for <code>CreateStreamProcessor</code> describe the Kinesis video stream source for the streaming video, face recognition parameters, and where to stream the analysis resullts. </p>
 newtype StreamProcessor = StreamProcessor 
-  { "Name" :: NullOrUndefined (StreamProcessorName)
-  , "Status" :: NullOrUndefined (StreamProcessorStatus)
+  { "Name" :: Maybe (StreamProcessorName)
+  , "Status" :: Maybe (StreamProcessorStatus)
   }
 derive instance newtypeStreamProcessor :: Newtype StreamProcessor _
 derive instance repGenericStreamProcessor :: Generic StreamProcessor _
@@ -2989,12 +2988,12 @@ instance encodeStreamProcessor :: Encode StreamProcessor where encode = genericE
 
 -- | Constructs StreamProcessor from required parameters
 newStreamProcessor :: StreamProcessor
-newStreamProcessor  = StreamProcessor { "Name": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStreamProcessor  = StreamProcessor { "Name": Nothing, "Status": Nothing }
 
 -- | Constructs StreamProcessor's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStreamProcessor' :: ( { "Name" :: NullOrUndefined (StreamProcessorName) , "Status" :: NullOrUndefined (StreamProcessorStatus) } -> {"Name" :: NullOrUndefined (StreamProcessorName) , "Status" :: NullOrUndefined (StreamProcessorStatus) } ) -> StreamProcessor
-newStreamProcessor'  customize = (StreamProcessor <<< customize) { "Name": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newStreamProcessor' :: ( { "Name" :: Maybe (StreamProcessorName) , "Status" :: Maybe (StreamProcessorStatus) } -> {"Name" :: Maybe (StreamProcessorName) , "Status" :: Maybe (StreamProcessorStatus) } ) -> StreamProcessor
+newStreamProcessor'  customize = (StreamProcessor <<< customize) { "Name": Nothing, "Status": Nothing }
 
 
 
@@ -3009,7 +3008,7 @@ instance encodeStreamProcessorArn :: Encode StreamProcessorArn where encode = ge
 
 -- | <p>Information about the source streaming video. </p>
 newtype StreamProcessorInput = StreamProcessorInput 
-  { "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream)
+  { "KinesisVideoStream" :: Maybe (KinesisVideoStream)
   }
 derive instance newtypeStreamProcessorInput :: Newtype StreamProcessorInput _
 derive instance repGenericStreamProcessorInput :: Generic StreamProcessorInput _
@@ -3019,12 +3018,12 @@ instance encodeStreamProcessorInput :: Encode StreamProcessorInput where encode 
 
 -- | Constructs StreamProcessorInput from required parameters
 newStreamProcessorInput :: StreamProcessorInput
-newStreamProcessorInput  = StreamProcessorInput { "KinesisVideoStream": (NullOrUndefined Nothing) }
+newStreamProcessorInput  = StreamProcessorInput { "KinesisVideoStream": Nothing }
 
 -- | Constructs StreamProcessorInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStreamProcessorInput' :: ( { "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream) } -> {"KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream) } ) -> StreamProcessorInput
-newStreamProcessorInput'  customize = (StreamProcessorInput <<< customize) { "KinesisVideoStream": (NullOrUndefined Nothing) }
+newStreamProcessorInput' :: ( { "KinesisVideoStream" :: Maybe (KinesisVideoStream) } -> {"KinesisVideoStream" :: Maybe (KinesisVideoStream) } ) -> StreamProcessorInput
+newStreamProcessorInput'  customize = (StreamProcessorInput <<< customize) { "KinesisVideoStream": Nothing }
 
 
 
@@ -3048,7 +3047,7 @@ instance encodeStreamProcessorName :: Encode StreamProcessorName where encode = 
 
 -- | <p>Information about the Amazon Kinesis Data Streams stream to which a Rekognition Video stream processor streams the results of a video analysis. For more information, see .</p>
 newtype StreamProcessorOutput = StreamProcessorOutput 
-  { "KinesisDataStream" :: NullOrUndefined (KinesisDataStream)
+  { "KinesisDataStream" :: Maybe (KinesisDataStream)
   }
 derive instance newtypeStreamProcessorOutput :: Newtype StreamProcessorOutput _
 derive instance repGenericStreamProcessorOutput :: Generic StreamProcessorOutput _
@@ -3058,18 +3057,18 @@ instance encodeStreamProcessorOutput :: Encode StreamProcessorOutput where encod
 
 -- | Constructs StreamProcessorOutput from required parameters
 newStreamProcessorOutput :: StreamProcessorOutput
-newStreamProcessorOutput  = StreamProcessorOutput { "KinesisDataStream": (NullOrUndefined Nothing) }
+newStreamProcessorOutput  = StreamProcessorOutput { "KinesisDataStream": Nothing }
 
 -- | Constructs StreamProcessorOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStreamProcessorOutput' :: ( { "KinesisDataStream" :: NullOrUndefined (KinesisDataStream) } -> {"KinesisDataStream" :: NullOrUndefined (KinesisDataStream) } ) -> StreamProcessorOutput
-newStreamProcessorOutput'  customize = (StreamProcessorOutput <<< customize) { "KinesisDataStream": (NullOrUndefined Nothing) }
+newStreamProcessorOutput' :: ( { "KinesisDataStream" :: Maybe (KinesisDataStream) } -> {"KinesisDataStream" :: Maybe (KinesisDataStream) } ) -> StreamProcessorOutput
+newStreamProcessorOutput'  customize = (StreamProcessorOutput <<< customize) { "KinesisDataStream": Nothing }
 
 
 
 -- | <p>Input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor.</p>
 newtype StreamProcessorSettings = StreamProcessorSettings 
-  { "FaceSearch" :: NullOrUndefined (FaceSearchSettings)
+  { "FaceSearch" :: Maybe (FaceSearchSettings)
   }
 derive instance newtypeStreamProcessorSettings :: Newtype StreamProcessorSettings _
 derive instance repGenericStreamProcessorSettings :: Generic StreamProcessorSettings _
@@ -3079,12 +3078,12 @@ instance encodeStreamProcessorSettings :: Encode StreamProcessorSettings where e
 
 -- | Constructs StreamProcessorSettings from required parameters
 newStreamProcessorSettings :: StreamProcessorSettings
-newStreamProcessorSettings  = StreamProcessorSettings { "FaceSearch": (NullOrUndefined Nothing) }
+newStreamProcessorSettings  = StreamProcessorSettings { "FaceSearch": Nothing }
 
 -- | Constructs StreamProcessorSettings's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStreamProcessorSettings' :: ( { "FaceSearch" :: NullOrUndefined (FaceSearchSettings) } -> {"FaceSearch" :: NullOrUndefined (FaceSearchSettings) } ) -> StreamProcessorSettings
-newStreamProcessorSettings'  customize = (StreamProcessorSettings <<< customize) { "FaceSearch": (NullOrUndefined Nothing) }
+newStreamProcessorSettings' :: ( { "FaceSearch" :: Maybe (FaceSearchSettings) } -> {"FaceSearch" :: Maybe (FaceSearchSettings) } ) -> StreamProcessorSettings
+newStreamProcessorSettings'  customize = (StreamProcessorSettings <<< customize) { "FaceSearch": Nothing }
 
 
 
@@ -3099,8 +3098,8 @@ instance encodeStreamProcessorStatus :: Encode StreamProcessorStatus where encod
 
 -- | <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
 newtype Sunglasses = Sunglasses 
-  { "Value" :: NullOrUndefined (Boolean)
-  , "Confidence" :: NullOrUndefined (Percent)
+  { "Value" :: Maybe (Boolean)
+  , "Confidence" :: Maybe (Percent)
   }
 derive instance newtypeSunglasses :: Newtype Sunglasses _
 derive instance repGenericSunglasses :: Generic Sunglasses _
@@ -3110,23 +3109,23 @@ instance encodeSunglasses :: Encode Sunglasses where encode = genericEncode opti
 
 -- | Constructs Sunglasses from required parameters
 newSunglasses :: Sunglasses
-newSunglasses  = Sunglasses { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newSunglasses  = Sunglasses { "Confidence": Nothing, "Value": Nothing }
 
 -- | Constructs Sunglasses's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSunglasses' :: ( { "Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } -> {"Value" :: NullOrUndefined (Boolean) , "Confidence" :: NullOrUndefined (Percent) } ) -> Sunglasses
-newSunglasses'  customize = (Sunglasses <<< customize) { "Confidence": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newSunglasses' :: ( { "Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } -> {"Value" :: Maybe (Boolean) , "Confidence" :: Maybe (Percent) } ) -> Sunglasses
+newSunglasses'  customize = (Sunglasses <<< customize) { "Confidence": Nothing, "Value": Nothing }
 
 
 
 -- | <p>Information about a word or line of text detected by .</p> <p>The <code>DetectedText</code> field contains the text that Amazon Rekognition detected in the image. </p> <p>Every word and line has an identifier (<code>Id</code>). Each word belongs to a line and has a parent identifier (<code>ParentId</code>) that identifies the line of text in which the word appears. The word <code>Id</code> is also an index for the word within a line of words. </p> <p>For more information, see <a>text-detection</a>.</p>
 newtype TextDetection = TextDetection 
-  { "DetectedText" :: NullOrUndefined (String)
-  , "Type" :: NullOrUndefined (TextTypes)
-  , "Id" :: NullOrUndefined (UInteger)
-  , "ParentId" :: NullOrUndefined (UInteger)
-  , "Confidence" :: NullOrUndefined (Percent)
-  , "Geometry" :: NullOrUndefined (Geometry)
+  { "DetectedText" :: Maybe (String)
+  , "Type" :: Maybe (TextTypes)
+  , "Id" :: Maybe (UInteger)
+  , "ParentId" :: Maybe (UInteger)
+  , "Confidence" :: Maybe (Percent)
+  , "Geometry" :: Maybe (Geometry)
   }
 derive instance newtypeTextDetection :: Newtype TextDetection _
 derive instance repGenericTextDetection :: Generic TextDetection _
@@ -3136,12 +3135,12 @@ instance encodeTextDetection :: Encode TextDetection where encode = genericEncod
 
 -- | Constructs TextDetection from required parameters
 newTextDetection :: TextDetection
-newTextDetection  = TextDetection { "Confidence": (NullOrUndefined Nothing), "DetectedText": (NullOrUndefined Nothing), "Geometry": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newTextDetection  = TextDetection { "Confidence": Nothing, "DetectedText": Nothing, "Geometry": Nothing, "Id": Nothing, "ParentId": Nothing, "Type": Nothing }
 
 -- | Constructs TextDetection's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTextDetection' :: ( { "DetectedText" :: NullOrUndefined (String) , "Type" :: NullOrUndefined (TextTypes) , "Id" :: NullOrUndefined (UInteger) , "ParentId" :: NullOrUndefined (UInteger) , "Confidence" :: NullOrUndefined (Percent) , "Geometry" :: NullOrUndefined (Geometry) } -> {"DetectedText" :: NullOrUndefined (String) , "Type" :: NullOrUndefined (TextTypes) , "Id" :: NullOrUndefined (UInteger) , "ParentId" :: NullOrUndefined (UInteger) , "Confidence" :: NullOrUndefined (Percent) , "Geometry" :: NullOrUndefined (Geometry) } ) -> TextDetection
-newTextDetection'  customize = (TextDetection <<< customize) { "Confidence": (NullOrUndefined Nothing), "DetectedText": (NullOrUndefined Nothing), "Geometry": (NullOrUndefined Nothing), "Id": (NullOrUndefined Nothing), "ParentId": (NullOrUndefined Nothing), "Type": (NullOrUndefined Nothing) }
+newTextDetection' :: ( { "DetectedText" :: Maybe (String) , "Type" :: Maybe (TextTypes) , "Id" :: Maybe (UInteger) , "ParentId" :: Maybe (UInteger) , "Confidence" :: Maybe (Percent) , "Geometry" :: Maybe (Geometry) } -> {"DetectedText" :: Maybe (String) , "Type" :: Maybe (TextTypes) , "Id" :: Maybe (UInteger) , "ParentId" :: Maybe (UInteger) , "Confidence" :: Maybe (Percent) , "Geometry" :: Maybe (Geometry) } ) -> TextDetection
+newTextDetection'  customize = (TextDetection <<< customize) { "Confidence": Nothing, "DetectedText": Nothing, "Geometry": Nothing, "Id": Nothing, "ParentId": Nothing, "Type": Nothing }
 
 
 
@@ -3211,7 +3210,7 @@ instance encodeUrls :: Encode Urls where encode = genericEncode options
 
 -- | <p>Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as use <code>Video</code> to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.</p>
 newtype Video = Video 
-  { "S3Object" :: NullOrUndefined (S3Object)
+  { "S3Object" :: Maybe (S3Object)
   }
 derive instance newtypeVideo :: Newtype Video _
 derive instance repGenericVideo :: Generic Video _
@@ -3221,12 +3220,12 @@ instance encodeVideo :: Encode Video where encode = genericEncode options
 
 -- | Constructs Video from required parameters
 newVideo :: Video
-newVideo  = Video { "S3Object": (NullOrUndefined Nothing) }
+newVideo  = Video { "S3Object": Nothing }
 
 -- | Constructs Video's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newVideo' :: ( { "S3Object" :: NullOrUndefined (S3Object) } -> {"S3Object" :: NullOrUndefined (S3Object) } ) -> Video
-newVideo'  customize = (Video <<< customize) { "S3Object": (NullOrUndefined Nothing) }
+newVideo' :: ( { "S3Object" :: Maybe (S3Object) } -> {"S3Object" :: Maybe (S3Object) } ) -> Video
+newVideo'  customize = (Video <<< customize) { "S3Object": Nothing }
 
 
 
@@ -3241,12 +3240,12 @@ instance encodeVideoJobStatus :: Encode VideoJobStatus where encode = genericEnc
 
 -- | <p>Information about a video that Amazon Rekognition analyzed. <code>Videometadata</code> is returned in every page of paginated responses from a Amazon Rekognition video operation.</p>
 newtype VideoMetadata = VideoMetadata 
-  { "Codec" :: NullOrUndefined (String)
-  , "DurationMillis" :: NullOrUndefined (ULong)
-  , "Format" :: NullOrUndefined (String)
-  , "FrameRate" :: NullOrUndefined (Number)
-  , "FrameHeight" :: NullOrUndefined (ULong)
-  , "FrameWidth" :: NullOrUndefined (ULong)
+  { "Codec" :: Maybe (String)
+  , "DurationMillis" :: Maybe (ULong)
+  , "Format" :: Maybe (String)
+  , "FrameRate" :: Maybe (Number)
+  , "FrameHeight" :: Maybe (ULong)
+  , "FrameWidth" :: Maybe (ULong)
   }
 derive instance newtypeVideoMetadata :: Newtype VideoMetadata _
 derive instance repGenericVideoMetadata :: Generic VideoMetadata _
@@ -3256,12 +3255,12 @@ instance encodeVideoMetadata :: Encode VideoMetadata where encode = genericEncod
 
 -- | Constructs VideoMetadata from required parameters
 newVideoMetadata :: VideoMetadata
-newVideoMetadata  = VideoMetadata { "Codec": (NullOrUndefined Nothing), "DurationMillis": (NullOrUndefined Nothing), "Format": (NullOrUndefined Nothing), "FrameHeight": (NullOrUndefined Nothing), "FrameRate": (NullOrUndefined Nothing), "FrameWidth": (NullOrUndefined Nothing) }
+newVideoMetadata  = VideoMetadata { "Codec": Nothing, "DurationMillis": Nothing, "Format": Nothing, "FrameHeight": Nothing, "FrameRate": Nothing, "FrameWidth": Nothing }
 
 -- | Constructs VideoMetadata's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newVideoMetadata' :: ( { "Codec" :: NullOrUndefined (String) , "DurationMillis" :: NullOrUndefined (ULong) , "Format" :: NullOrUndefined (String) , "FrameRate" :: NullOrUndefined (Number) , "FrameHeight" :: NullOrUndefined (ULong) , "FrameWidth" :: NullOrUndefined (ULong) } -> {"Codec" :: NullOrUndefined (String) , "DurationMillis" :: NullOrUndefined (ULong) , "Format" :: NullOrUndefined (String) , "FrameRate" :: NullOrUndefined (Number) , "FrameHeight" :: NullOrUndefined (ULong) , "FrameWidth" :: NullOrUndefined (ULong) } ) -> VideoMetadata
-newVideoMetadata'  customize = (VideoMetadata <<< customize) { "Codec": (NullOrUndefined Nothing), "DurationMillis": (NullOrUndefined Nothing), "Format": (NullOrUndefined Nothing), "FrameHeight": (NullOrUndefined Nothing), "FrameRate": (NullOrUndefined Nothing), "FrameWidth": (NullOrUndefined Nothing) }
+newVideoMetadata' :: ( { "Codec" :: Maybe (String) , "DurationMillis" :: Maybe (ULong) , "Format" :: Maybe (String) , "FrameRate" :: Maybe (Number) , "FrameHeight" :: Maybe (ULong) , "FrameWidth" :: Maybe (ULong) } -> {"Codec" :: Maybe (String) , "DurationMillis" :: Maybe (ULong) , "Format" :: Maybe (String) , "FrameRate" :: Maybe (Number) , "FrameHeight" :: Maybe (ULong) , "FrameWidth" :: Maybe (ULong) } ) -> VideoMetadata
+newVideoMetadata'  customize = (VideoMetadata <<< customize) { "Codec": Nothing, "DurationMillis": Nothing, "Format": Nothing, "FrameHeight": Nothing, "FrameRate": Nothing, "FrameWidth": Nothing }
 
 
 

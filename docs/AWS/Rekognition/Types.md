@@ -28,7 +28,7 @@ Encode AccessDeniedException
 
 ``` purescript
 newtype AgeRange
-  = AgeRange { "Low" :: NullOrUndefined (UInteger), "High" :: NullOrUndefined (UInteger) }
+  = AgeRange { "Low" :: Maybe (UInteger), "High" :: Maybe (UInteger) }
 ```
 
 <p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>
@@ -53,7 +53,7 @@ Constructs AgeRange from required parameters
 #### `newAgeRange'`
 
 ``` purescript
-newAgeRange' :: ({ "Low" :: NullOrUndefined (UInteger), "High" :: NullOrUndefined (UInteger) } -> { "Low" :: NullOrUndefined (UInteger), "High" :: NullOrUndefined (UInteger) }) -> AgeRange
+newAgeRange' :: ({ "Low" :: Maybe (UInteger), "High" :: Maybe (UInteger) } -> { "Low" :: Maybe (UInteger), "High" :: Maybe (UInteger) }) -> AgeRange
 ```
 
 Constructs AgeRange's fields from required parameters
@@ -94,7 +94,7 @@ Encode Attributes
 
 ``` purescript
 newtype Beard
-  = Beard { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = Beard { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
@@ -119,7 +119,7 @@ Constructs Beard from required parameters
 #### `newBeard'`
 
 ``` purescript
-newBeard' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> Beard
+newBeard' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> Beard
 ```
 
 Constructs Beard's fields from required parameters
@@ -128,7 +128,7 @@ Constructs Beard's fields from required parameters
 
 ``` purescript
 newtype BoundingBox
-  = BoundingBox { "Width" :: NullOrUndefined (Number), "Height" :: NullOrUndefined (Number), "Left" :: NullOrUndefined (Number), "Top" :: NullOrUndefined (Number) }
+  = BoundingBox { "Width" :: Maybe (Number), "Height" :: Maybe (Number), "Left" :: Maybe (Number), "Top" :: Maybe (Number) }
 ```
 
 <p>Identifies the bounding box around the object, face or text. The <code>left</code> (x-coordinate) and <code>top</code> (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p>The <code>width</code> and <code>height</code> values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. </p> <note> <p> The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the <code>left</code> or <code>top</code> values. </p> </note>
@@ -153,7 +153,7 @@ Constructs BoundingBox from required parameters
 #### `newBoundingBox'`
 
 ``` purescript
-newBoundingBox' :: ({ "Width" :: NullOrUndefined (Number), "Height" :: NullOrUndefined (Number), "Left" :: NullOrUndefined (Number), "Top" :: NullOrUndefined (Number) } -> { "Width" :: NullOrUndefined (Number), "Height" :: NullOrUndefined (Number), "Left" :: NullOrUndefined (Number), "Top" :: NullOrUndefined (Number) }) -> BoundingBox
+newBoundingBox' :: ({ "Width" :: Maybe (Number), "Height" :: Maybe (Number), "Left" :: Maybe (Number), "Top" :: Maybe (Number) } -> { "Width" :: Maybe (Number), "Height" :: Maybe (Number), "Left" :: Maybe (Number), "Top" :: Maybe (Number) }) -> BoundingBox
 ```
 
 Constructs BoundingBox's fields from required parameters
@@ -162,7 +162,7 @@ Constructs BoundingBox's fields from required parameters
 
 ``` purescript
 newtype Celebrity
-  = Celebrity { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Face" :: NullOrUndefined (ComparedFace), "MatchConfidence" :: NullOrUndefined (Percent) }
+  = Celebrity { "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Face" :: Maybe (ComparedFace), "MatchConfidence" :: Maybe (Percent) }
 ```
 
 <p>Provides information about a celebrity recognized by the operation.</p>
@@ -187,7 +187,7 @@ Constructs Celebrity from required parameters
 #### `newCelebrity'`
 
 ``` purescript
-newCelebrity' :: ({ "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Face" :: NullOrUndefined (ComparedFace), "MatchConfidence" :: NullOrUndefined (Percent) } -> { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Face" :: NullOrUndefined (ComparedFace), "MatchConfidence" :: NullOrUndefined (Percent) }) -> Celebrity
+newCelebrity' :: ({ "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Face" :: Maybe (ComparedFace), "MatchConfidence" :: Maybe (Percent) } -> { "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Face" :: Maybe (ComparedFace), "MatchConfidence" :: Maybe (Percent) }) -> Celebrity
 ```
 
 Constructs Celebrity's fields from required parameters
@@ -196,7 +196,7 @@ Constructs Celebrity's fields from required parameters
 
 ``` purescript
 newtype CelebrityDetail
-  = CelebrityDetail { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Confidence" :: NullOrUndefined (Percent), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) }
+  = CelebrityDetail { "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Confidence" :: Maybe (Percent), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) }
 ```
 
 <p>Information about a recognized celebrity.</p>
@@ -221,7 +221,7 @@ Constructs CelebrityDetail from required parameters
 #### `newCelebrityDetail'`
 
 ``` purescript
-newCelebrityDetail' :: ({ "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Confidence" :: NullOrUndefined (Percent), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) } -> { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String), "Id" :: NullOrUndefined (RekognitionUniqueId), "Confidence" :: NullOrUndefined (Percent), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) }) -> CelebrityDetail
+newCelebrityDetail' :: ({ "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Confidence" :: Maybe (Percent), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) } -> { "Urls" :: Maybe (Urls), "Name" :: Maybe (String), "Id" :: Maybe (RekognitionUniqueId), "Confidence" :: Maybe (Percent), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) }) -> CelebrityDetail
 ```
 
 Constructs CelebrityDetail's fields from required parameters
@@ -246,7 +246,7 @@ Encode CelebrityList
 
 ``` purescript
 newtype CelebrityRecognition
-  = CelebrityRecognition { "Timestamp" :: NullOrUndefined (Timestamp), "Celebrity" :: NullOrUndefined (CelebrityDetail) }
+  = CelebrityRecognition { "Timestamp" :: Maybe (Timestamp), "Celebrity" :: Maybe (CelebrityDetail) }
 ```
 
 <p>Information about a detected celebrity and the time the celebrity was detected in a stored video. For more information, see .</p>
@@ -271,7 +271,7 @@ Constructs CelebrityRecognition from required parameters
 #### `newCelebrityRecognition'`
 
 ``` purescript
-newCelebrityRecognition' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "Celebrity" :: NullOrUndefined (CelebrityDetail) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "Celebrity" :: NullOrUndefined (CelebrityDetail) }) -> CelebrityRecognition
+newCelebrityRecognition' :: ({ "Timestamp" :: Maybe (Timestamp), "Celebrity" :: Maybe (CelebrityDetail) } -> { "Timestamp" :: Maybe (Timestamp), "Celebrity" :: Maybe (CelebrityDetail) }) -> CelebrityRecognition
 ```
 
 Constructs CelebrityRecognition's fields from required parameters
@@ -360,7 +360,7 @@ Encode CollectionIdList
 
 ``` purescript
 newtype CompareFacesMatch
-  = CompareFacesMatch { "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (ComparedFace) }
+  = CompareFacesMatch { "Similarity" :: Maybe (Percent), "Face" :: Maybe (ComparedFace) }
 ```
 
 <p>Provides information about a face in a target image that matches the source image face analysed by <code>CompareFaces</code>. The <code>Face</code> property contains the bounding box of the face in the target image. The <code>Similarity</code> property is the confidence that the source image face matches the face in the bounding box.</p>
@@ -385,7 +385,7 @@ Constructs CompareFacesMatch from required parameters
 #### `newCompareFacesMatch'`
 
 ``` purescript
-newCompareFacesMatch' :: ({ "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (ComparedFace) } -> { "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (ComparedFace) }) -> CompareFacesMatch
+newCompareFacesMatch' :: ({ "Similarity" :: Maybe (Percent), "Face" :: Maybe (ComparedFace) } -> { "Similarity" :: Maybe (Percent), "Face" :: Maybe (ComparedFace) }) -> CompareFacesMatch
 ```
 
 Constructs CompareFacesMatch's fields from required parameters
@@ -410,7 +410,7 @@ Encode CompareFacesMatchList
 
 ``` purescript
 newtype CompareFacesRequest
-  = CompareFacesRequest { "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: NullOrUndefined (Percent) }
+  = CompareFacesRequest { "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: Maybe (Percent) }
 ```
 
 ##### Instances
@@ -433,7 +433,7 @@ Constructs CompareFacesRequest from required parameters
 #### `newCompareFacesRequest'`
 
 ``` purescript
-newCompareFacesRequest' :: Image -> Image -> ({ "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: NullOrUndefined (Percent) } -> { "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: NullOrUndefined (Percent) }) -> CompareFacesRequest
+newCompareFacesRequest' :: Image -> Image -> ({ "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: Maybe (Percent) } -> { "SourceImage" :: Image, "TargetImage" :: Image, "SimilarityThreshold" :: Maybe (Percent) }) -> CompareFacesRequest
 ```
 
 Constructs CompareFacesRequest's fields from required parameters
@@ -442,7 +442,7 @@ Constructs CompareFacesRequest's fields from required parameters
 
 ``` purescript
 newtype CompareFacesResponse
-  = CompareFacesResponse { "SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace), "FaceMatches" :: NullOrUndefined (CompareFacesMatchList), "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection), "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) }
+  = CompareFacesResponse { "SourceImageFace" :: Maybe (ComparedSourceImageFace), "FaceMatches" :: Maybe (CompareFacesMatchList), "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection), "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection) }
 ```
 
 ##### Instances
@@ -465,7 +465,7 @@ Constructs CompareFacesResponse from required parameters
 #### `newCompareFacesResponse'`
 
 ``` purescript
-newCompareFacesResponse' :: ({ "SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace), "FaceMatches" :: NullOrUndefined (CompareFacesMatchList), "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection), "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> { "SourceImageFace" :: NullOrUndefined (ComparedSourceImageFace), "FaceMatches" :: NullOrUndefined (CompareFacesMatchList), "UnmatchedFaces" :: NullOrUndefined (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection), "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection) }) -> CompareFacesResponse
+newCompareFacesResponse' :: ({ "SourceImageFace" :: Maybe (ComparedSourceImageFace), "FaceMatches" :: Maybe (CompareFacesMatchList), "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection), "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection) } -> { "SourceImageFace" :: Maybe (ComparedSourceImageFace), "FaceMatches" :: Maybe (CompareFacesMatchList), "UnmatchedFaces" :: Maybe (CompareFacesUnmatchList), "SourceImageOrientationCorrection" :: Maybe (OrientationCorrection), "TargetImageOrientationCorrection" :: Maybe (OrientationCorrection) }) -> CompareFacesResponse
 ```
 
 Constructs CompareFacesResponse's fields from required parameters
@@ -490,7 +490,7 @@ Encode CompareFacesUnmatchList
 
 ``` purescript
 newtype ComparedFace
-  = ComparedFace { "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality) }
+  = ComparedFace { "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality) }
 ```
 
 <p>Provides face metadata for target image faces that are analysed by <code>CompareFaces</code> and <code>RecognizeCelebrities</code>.</p>
@@ -515,7 +515,7 @@ Constructs ComparedFace from required parameters
 #### `newComparedFace'`
 
 ``` purescript
-newComparedFace' :: ({ "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality) } -> { "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality) }) -> ComparedFace
+newComparedFace' :: ({ "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality) } -> { "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality) }) -> ComparedFace
 ```
 
 Constructs ComparedFace's fields from required parameters
@@ -540,7 +540,7 @@ Encode ComparedFaceList
 
 ``` purescript
 newtype ComparedSourceImageFace
-  = ComparedSourceImageFace { "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent) }
+  = ComparedSourceImageFace { "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. </p>
@@ -565,7 +565,7 @@ Constructs ComparedSourceImageFace from required parameters
 #### `newComparedSourceImageFace'`
 
 ``` purescript
-newComparedSourceImageFace' :: ({ "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent) } -> { "BoundingBox" :: NullOrUndefined (BoundingBox), "Confidence" :: NullOrUndefined (Percent) }) -> ComparedSourceImageFace
+newComparedSourceImageFace' :: ({ "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent) } -> { "BoundingBox" :: Maybe (BoundingBox), "Confidence" :: Maybe (Percent) }) -> ComparedSourceImageFace
 ```
 
 Constructs ComparedSourceImageFace's fields from required parameters
@@ -574,7 +574,7 @@ Constructs ComparedSourceImageFace's fields from required parameters
 
 ``` purescript
 newtype ContentModerationDetection
-  = ContentModerationDetection { "Timestamp" :: NullOrUndefined (Timestamp), "ModerationLabel" :: NullOrUndefined (ModerationLabel) }
+  = ContentModerationDetection { "Timestamp" :: Maybe (Timestamp), "ModerationLabel" :: Maybe (ModerationLabel) }
 ```
 
 <p>Information about a moderation label detection in a stored video.</p>
@@ -599,7 +599,7 @@ Constructs ContentModerationDetection from required parameters
 #### `newContentModerationDetection'`
 
 ``` purescript
-newContentModerationDetection' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "ModerationLabel" :: NullOrUndefined (ModerationLabel) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "ModerationLabel" :: NullOrUndefined (ModerationLabel) }) -> ContentModerationDetection
+newContentModerationDetection' :: ({ "Timestamp" :: Maybe (Timestamp), "ModerationLabel" :: Maybe (ModerationLabel) } -> { "Timestamp" :: Maybe (Timestamp), "ModerationLabel" :: Maybe (ModerationLabel) }) -> ContentModerationDetection
 ```
 
 Constructs ContentModerationDetection's fields from required parameters
@@ -672,7 +672,7 @@ Constructs CreateCollectionRequest's fields from required parameters
 
 ``` purescript
 newtype CreateCollectionResponse
-  = CreateCollectionResponse { "StatusCode" :: NullOrUndefined (UInteger), "CollectionArn" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) }
+  = CreateCollectionResponse { "StatusCode" :: Maybe (UInteger), "CollectionArn" :: Maybe (String), "FaceModelVersion" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -695,7 +695,7 @@ Constructs CreateCollectionResponse from required parameters
 #### `newCreateCollectionResponse'`
 
 ``` purescript
-newCreateCollectionResponse' :: ({ "StatusCode" :: NullOrUndefined (UInteger), "CollectionArn" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) } -> { "StatusCode" :: NullOrUndefined (UInteger), "CollectionArn" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) }) -> CreateCollectionResponse
+newCreateCollectionResponse' :: ({ "StatusCode" :: Maybe (UInteger), "CollectionArn" :: Maybe (String), "FaceModelVersion" :: Maybe (String) } -> { "StatusCode" :: Maybe (UInteger), "CollectionArn" :: Maybe (String), "FaceModelVersion" :: Maybe (String) }) -> CreateCollectionResponse
 ```
 
 Constructs CreateCollectionResponse's fields from required parameters
@@ -736,7 +736,7 @@ Constructs CreateStreamProcessorRequest's fields from required parameters
 
 ``` purescript
 newtype CreateStreamProcessorResponse
-  = CreateStreamProcessorResponse { "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) }
+  = CreateStreamProcessorResponse { "StreamProcessorArn" :: Maybe (StreamProcessorArn) }
 ```
 
 ##### Instances
@@ -759,7 +759,7 @@ Constructs CreateStreamProcessorResponse from required parameters
 #### `newCreateStreamProcessorResponse'`
 
 ``` purescript
-newCreateStreamProcessorResponse' :: ({ "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) } -> { "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn) }) -> CreateStreamProcessorResponse
+newCreateStreamProcessorResponse' :: ({ "StreamProcessorArn" :: Maybe (StreamProcessorArn) } -> { "StreamProcessorArn" :: Maybe (StreamProcessorArn) }) -> CreateStreamProcessorResponse
 ```
 
 Constructs CreateStreamProcessorResponse's fields from required parameters
@@ -832,7 +832,7 @@ Constructs DeleteCollectionRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteCollectionResponse
-  = DeleteCollectionResponse { "StatusCode" :: NullOrUndefined (UInteger) }
+  = DeleteCollectionResponse { "StatusCode" :: Maybe (UInteger) }
 ```
 
 ##### Instances
@@ -855,7 +855,7 @@ Constructs DeleteCollectionResponse from required parameters
 #### `newDeleteCollectionResponse'`
 
 ``` purescript
-newDeleteCollectionResponse' :: ({ "StatusCode" :: NullOrUndefined (UInteger) } -> { "StatusCode" :: NullOrUndefined (UInteger) }) -> DeleteCollectionResponse
+newDeleteCollectionResponse' :: ({ "StatusCode" :: Maybe (UInteger) } -> { "StatusCode" :: Maybe (UInteger) }) -> DeleteCollectionResponse
 ```
 
 Constructs DeleteCollectionResponse's fields from required parameters
@@ -896,7 +896,7 @@ Constructs DeleteFacesRequest's fields from required parameters
 
 ``` purescript
 newtype DeleteFacesResponse
-  = DeleteFacesResponse { "DeletedFaces" :: NullOrUndefined (FaceIdList) }
+  = DeleteFacesResponse { "DeletedFaces" :: Maybe (FaceIdList) }
 ```
 
 ##### Instances
@@ -919,7 +919,7 @@ Constructs DeleteFacesResponse from required parameters
 #### `newDeleteFacesResponse'`
 
 ``` purescript
-newDeleteFacesResponse' :: ({ "DeletedFaces" :: NullOrUndefined (FaceIdList) } -> { "DeletedFaces" :: NullOrUndefined (FaceIdList) }) -> DeleteFacesResponse
+newDeleteFacesResponse' :: ({ "DeletedFaces" :: Maybe (FaceIdList) } -> { "DeletedFaces" :: Maybe (FaceIdList) }) -> DeleteFacesResponse
 ```
 
 Constructs DeleteFacesResponse's fields from required parameters
@@ -1008,7 +1008,7 @@ Constructs DescribeStreamProcessorRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeStreamProcessorResponse
-  = DescribeStreamProcessorResponse { "Name" :: NullOrUndefined (StreamProcessorName), "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn), "Status" :: NullOrUndefined (StreamProcessorStatus), "StatusMessage" :: NullOrUndefined (String), "CreationTimestamp" :: NullOrUndefined (DateTime), "LastUpdateTimestamp" :: NullOrUndefined (DateTime), "Input" :: NullOrUndefined (StreamProcessorInput), "Output" :: NullOrUndefined (StreamProcessorOutput), "RoleArn" :: NullOrUndefined (RoleArn), "Settings" :: NullOrUndefined (StreamProcessorSettings) }
+  = DescribeStreamProcessorResponse { "Name" :: Maybe (StreamProcessorName), "StreamProcessorArn" :: Maybe (StreamProcessorArn), "Status" :: Maybe (StreamProcessorStatus), "StatusMessage" :: Maybe (String), "CreationTimestamp" :: Maybe (DateTime), "LastUpdateTimestamp" :: Maybe (DateTime), "Input" :: Maybe (StreamProcessorInput), "Output" :: Maybe (StreamProcessorOutput), "RoleArn" :: Maybe (RoleArn), "Settings" :: Maybe (StreamProcessorSettings) }
 ```
 
 ##### Instances
@@ -1031,7 +1031,7 @@ Constructs DescribeStreamProcessorResponse from required parameters
 #### `newDescribeStreamProcessorResponse'`
 
 ``` purescript
-newDescribeStreamProcessorResponse' :: ({ "Name" :: NullOrUndefined (StreamProcessorName), "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn), "Status" :: NullOrUndefined (StreamProcessorStatus), "StatusMessage" :: NullOrUndefined (String), "CreationTimestamp" :: NullOrUndefined (DateTime), "LastUpdateTimestamp" :: NullOrUndefined (DateTime), "Input" :: NullOrUndefined (StreamProcessorInput), "Output" :: NullOrUndefined (StreamProcessorOutput), "RoleArn" :: NullOrUndefined (RoleArn), "Settings" :: NullOrUndefined (StreamProcessorSettings) } -> { "Name" :: NullOrUndefined (StreamProcessorName), "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn), "Status" :: NullOrUndefined (StreamProcessorStatus), "StatusMessage" :: NullOrUndefined (String), "CreationTimestamp" :: NullOrUndefined (DateTime), "LastUpdateTimestamp" :: NullOrUndefined (DateTime), "Input" :: NullOrUndefined (StreamProcessorInput), "Output" :: NullOrUndefined (StreamProcessorOutput), "RoleArn" :: NullOrUndefined (RoleArn), "Settings" :: NullOrUndefined (StreamProcessorSettings) }) -> DescribeStreamProcessorResponse
+newDescribeStreamProcessorResponse' :: ({ "Name" :: Maybe (StreamProcessorName), "StreamProcessorArn" :: Maybe (StreamProcessorArn), "Status" :: Maybe (StreamProcessorStatus), "StatusMessage" :: Maybe (String), "CreationTimestamp" :: Maybe (DateTime), "LastUpdateTimestamp" :: Maybe (DateTime), "Input" :: Maybe (StreamProcessorInput), "Output" :: Maybe (StreamProcessorOutput), "RoleArn" :: Maybe (RoleArn), "Settings" :: Maybe (StreamProcessorSettings) } -> { "Name" :: Maybe (StreamProcessorName), "StreamProcessorArn" :: Maybe (StreamProcessorArn), "Status" :: Maybe (StreamProcessorStatus), "StatusMessage" :: Maybe (String), "CreationTimestamp" :: Maybe (DateTime), "LastUpdateTimestamp" :: Maybe (DateTime), "Input" :: Maybe (StreamProcessorInput), "Output" :: Maybe (StreamProcessorOutput), "RoleArn" :: Maybe (RoleArn), "Settings" :: Maybe (StreamProcessorSettings) }) -> DescribeStreamProcessorResponse
 ```
 
 Constructs DescribeStreamProcessorResponse's fields from required parameters
@@ -1040,7 +1040,7 @@ Constructs DescribeStreamProcessorResponse's fields from required parameters
 
 ``` purescript
 newtype DetectFacesRequest
-  = DetectFacesRequest { "Image" :: Image, "Attributes" :: NullOrUndefined (Attributes) }
+  = DetectFacesRequest { "Image" :: Image, "Attributes" :: Maybe (Attributes) }
 ```
 
 ##### Instances
@@ -1063,7 +1063,7 @@ Constructs DetectFacesRequest from required parameters
 #### `newDetectFacesRequest'`
 
 ``` purescript
-newDetectFacesRequest' :: Image -> ({ "Image" :: Image, "Attributes" :: NullOrUndefined (Attributes) } -> { "Image" :: Image, "Attributes" :: NullOrUndefined (Attributes) }) -> DetectFacesRequest
+newDetectFacesRequest' :: Image -> ({ "Image" :: Image, "Attributes" :: Maybe (Attributes) } -> { "Image" :: Image, "Attributes" :: Maybe (Attributes) }) -> DetectFacesRequest
 ```
 
 Constructs DetectFacesRequest's fields from required parameters
@@ -1072,7 +1072,7 @@ Constructs DetectFacesRequest's fields from required parameters
 
 ``` purescript
 newtype DetectFacesResponse
-  = DetectFacesResponse { "FaceDetails" :: NullOrUndefined (FaceDetailList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }
+  = DetectFacesResponse { "FaceDetails" :: Maybe (FaceDetailList), "OrientationCorrection" :: Maybe (OrientationCorrection) }
 ```
 
 ##### Instances
@@ -1095,7 +1095,7 @@ Constructs DetectFacesResponse from required parameters
 #### `newDetectFacesResponse'`
 
 ``` purescript
-newDetectFacesResponse' :: ({ "FaceDetails" :: NullOrUndefined (FaceDetailList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> { "FaceDetails" :: NullOrUndefined (FaceDetailList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }) -> DetectFacesResponse
+newDetectFacesResponse' :: ({ "FaceDetails" :: Maybe (FaceDetailList), "OrientationCorrection" :: Maybe (OrientationCorrection) } -> { "FaceDetails" :: Maybe (FaceDetailList), "OrientationCorrection" :: Maybe (OrientationCorrection) }) -> DetectFacesResponse
 ```
 
 Constructs DetectFacesResponse's fields from required parameters
@@ -1104,7 +1104,7 @@ Constructs DetectFacesResponse's fields from required parameters
 
 ``` purescript
 newtype DetectLabelsRequest
-  = DetectLabelsRequest { "Image" :: Image, "MaxLabels" :: NullOrUndefined (UInteger), "MinConfidence" :: NullOrUndefined (Percent) }
+  = DetectLabelsRequest { "Image" :: Image, "MaxLabels" :: Maybe (UInteger), "MinConfidence" :: Maybe (Percent) }
 ```
 
 ##### Instances
@@ -1127,7 +1127,7 @@ Constructs DetectLabelsRequest from required parameters
 #### `newDetectLabelsRequest'`
 
 ``` purescript
-newDetectLabelsRequest' :: Image -> ({ "Image" :: Image, "MaxLabels" :: NullOrUndefined (UInteger), "MinConfidence" :: NullOrUndefined (Percent) } -> { "Image" :: Image, "MaxLabels" :: NullOrUndefined (UInteger), "MinConfidence" :: NullOrUndefined (Percent) }) -> DetectLabelsRequest
+newDetectLabelsRequest' :: Image -> ({ "Image" :: Image, "MaxLabels" :: Maybe (UInteger), "MinConfidence" :: Maybe (Percent) } -> { "Image" :: Image, "MaxLabels" :: Maybe (UInteger), "MinConfidence" :: Maybe (Percent) }) -> DetectLabelsRequest
 ```
 
 Constructs DetectLabelsRequest's fields from required parameters
@@ -1136,7 +1136,7 @@ Constructs DetectLabelsRequest's fields from required parameters
 
 ``` purescript
 newtype DetectLabelsResponse
-  = DetectLabelsResponse { "Labels" :: NullOrUndefined (Labels), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }
+  = DetectLabelsResponse { "Labels" :: Maybe (Labels), "OrientationCorrection" :: Maybe (OrientationCorrection) }
 ```
 
 ##### Instances
@@ -1159,7 +1159,7 @@ Constructs DetectLabelsResponse from required parameters
 #### `newDetectLabelsResponse'`
 
 ``` purescript
-newDetectLabelsResponse' :: ({ "Labels" :: NullOrUndefined (Labels), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> { "Labels" :: NullOrUndefined (Labels), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }) -> DetectLabelsResponse
+newDetectLabelsResponse' :: ({ "Labels" :: Maybe (Labels), "OrientationCorrection" :: Maybe (OrientationCorrection) } -> { "Labels" :: Maybe (Labels), "OrientationCorrection" :: Maybe (OrientationCorrection) }) -> DetectLabelsResponse
 ```
 
 Constructs DetectLabelsResponse's fields from required parameters
@@ -1168,7 +1168,7 @@ Constructs DetectLabelsResponse's fields from required parameters
 
 ``` purescript
 newtype DetectModerationLabelsRequest
-  = DetectModerationLabelsRequest { "Image" :: Image, "MinConfidence" :: NullOrUndefined (Percent) }
+  = DetectModerationLabelsRequest { "Image" :: Image, "MinConfidence" :: Maybe (Percent) }
 ```
 
 ##### Instances
@@ -1191,7 +1191,7 @@ Constructs DetectModerationLabelsRequest from required parameters
 #### `newDetectModerationLabelsRequest'`
 
 ``` purescript
-newDetectModerationLabelsRequest' :: Image -> ({ "Image" :: Image, "MinConfidence" :: NullOrUndefined (Percent) } -> { "Image" :: Image, "MinConfidence" :: NullOrUndefined (Percent) }) -> DetectModerationLabelsRequest
+newDetectModerationLabelsRequest' :: Image -> ({ "Image" :: Image, "MinConfidence" :: Maybe (Percent) } -> { "Image" :: Image, "MinConfidence" :: Maybe (Percent) }) -> DetectModerationLabelsRequest
 ```
 
 Constructs DetectModerationLabelsRequest's fields from required parameters
@@ -1200,7 +1200,7 @@ Constructs DetectModerationLabelsRequest's fields from required parameters
 
 ``` purescript
 newtype DetectModerationLabelsResponse
-  = DetectModerationLabelsResponse { "ModerationLabels" :: NullOrUndefined (ModerationLabels) }
+  = DetectModerationLabelsResponse { "ModerationLabels" :: Maybe (ModerationLabels) }
 ```
 
 ##### Instances
@@ -1223,7 +1223,7 @@ Constructs DetectModerationLabelsResponse from required parameters
 #### `newDetectModerationLabelsResponse'`
 
 ``` purescript
-newDetectModerationLabelsResponse' :: ({ "ModerationLabels" :: NullOrUndefined (ModerationLabels) } -> { "ModerationLabels" :: NullOrUndefined (ModerationLabels) }) -> DetectModerationLabelsResponse
+newDetectModerationLabelsResponse' :: ({ "ModerationLabels" :: Maybe (ModerationLabels) } -> { "ModerationLabels" :: Maybe (ModerationLabels) }) -> DetectModerationLabelsResponse
 ```
 
 Constructs DetectModerationLabelsResponse's fields from required parameters
@@ -1264,7 +1264,7 @@ Constructs DetectTextRequest's fields from required parameters
 
 ``` purescript
 newtype DetectTextResponse
-  = DetectTextResponse { "TextDetections" :: NullOrUndefined (TextDetectionList) }
+  = DetectTextResponse { "TextDetections" :: Maybe (TextDetectionList) }
 ```
 
 ##### Instances
@@ -1287,7 +1287,7 @@ Constructs DetectTextResponse from required parameters
 #### `newDetectTextResponse'`
 
 ``` purescript
-newDetectTextResponse' :: ({ "TextDetections" :: NullOrUndefined (TextDetectionList) } -> { "TextDetections" :: NullOrUndefined (TextDetectionList) }) -> DetectTextResponse
+newDetectTextResponse' :: ({ "TextDetections" :: Maybe (TextDetectionList) } -> { "TextDetections" :: Maybe (TextDetectionList) }) -> DetectTextResponse
 ```
 
 Constructs DetectTextResponse's fields from required parameters
@@ -1296,7 +1296,7 @@ Constructs DetectTextResponse's fields from required parameters
 
 ``` purescript
 newtype Emotion
-  = Emotion { "Type" :: NullOrUndefined (EmotionName), "Confidence" :: NullOrUndefined (Percent) }
+  = Emotion { "Type" :: Maybe (EmotionName), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>
@@ -1321,7 +1321,7 @@ Constructs Emotion from required parameters
 #### `newEmotion'`
 
 ``` purescript
-newEmotion' :: ({ "Type" :: NullOrUndefined (EmotionName), "Confidence" :: NullOrUndefined (Percent) } -> { "Type" :: NullOrUndefined (EmotionName), "Confidence" :: NullOrUndefined (Percent) }) -> Emotion
+newEmotion' :: ({ "Type" :: Maybe (EmotionName), "Confidence" :: Maybe (Percent) } -> { "Type" :: Maybe (EmotionName), "Confidence" :: Maybe (Percent) }) -> Emotion
 ```
 
 Constructs Emotion's fields from required parameters
@@ -1378,7 +1378,7 @@ Encode ExternalImageId
 
 ``` purescript
 newtype EyeOpen
-  = EyeOpen { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = EyeOpen { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
@@ -1403,7 +1403,7 @@ Constructs EyeOpen from required parameters
 #### `newEyeOpen'`
 
 ``` purescript
-newEyeOpen' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> EyeOpen
+newEyeOpen' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> EyeOpen
 ```
 
 Constructs EyeOpen's fields from required parameters
@@ -1412,7 +1412,7 @@ Constructs EyeOpen's fields from required parameters
 
 ``` purescript
 newtype Eyeglasses
-  = Eyeglasses { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = Eyeglasses { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
@@ -1437,7 +1437,7 @@ Constructs Eyeglasses from required parameters
 #### `newEyeglasses'`
 
 ``` purescript
-newEyeglasses' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> Eyeglasses
+newEyeglasses' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> Eyeglasses
 ```
 
 Constructs Eyeglasses's fields from required parameters
@@ -1446,7 +1446,7 @@ Constructs Eyeglasses's fields from required parameters
 
 ``` purescript
 newtype Face
-  = Face { "FaceId" :: NullOrUndefined (FaceId), "BoundingBox" :: NullOrUndefined (BoundingBox), "ImageId" :: NullOrUndefined (ImageId), "ExternalImageId" :: NullOrUndefined (ExternalImageId), "Confidence" :: NullOrUndefined (Percent) }
+  = Face { "FaceId" :: Maybe (FaceId), "BoundingBox" :: Maybe (BoundingBox), "ImageId" :: Maybe (ImageId), "ExternalImageId" :: Maybe (ExternalImageId), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
@@ -1471,7 +1471,7 @@ Constructs Face from required parameters
 #### `newFace'`
 
 ``` purescript
-newFace' :: ({ "FaceId" :: NullOrUndefined (FaceId), "BoundingBox" :: NullOrUndefined (BoundingBox), "ImageId" :: NullOrUndefined (ImageId), "ExternalImageId" :: NullOrUndefined (ExternalImageId), "Confidence" :: NullOrUndefined (Percent) } -> { "FaceId" :: NullOrUndefined (FaceId), "BoundingBox" :: NullOrUndefined (BoundingBox), "ImageId" :: NullOrUndefined (ImageId), "ExternalImageId" :: NullOrUndefined (ExternalImageId), "Confidence" :: NullOrUndefined (Percent) }) -> Face
+newFace' :: ({ "FaceId" :: Maybe (FaceId), "BoundingBox" :: Maybe (BoundingBox), "ImageId" :: Maybe (ImageId), "ExternalImageId" :: Maybe (ExternalImageId), "Confidence" :: Maybe (Percent) } -> { "FaceId" :: Maybe (FaceId), "BoundingBox" :: Maybe (BoundingBox), "ImageId" :: Maybe (ImageId), "ExternalImageId" :: Maybe (ExternalImageId), "Confidence" :: Maybe (Percent) }) -> Face
 ```
 
 Constructs Face's fields from required parameters
@@ -1496,7 +1496,7 @@ Encode FaceAttributes
 
 ``` purescript
 newtype FaceDetail
-  = FaceDetail { "BoundingBox" :: NullOrUndefined (BoundingBox), "AgeRange" :: NullOrUndefined (AgeRange), "Smile" :: NullOrUndefined (Smile), "Eyeglasses" :: NullOrUndefined (Eyeglasses), "Sunglasses" :: NullOrUndefined (Sunglasses), "Gender" :: NullOrUndefined (Gender), "Beard" :: NullOrUndefined (Beard), "Mustache" :: NullOrUndefined (Mustache), "EyesOpen" :: NullOrUndefined (EyeOpen), "MouthOpen" :: NullOrUndefined (MouthOpen), "Emotions" :: NullOrUndefined (Emotions), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality), "Confidence" :: NullOrUndefined (Percent) }
+  = FaceDetail { "BoundingBox" :: Maybe (BoundingBox), "AgeRange" :: Maybe (AgeRange), "Smile" :: Maybe (Smile), "Eyeglasses" :: Maybe (Eyeglasses), "Sunglasses" :: Maybe (Sunglasses), "Gender" :: Maybe (Gender), "Beard" :: Maybe (Beard), "Mustache" :: Maybe (Mustache), "EyesOpen" :: Maybe (EyeOpen), "MouthOpen" :: Maybe (MouthOpen), "Emotions" :: Maybe (Emotions), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Structure containing attributes of the face that the algorithm detected.</p>
@@ -1521,7 +1521,7 @@ Constructs FaceDetail from required parameters
 #### `newFaceDetail'`
 
 ``` purescript
-newFaceDetail' :: ({ "BoundingBox" :: NullOrUndefined (BoundingBox), "AgeRange" :: NullOrUndefined (AgeRange), "Smile" :: NullOrUndefined (Smile), "Eyeglasses" :: NullOrUndefined (Eyeglasses), "Sunglasses" :: NullOrUndefined (Sunglasses), "Gender" :: NullOrUndefined (Gender), "Beard" :: NullOrUndefined (Beard), "Mustache" :: NullOrUndefined (Mustache), "EyesOpen" :: NullOrUndefined (EyeOpen), "MouthOpen" :: NullOrUndefined (MouthOpen), "Emotions" :: NullOrUndefined (Emotions), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality), "Confidence" :: NullOrUndefined (Percent) } -> { "BoundingBox" :: NullOrUndefined (BoundingBox), "AgeRange" :: NullOrUndefined (AgeRange), "Smile" :: NullOrUndefined (Smile), "Eyeglasses" :: NullOrUndefined (Eyeglasses), "Sunglasses" :: NullOrUndefined (Sunglasses), "Gender" :: NullOrUndefined (Gender), "Beard" :: NullOrUndefined (Beard), "Mustache" :: NullOrUndefined (Mustache), "EyesOpen" :: NullOrUndefined (EyeOpen), "MouthOpen" :: NullOrUndefined (MouthOpen), "Emotions" :: NullOrUndefined (Emotions), "Landmarks" :: NullOrUndefined (Landmarks), "Pose" :: NullOrUndefined (Pose), "Quality" :: NullOrUndefined (ImageQuality), "Confidence" :: NullOrUndefined (Percent) }) -> FaceDetail
+newFaceDetail' :: ({ "BoundingBox" :: Maybe (BoundingBox), "AgeRange" :: Maybe (AgeRange), "Smile" :: Maybe (Smile), "Eyeglasses" :: Maybe (Eyeglasses), "Sunglasses" :: Maybe (Sunglasses), "Gender" :: Maybe (Gender), "Beard" :: Maybe (Beard), "Mustache" :: Maybe (Mustache), "EyesOpen" :: Maybe (EyeOpen), "MouthOpen" :: Maybe (MouthOpen), "Emotions" :: Maybe (Emotions), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality), "Confidence" :: Maybe (Percent) } -> { "BoundingBox" :: Maybe (BoundingBox), "AgeRange" :: Maybe (AgeRange), "Smile" :: Maybe (Smile), "Eyeglasses" :: Maybe (Eyeglasses), "Sunglasses" :: Maybe (Sunglasses), "Gender" :: Maybe (Gender), "Beard" :: Maybe (Beard), "Mustache" :: Maybe (Mustache), "EyesOpen" :: Maybe (EyeOpen), "MouthOpen" :: Maybe (MouthOpen), "Emotions" :: Maybe (Emotions), "Landmarks" :: Maybe (Landmarks), "Pose" :: Maybe (Pose), "Quality" :: Maybe (ImageQuality), "Confidence" :: Maybe (Percent) }) -> FaceDetail
 ```
 
 Constructs FaceDetail's fields from required parameters
@@ -1546,7 +1546,7 @@ Encode FaceDetailList
 
 ``` purescript
 newtype FaceDetection
-  = FaceDetection { "Timestamp" :: NullOrUndefined (Timestamp), "Face" :: NullOrUndefined (FaceDetail) }
+  = FaceDetection { "Timestamp" :: Maybe (Timestamp), "Face" :: Maybe (FaceDetail) }
 ```
 
 <p>Information about a face detected in a video analysis request and the time the face was detected in the video. </p>
@@ -1571,7 +1571,7 @@ Constructs FaceDetection from required parameters
 #### `newFaceDetection'`
 
 ``` purescript
-newFaceDetection' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "Face" :: NullOrUndefined (FaceDetail) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "Face" :: NullOrUndefined (FaceDetail) }) -> FaceDetection
+newFaceDetection' :: ({ "Timestamp" :: Maybe (Timestamp), "Face" :: Maybe (FaceDetail) } -> { "Timestamp" :: Maybe (Timestamp), "Face" :: Maybe (FaceDetail) }) -> FaceDetection
 ```
 
 Constructs FaceDetection's fields from required parameters
@@ -1644,7 +1644,7 @@ Encode FaceList
 
 ``` purescript
 newtype FaceMatch
-  = FaceMatch { "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (Face) }
+  = FaceMatch { "Similarity" :: Maybe (Percent), "Face" :: Maybe (Face) }
 ```
 
 <p>Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.</p>
@@ -1669,7 +1669,7 @@ Constructs FaceMatch from required parameters
 #### `newFaceMatch'`
 
 ``` purescript
-newFaceMatch' :: ({ "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (Face) } -> { "Similarity" :: NullOrUndefined (Percent), "Face" :: NullOrUndefined (Face) }) -> FaceMatch
+newFaceMatch' :: ({ "Similarity" :: Maybe (Percent), "Face" :: Maybe (Face) } -> { "Similarity" :: Maybe (Percent), "Face" :: Maybe (Face) }) -> FaceMatch
 ```
 
 Constructs FaceMatch's fields from required parameters
@@ -1710,7 +1710,7 @@ Encode FaceModelVersionList
 
 ``` purescript
 newtype FaceRecord
-  = FaceRecord { "Face" :: NullOrUndefined (Face), "FaceDetail" :: NullOrUndefined (FaceDetail) }
+  = FaceRecord { "Face" :: Maybe (Face), "FaceDetail" :: Maybe (FaceDetail) }
 ```
 
 <p>Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.</p>
@@ -1735,7 +1735,7 @@ Constructs FaceRecord from required parameters
 #### `newFaceRecord'`
 
 ``` purescript
-newFaceRecord' :: ({ "Face" :: NullOrUndefined (Face), "FaceDetail" :: NullOrUndefined (FaceDetail) } -> { "Face" :: NullOrUndefined (Face), "FaceDetail" :: NullOrUndefined (FaceDetail) }) -> FaceRecord
+newFaceRecord' :: ({ "Face" :: Maybe (Face), "FaceDetail" :: Maybe (FaceDetail) } -> { "Face" :: Maybe (Face), "FaceDetail" :: Maybe (FaceDetail) }) -> FaceRecord
 ```
 
 Constructs FaceRecord's fields from required parameters
@@ -1760,7 +1760,7 @@ Encode FaceRecordList
 
 ``` purescript
 newtype FaceSearchSettings
-  = FaceSearchSettings { "CollectionId" :: NullOrUndefined (CollectionId), "FaceMatchThreshold" :: NullOrUndefined (Percent) }
+  = FaceSearchSettings { "CollectionId" :: Maybe (CollectionId), "FaceMatchThreshold" :: Maybe (Percent) }
 ```
 
 <p>Input face recognition parameters for an Amazon Rekognition stream processor. <code>FaceRecognitionSettings</code> is a request parameter for .</p>
@@ -1785,7 +1785,7 @@ Constructs FaceSearchSettings from required parameters
 #### `newFaceSearchSettings'`
 
 ``` purescript
-newFaceSearchSettings' :: ({ "CollectionId" :: NullOrUndefined (CollectionId), "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> { "CollectionId" :: NullOrUndefined (CollectionId), "FaceMatchThreshold" :: NullOrUndefined (Percent) }) -> FaceSearchSettings
+newFaceSearchSettings' :: ({ "CollectionId" :: Maybe (CollectionId), "FaceMatchThreshold" :: Maybe (Percent) } -> { "CollectionId" :: Maybe (CollectionId), "FaceMatchThreshold" :: Maybe (Percent) }) -> FaceSearchSettings
 ```
 
 Constructs FaceSearchSettings's fields from required parameters
@@ -1810,7 +1810,7 @@ Encode FaceSearchSortBy
 
 ``` purescript
 newtype Gender
-  = Gender { "Value" :: NullOrUndefined (GenderType), "Confidence" :: NullOrUndefined (Percent) }
+  = Gender { "Value" :: Maybe (GenderType), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Gender of the face and the confidence level in the determination.</p>
@@ -1835,7 +1835,7 @@ Constructs Gender from required parameters
 #### `newGender'`
 
 ``` purescript
-newGender' :: ({ "Value" :: NullOrUndefined (GenderType), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (GenderType), "Confidence" :: NullOrUndefined (Percent) }) -> Gender
+newGender' :: ({ "Value" :: Maybe (GenderType), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (GenderType), "Confidence" :: Maybe (Percent) }) -> Gender
 ```
 
 Constructs Gender's fields from required parameters
@@ -1860,7 +1860,7 @@ Encode GenderType
 
 ``` purescript
 newtype Geometry
-  = Geometry { "BoundingBox" :: NullOrUndefined (BoundingBox), "Polygon" :: NullOrUndefined (Polygon) }
+  = Geometry { "BoundingBox" :: Maybe (BoundingBox), "Polygon" :: Maybe (Polygon) }
 ```
 
 <p>Information about where text detected by is located on an image.</p>
@@ -1885,7 +1885,7 @@ Constructs Geometry from required parameters
 #### `newGeometry'`
 
 ``` purescript
-newGeometry' :: ({ "BoundingBox" :: NullOrUndefined (BoundingBox), "Polygon" :: NullOrUndefined (Polygon) } -> { "BoundingBox" :: NullOrUndefined (BoundingBox), "Polygon" :: NullOrUndefined (Polygon) }) -> Geometry
+newGeometry' :: ({ "BoundingBox" :: Maybe (BoundingBox), "Polygon" :: Maybe (Polygon) } -> { "BoundingBox" :: Maybe (BoundingBox), "Polygon" :: Maybe (Polygon) }) -> Geometry
 ```
 
 Constructs Geometry's fields from required parameters
@@ -1926,7 +1926,7 @@ Constructs GetCelebrityInfoRequest's fields from required parameters
 
 ``` purescript
 newtype GetCelebrityInfoResponse
-  = GetCelebrityInfoResponse { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String) }
+  = GetCelebrityInfoResponse { "Urls" :: Maybe (Urls), "Name" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -1949,7 +1949,7 @@ Constructs GetCelebrityInfoResponse from required parameters
 #### `newGetCelebrityInfoResponse'`
 
 ``` purescript
-newGetCelebrityInfoResponse' :: ({ "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String) } -> { "Urls" :: NullOrUndefined (Urls), "Name" :: NullOrUndefined (String) }) -> GetCelebrityInfoResponse
+newGetCelebrityInfoResponse' :: ({ "Urls" :: Maybe (Urls), "Name" :: Maybe (String) } -> { "Urls" :: Maybe (Urls), "Name" :: Maybe (String) }) -> GetCelebrityInfoResponse
 ```
 
 Constructs GetCelebrityInfoResponse's fields from required parameters
@@ -1958,7 +1958,7 @@ Constructs GetCelebrityInfoResponse's fields from required parameters
 
 ``` purescript
 newtype GetCelebrityRecognitionRequest
-  = GetCelebrityRecognitionRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy) }
+  = GetCelebrityRecognitionRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (CelebrityRecognitionSortBy) }
 ```
 
 ##### Instances
@@ -1981,7 +1981,7 @@ Constructs GetCelebrityRecognitionRequest from required parameters
 #### `newGetCelebrityRecognitionRequest'`
 
 ``` purescript
-newGetCelebrityRecognitionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy) }) -> GetCelebrityRecognitionRequest
+newGetCelebrityRecognitionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (CelebrityRecognitionSortBy) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (CelebrityRecognitionSortBy) }) -> GetCelebrityRecognitionRequest
 ```
 
 Constructs GetCelebrityRecognitionRequest's fields from required parameters
@@ -1990,7 +1990,7 @@ Constructs GetCelebrityRecognitionRequest's fields from required parameters
 
 ``` purescript
 newtype GetCelebrityRecognitionResponse
-  = GetCelebrityRecognitionResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Celebrities" :: NullOrUndefined (CelebrityRecognitions) }
+  = GetCelebrityRecognitionResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Celebrities" :: Maybe (CelebrityRecognitions) }
 ```
 
 ##### Instances
@@ -2013,7 +2013,7 @@ Constructs GetCelebrityRecognitionResponse from required parameters
 #### `newGetCelebrityRecognitionResponse'`
 
 ``` purescript
-newGetCelebrityRecognitionResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Celebrities" :: NullOrUndefined (CelebrityRecognitions) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Celebrities" :: NullOrUndefined (CelebrityRecognitions) }) -> GetCelebrityRecognitionResponse
+newGetCelebrityRecognitionResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Celebrities" :: Maybe (CelebrityRecognitions) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Celebrities" :: Maybe (CelebrityRecognitions) }) -> GetCelebrityRecognitionResponse
 ```
 
 Constructs GetCelebrityRecognitionResponse's fields from required parameters
@@ -2022,7 +2022,7 @@ Constructs GetCelebrityRecognitionResponse's fields from required parameters
 
 ``` purescript
 newtype GetContentModerationRequest
-  = GetContentModerationRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (ContentModerationSortBy) }
+  = GetContentModerationRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (ContentModerationSortBy) }
 ```
 
 ##### Instances
@@ -2045,7 +2045,7 @@ Constructs GetContentModerationRequest from required parameters
 #### `newGetContentModerationRequest'`
 
 ``` purescript
-newGetContentModerationRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (ContentModerationSortBy) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (ContentModerationSortBy) }) -> GetContentModerationRequest
+newGetContentModerationRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (ContentModerationSortBy) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (ContentModerationSortBy) }) -> GetContentModerationRequest
 ```
 
 Constructs GetContentModerationRequest's fields from required parameters
@@ -2054,7 +2054,7 @@ Constructs GetContentModerationRequest's fields from required parameters
 
 ``` purescript
 newtype GetContentModerationResponse
-  = GetContentModerationResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "ModerationLabels" :: NullOrUndefined (ContentModerationDetections), "NextToken" :: NullOrUndefined (PaginationToken) }
+  = GetContentModerationResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "ModerationLabels" :: Maybe (ContentModerationDetections), "NextToken" :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2077,7 +2077,7 @@ Constructs GetContentModerationResponse from required parameters
 #### `newGetContentModerationResponse'`
 
 ``` purescript
-newGetContentModerationResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "ModerationLabels" :: NullOrUndefined (ContentModerationDetections), "NextToken" :: NullOrUndefined (PaginationToken) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "ModerationLabels" :: NullOrUndefined (ContentModerationDetections), "NextToken" :: NullOrUndefined (PaginationToken) }) -> GetContentModerationResponse
+newGetContentModerationResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "ModerationLabels" :: Maybe (ContentModerationDetections), "NextToken" :: Maybe (PaginationToken) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "ModerationLabels" :: Maybe (ContentModerationDetections), "NextToken" :: Maybe (PaginationToken) }) -> GetContentModerationResponse
 ```
 
 Constructs GetContentModerationResponse's fields from required parameters
@@ -2086,7 +2086,7 @@ Constructs GetContentModerationResponse's fields from required parameters
 
 ``` purescript
 newtype GetFaceDetectionRequest
-  = GetFaceDetectionRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken) }
+  = GetFaceDetectionRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2109,7 +2109,7 @@ Constructs GetFaceDetectionRequest from required parameters
 #### `newGetFaceDetectionRequest'`
 
 ``` purescript
-newGetFaceDetectionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken) }) -> GetFaceDetectionRequest
+newGetFaceDetectionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken) }) -> GetFaceDetectionRequest
 ```
 
 Constructs GetFaceDetectionRequest's fields from required parameters
@@ -2118,7 +2118,7 @@ Constructs GetFaceDetectionRequest's fields from required parameters
 
 ``` purescript
 newtype GetFaceDetectionResponse
-  = GetFaceDetectionResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Faces" :: NullOrUndefined (FaceDetections) }
+  = GetFaceDetectionResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Faces" :: Maybe (FaceDetections) }
 ```
 
 ##### Instances
@@ -2141,7 +2141,7 @@ Constructs GetFaceDetectionResponse from required parameters
 #### `newGetFaceDetectionResponse'`
 
 ``` purescript
-newGetFaceDetectionResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Faces" :: NullOrUndefined (FaceDetections) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Faces" :: NullOrUndefined (FaceDetections) }) -> GetFaceDetectionResponse
+newGetFaceDetectionResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Faces" :: Maybe (FaceDetections) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Faces" :: Maybe (FaceDetections) }) -> GetFaceDetectionResponse
 ```
 
 Constructs GetFaceDetectionResponse's fields from required parameters
@@ -2150,7 +2150,7 @@ Constructs GetFaceDetectionResponse's fields from required parameters
 
 ``` purescript
 newtype GetFaceSearchRequest
-  = GetFaceSearchRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (FaceSearchSortBy) }
+  = GetFaceSearchRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (FaceSearchSortBy) }
 ```
 
 ##### Instances
@@ -2173,7 +2173,7 @@ Constructs GetFaceSearchRequest from required parameters
 #### `newGetFaceSearchRequest'`
 
 ``` purescript
-newGetFaceSearchRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (FaceSearchSortBy) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (FaceSearchSortBy) }) -> GetFaceSearchRequest
+newGetFaceSearchRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (FaceSearchSortBy) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (FaceSearchSortBy) }) -> GetFaceSearchRequest
 ```
 
 Constructs GetFaceSearchRequest's fields from required parameters
@@ -2182,7 +2182,7 @@ Constructs GetFaceSearchRequest's fields from required parameters
 
 ``` purescript
 newtype GetFaceSearchResponse
-  = GetFaceSearchResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "NextToken" :: NullOrUndefined (PaginationToken), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "Persons" :: NullOrUndefined (PersonMatches) }
+  = GetFaceSearchResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "NextToken" :: Maybe (PaginationToken), "VideoMetadata" :: Maybe (VideoMetadata), "Persons" :: Maybe (PersonMatches) }
 ```
 
 ##### Instances
@@ -2205,7 +2205,7 @@ Constructs GetFaceSearchResponse from required parameters
 #### `newGetFaceSearchResponse'`
 
 ``` purescript
-newGetFaceSearchResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "NextToken" :: NullOrUndefined (PaginationToken), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "Persons" :: NullOrUndefined (PersonMatches) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "NextToken" :: NullOrUndefined (PaginationToken), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "Persons" :: NullOrUndefined (PersonMatches) }) -> GetFaceSearchResponse
+newGetFaceSearchResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "NextToken" :: Maybe (PaginationToken), "VideoMetadata" :: Maybe (VideoMetadata), "Persons" :: Maybe (PersonMatches) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "NextToken" :: Maybe (PaginationToken), "VideoMetadata" :: Maybe (VideoMetadata), "Persons" :: Maybe (PersonMatches) }) -> GetFaceSearchResponse
 ```
 
 Constructs GetFaceSearchResponse's fields from required parameters
@@ -2214,7 +2214,7 @@ Constructs GetFaceSearchResponse's fields from required parameters
 
 ``` purescript
 newtype GetLabelDetectionRequest
-  = GetLabelDetectionRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (LabelDetectionSortBy) }
+  = GetLabelDetectionRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (LabelDetectionSortBy) }
 ```
 
 ##### Instances
@@ -2237,7 +2237,7 @@ Constructs GetLabelDetectionRequest from required parameters
 #### `newGetLabelDetectionRequest'`
 
 ``` purescript
-newGetLabelDetectionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (LabelDetectionSortBy) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (LabelDetectionSortBy) }) -> GetLabelDetectionRequest
+newGetLabelDetectionRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (LabelDetectionSortBy) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (LabelDetectionSortBy) }) -> GetLabelDetectionRequest
 ```
 
 Constructs GetLabelDetectionRequest's fields from required parameters
@@ -2246,7 +2246,7 @@ Constructs GetLabelDetectionRequest's fields from required parameters
 
 ``` purescript
 newtype GetLabelDetectionResponse
-  = GetLabelDetectionResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Labels" :: NullOrUndefined (LabelDetections) }
+  = GetLabelDetectionResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Labels" :: Maybe (LabelDetections) }
 ```
 
 ##### Instances
@@ -2269,7 +2269,7 @@ Constructs GetLabelDetectionResponse from required parameters
 #### `newGetLabelDetectionResponse'`
 
 ``` purescript
-newGetLabelDetectionResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Labels" :: NullOrUndefined (LabelDetections) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Labels" :: NullOrUndefined (LabelDetections) }) -> GetLabelDetectionResponse
+newGetLabelDetectionResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Labels" :: Maybe (LabelDetections) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Labels" :: Maybe (LabelDetections) }) -> GetLabelDetectionResponse
 ```
 
 Constructs GetLabelDetectionResponse's fields from required parameters
@@ -2278,7 +2278,7 @@ Constructs GetLabelDetectionResponse's fields from required parameters
 
 ``` purescript
 newtype GetPersonTrackingRequest
-  = GetPersonTrackingRequest { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (PersonTrackingSortBy) }
+  = GetPersonTrackingRequest { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (PersonTrackingSortBy) }
 ```
 
 ##### Instances
@@ -2301,7 +2301,7 @@ Constructs GetPersonTrackingRequest from required parameters
 #### `newGetPersonTrackingRequest'`
 
 ``` purescript
-newGetPersonTrackingRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (PersonTrackingSortBy) } -> { "JobId" :: JobId, "MaxResults" :: NullOrUndefined (MaxResults), "NextToken" :: NullOrUndefined (PaginationToken), "SortBy" :: NullOrUndefined (PersonTrackingSortBy) }) -> GetPersonTrackingRequest
+newGetPersonTrackingRequest' :: JobId -> ({ "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (PersonTrackingSortBy) } -> { "JobId" :: JobId, "MaxResults" :: Maybe (MaxResults), "NextToken" :: Maybe (PaginationToken), "SortBy" :: Maybe (PersonTrackingSortBy) }) -> GetPersonTrackingRequest
 ```
 
 Constructs GetPersonTrackingRequest's fields from required parameters
@@ -2310,7 +2310,7 @@ Constructs GetPersonTrackingRequest's fields from required parameters
 
 ``` purescript
 newtype GetPersonTrackingResponse
-  = GetPersonTrackingResponse { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Persons" :: NullOrUndefined (PersonDetections) }
+  = GetPersonTrackingResponse { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Persons" :: Maybe (PersonDetections) }
 ```
 
 ##### Instances
@@ -2333,7 +2333,7 @@ Constructs GetPersonTrackingResponse from required parameters
 #### `newGetPersonTrackingResponse'`
 
 ``` purescript
-newGetPersonTrackingResponse' :: ({ "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Persons" :: NullOrUndefined (PersonDetections) } -> { "JobStatus" :: NullOrUndefined (VideoJobStatus), "StatusMessage" :: NullOrUndefined (StatusMessage), "VideoMetadata" :: NullOrUndefined (VideoMetadata), "NextToken" :: NullOrUndefined (PaginationToken), "Persons" :: NullOrUndefined (PersonDetections) }) -> GetPersonTrackingResponse
+newGetPersonTrackingResponse' :: ({ "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Persons" :: Maybe (PersonDetections) } -> { "JobStatus" :: Maybe (VideoJobStatus), "StatusMessage" :: Maybe (StatusMessage), "VideoMetadata" :: Maybe (VideoMetadata), "NextToken" :: Maybe (PaginationToken), "Persons" :: Maybe (PersonDetections) }) -> GetPersonTrackingResponse
 ```
 
 Constructs GetPersonTrackingResponse's fields from required parameters
@@ -2360,7 +2360,7 @@ Encode IdempotentParameterMismatchException
 
 ``` purescript
 newtype Image
-  = Image { "Bytes" :: NullOrUndefined (ImageBlob), "S3Object" :: NullOrUndefined (S3Object) }
+  = Image { "Bytes" :: Maybe (ImageBlob), "S3Object" :: Maybe (S3Object) }
 ```
 
 <p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>images-bytes</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
@@ -2385,7 +2385,7 @@ Constructs Image from required parameters
 #### `newImage'`
 
 ``` purescript
-newImage' :: ({ "Bytes" :: NullOrUndefined (ImageBlob), "S3Object" :: NullOrUndefined (S3Object) } -> { "Bytes" :: NullOrUndefined (ImageBlob), "S3Object" :: NullOrUndefined (S3Object) }) -> Image
+newImage' :: ({ "Bytes" :: Maybe (ImageBlob), "S3Object" :: Maybe (S3Object) } -> { "Bytes" :: Maybe (ImageBlob), "S3Object" :: Maybe (S3Object) }) -> Image
 ```
 
 Constructs Image's fields from required parameters
@@ -2426,7 +2426,7 @@ Encode ImageId
 
 ``` purescript
 newtype ImageQuality
-  = ImageQuality { "Brightness" :: NullOrUndefined (Number), "Sharpness" :: NullOrUndefined (Number) }
+  = ImageQuality { "Brightness" :: Maybe (Number), "Sharpness" :: Maybe (Number) }
 ```
 
 <p>Identifies face image brightness and sharpness. </p>
@@ -2451,7 +2451,7 @@ Constructs ImageQuality from required parameters
 #### `newImageQuality'`
 
 ``` purescript
-newImageQuality' :: ({ "Brightness" :: NullOrUndefined (Number), "Sharpness" :: NullOrUndefined (Number) } -> { "Brightness" :: NullOrUndefined (Number), "Sharpness" :: NullOrUndefined (Number) }) -> ImageQuality
+newImageQuality' :: ({ "Brightness" :: Maybe (Number), "Sharpness" :: Maybe (Number) } -> { "Brightness" :: Maybe (Number), "Sharpness" :: Maybe (Number) }) -> ImageQuality
 ```
 
 Constructs ImageQuality's fields from required parameters
@@ -2478,7 +2478,7 @@ Encode ImageTooLargeException
 
 ``` purescript
 newtype IndexFacesRequest
-  = IndexFacesRequest { "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: NullOrUndefined (ExternalImageId), "DetectionAttributes" :: NullOrUndefined (Attributes) }
+  = IndexFacesRequest { "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: Maybe (ExternalImageId), "DetectionAttributes" :: Maybe (Attributes) }
 ```
 
 ##### Instances
@@ -2501,7 +2501,7 @@ Constructs IndexFacesRequest from required parameters
 #### `newIndexFacesRequest'`
 
 ``` purescript
-newIndexFacesRequest' :: CollectionId -> Image -> ({ "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: NullOrUndefined (ExternalImageId), "DetectionAttributes" :: NullOrUndefined (Attributes) } -> { "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: NullOrUndefined (ExternalImageId), "DetectionAttributes" :: NullOrUndefined (Attributes) }) -> IndexFacesRequest
+newIndexFacesRequest' :: CollectionId -> Image -> ({ "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: Maybe (ExternalImageId), "DetectionAttributes" :: Maybe (Attributes) } -> { "CollectionId" :: CollectionId, "Image" :: Image, "ExternalImageId" :: Maybe (ExternalImageId), "DetectionAttributes" :: Maybe (Attributes) }) -> IndexFacesRequest
 ```
 
 Constructs IndexFacesRequest's fields from required parameters
@@ -2510,7 +2510,7 @@ Constructs IndexFacesRequest's fields from required parameters
 
 ``` purescript
 newtype IndexFacesResponse
-  = IndexFacesResponse { "FaceRecords" :: NullOrUndefined (FaceRecordList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection), "FaceModelVersion" :: NullOrUndefined (String) }
+  = IndexFacesResponse { "FaceRecords" :: Maybe (FaceRecordList), "OrientationCorrection" :: Maybe (OrientationCorrection), "FaceModelVersion" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -2533,7 +2533,7 @@ Constructs IndexFacesResponse from required parameters
 #### `newIndexFacesResponse'`
 
 ``` purescript
-newIndexFacesResponse' :: ({ "FaceRecords" :: NullOrUndefined (FaceRecordList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection), "FaceModelVersion" :: NullOrUndefined (String) } -> { "FaceRecords" :: NullOrUndefined (FaceRecordList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection), "FaceModelVersion" :: NullOrUndefined (String) }) -> IndexFacesResponse
+newIndexFacesResponse' :: ({ "FaceRecords" :: Maybe (FaceRecordList), "OrientationCorrection" :: Maybe (OrientationCorrection), "FaceModelVersion" :: Maybe (String) } -> { "FaceRecords" :: Maybe (FaceRecordList), "OrientationCorrection" :: Maybe (OrientationCorrection), "FaceModelVersion" :: Maybe (String) }) -> IndexFacesResponse
 ```
 
 Constructs IndexFacesResponse's fields from required parameters
@@ -2680,7 +2680,7 @@ Encode KinesisDataArn
 
 ``` purescript
 newtype KinesisDataStream
-  = KinesisDataStream { "Arn" :: NullOrUndefined (KinesisDataArn) }
+  = KinesisDataStream { "Arn" :: Maybe (KinesisDataArn) }
 ```
 
 <p>The Kinesis data stream Amazon Rekognition to which the analysis results of a Amazon Rekognition stream processor are streamed. For more information, see .</p>
@@ -2705,7 +2705,7 @@ Constructs KinesisDataStream from required parameters
 #### `newKinesisDataStream'`
 
 ``` purescript
-newKinesisDataStream' :: ({ "Arn" :: NullOrUndefined (KinesisDataArn) } -> { "Arn" :: NullOrUndefined (KinesisDataArn) }) -> KinesisDataStream
+newKinesisDataStream' :: ({ "Arn" :: Maybe (KinesisDataArn) } -> { "Arn" :: Maybe (KinesisDataArn) }) -> KinesisDataStream
 ```
 
 Constructs KinesisDataStream's fields from required parameters
@@ -2730,7 +2730,7 @@ Encode KinesisVideoArn
 
 ``` purescript
 newtype KinesisVideoStream
-  = KinesisVideoStream { "Arn" :: NullOrUndefined (KinesisVideoArn) }
+  = KinesisVideoStream { "Arn" :: Maybe (KinesisVideoArn) }
 ```
 
 <p>Kinesis video stream stream that provides the source streaming video for a Rekognition Video stream processor. For more information, see .</p>
@@ -2755,7 +2755,7 @@ Constructs KinesisVideoStream from required parameters
 #### `newKinesisVideoStream'`
 
 ``` purescript
-newKinesisVideoStream' :: ({ "Arn" :: NullOrUndefined (KinesisVideoArn) } -> { "Arn" :: NullOrUndefined (KinesisVideoArn) }) -> KinesisVideoStream
+newKinesisVideoStream' :: ({ "Arn" :: Maybe (KinesisVideoArn) } -> { "Arn" :: Maybe (KinesisVideoArn) }) -> KinesisVideoStream
 ```
 
 Constructs KinesisVideoStream's fields from required parameters
@@ -2764,7 +2764,7 @@ Constructs KinesisVideoStream's fields from required parameters
 
 ``` purescript
 newtype Label
-  = Label { "Name" :: NullOrUndefined (String), "Confidence" :: NullOrUndefined (Percent) }
+  = Label { "Name" :: Maybe (String), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Structure containing details about the detected label, including name, and level of confidence.</p>
@@ -2789,7 +2789,7 @@ Constructs Label from required parameters
 #### `newLabel'`
 
 ``` purescript
-newLabel' :: ({ "Name" :: NullOrUndefined (String), "Confidence" :: NullOrUndefined (Percent) } -> { "Name" :: NullOrUndefined (String), "Confidence" :: NullOrUndefined (Percent) }) -> Label
+newLabel' :: ({ "Name" :: Maybe (String), "Confidence" :: Maybe (Percent) } -> { "Name" :: Maybe (String), "Confidence" :: Maybe (Percent) }) -> Label
 ```
 
 Constructs Label's fields from required parameters
@@ -2798,7 +2798,7 @@ Constructs Label's fields from required parameters
 
 ``` purescript
 newtype LabelDetection
-  = LabelDetection { "Timestamp" :: NullOrUndefined (Timestamp), "Label" :: NullOrUndefined (Label) }
+  = LabelDetection { "Timestamp" :: Maybe (Timestamp), "Label" :: Maybe (Label) }
 ```
 
 <p>Information about a label detected in a video analysis request and the time the label was detected in the video. </p>
@@ -2823,7 +2823,7 @@ Constructs LabelDetection from required parameters
 #### `newLabelDetection'`
 
 ``` purescript
-newLabelDetection' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "Label" :: NullOrUndefined (Label) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "Label" :: NullOrUndefined (Label) }) -> LabelDetection
+newLabelDetection' :: ({ "Timestamp" :: Maybe (Timestamp), "Label" :: Maybe (Label) } -> { "Timestamp" :: Maybe (Timestamp), "Label" :: Maybe (Label) }) -> LabelDetection
 ```
 
 Constructs LabelDetection's fields from required parameters
@@ -2880,7 +2880,7 @@ Encode Labels
 
 ``` purescript
 newtype Landmark
-  = Landmark { "Type" :: NullOrUndefined (LandmarkType), "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) }
+  = Landmark { "Type" :: Maybe (LandmarkType), "X" :: Maybe (Number), "Y" :: Maybe (Number) }
 ```
 
 <p>Indicates the location of the landmark on the face.</p>
@@ -2905,7 +2905,7 @@ Constructs Landmark from required parameters
 #### `newLandmark'`
 
 ``` purescript
-newLandmark' :: ({ "Type" :: NullOrUndefined (LandmarkType), "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) } -> { "Type" :: NullOrUndefined (LandmarkType), "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) }) -> Landmark
+newLandmark' :: ({ "Type" :: Maybe (LandmarkType), "X" :: Maybe (Number), "Y" :: Maybe (Number) } -> { "Type" :: Maybe (LandmarkType), "X" :: Maybe (Number), "Y" :: Maybe (Number) }) -> Landmark
 ```
 
 Constructs Landmark's fields from required parameters
@@ -2964,7 +2964,7 @@ Encode LimitExceededException
 
 ``` purescript
 newtype ListCollectionsRequest
-  = ListCollectionsRequest { "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) }
+  = ListCollectionsRequest { "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) }
 ```
 
 ##### Instances
@@ -2987,7 +2987,7 @@ Constructs ListCollectionsRequest from required parameters
 #### `newListCollectionsRequest'`
 
 ``` purescript
-newListCollectionsRequest' :: ({ "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) } -> { "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) }) -> ListCollectionsRequest
+newListCollectionsRequest' :: ({ "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) } -> { "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) }) -> ListCollectionsRequest
 ```
 
 Constructs ListCollectionsRequest's fields from required parameters
@@ -2996,7 +2996,7 @@ Constructs ListCollectionsRequest's fields from required parameters
 
 ``` purescript
 newtype ListCollectionsResponse
-  = ListCollectionsResponse { "CollectionIds" :: NullOrUndefined (CollectionIdList), "NextToken" :: NullOrUndefined (PaginationToken), "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList) }
+  = ListCollectionsResponse { "CollectionIds" :: Maybe (CollectionIdList), "NextToken" :: Maybe (PaginationToken), "FaceModelVersions" :: Maybe (FaceModelVersionList) }
 ```
 
 ##### Instances
@@ -3019,7 +3019,7 @@ Constructs ListCollectionsResponse from required parameters
 #### `newListCollectionsResponse'`
 
 ``` purescript
-newListCollectionsResponse' :: ({ "CollectionIds" :: NullOrUndefined (CollectionIdList), "NextToken" :: NullOrUndefined (PaginationToken), "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList) } -> { "CollectionIds" :: NullOrUndefined (CollectionIdList), "NextToken" :: NullOrUndefined (PaginationToken), "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList) }) -> ListCollectionsResponse
+newListCollectionsResponse' :: ({ "CollectionIds" :: Maybe (CollectionIdList), "NextToken" :: Maybe (PaginationToken), "FaceModelVersions" :: Maybe (FaceModelVersionList) } -> { "CollectionIds" :: Maybe (CollectionIdList), "NextToken" :: Maybe (PaginationToken), "FaceModelVersions" :: Maybe (FaceModelVersionList) }) -> ListCollectionsResponse
 ```
 
 Constructs ListCollectionsResponse's fields from required parameters
@@ -3028,7 +3028,7 @@ Constructs ListCollectionsResponse's fields from required parameters
 
 ``` purescript
 newtype ListFacesRequest
-  = ListFacesRequest { "CollectionId" :: CollectionId, "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) }
+  = ListFacesRequest { "CollectionId" :: CollectionId, "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) }
 ```
 
 ##### Instances
@@ -3051,7 +3051,7 @@ Constructs ListFacesRequest from required parameters
 #### `newListFacesRequest'`
 
 ``` purescript
-newListFacesRequest' :: CollectionId -> ({ "CollectionId" :: CollectionId, "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) } -> { "CollectionId" :: CollectionId, "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (PageSize) }) -> ListFacesRequest
+newListFacesRequest' :: CollectionId -> ({ "CollectionId" :: CollectionId, "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) } -> { "CollectionId" :: CollectionId, "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (PageSize) }) -> ListFacesRequest
 ```
 
 Constructs ListFacesRequest's fields from required parameters
@@ -3060,7 +3060,7 @@ Constructs ListFacesRequest's fields from required parameters
 
 ``` purescript
 newtype ListFacesResponse
-  = ListFacesResponse { "Faces" :: NullOrUndefined (FaceList), "NextToken" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) }
+  = ListFacesResponse { "Faces" :: Maybe (FaceList), "NextToken" :: Maybe (String), "FaceModelVersion" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -3083,7 +3083,7 @@ Constructs ListFacesResponse from required parameters
 #### `newListFacesResponse'`
 
 ``` purescript
-newListFacesResponse' :: ({ "Faces" :: NullOrUndefined (FaceList), "NextToken" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) } -> { "Faces" :: NullOrUndefined (FaceList), "NextToken" :: NullOrUndefined (String), "FaceModelVersion" :: NullOrUndefined (String) }) -> ListFacesResponse
+newListFacesResponse' :: ({ "Faces" :: Maybe (FaceList), "NextToken" :: Maybe (String), "FaceModelVersion" :: Maybe (String) } -> { "Faces" :: Maybe (FaceList), "NextToken" :: Maybe (String), "FaceModelVersion" :: Maybe (String) }) -> ListFacesResponse
 ```
 
 Constructs ListFacesResponse's fields from required parameters
@@ -3092,7 +3092,7 @@ Constructs ListFacesResponse's fields from required parameters
 
 ``` purescript
 newtype ListStreamProcessorsRequest
-  = ListStreamProcessorsRequest { "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (MaxResults) }
+  = ListStreamProcessorsRequest { "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (MaxResults) }
 ```
 
 ##### Instances
@@ -3115,7 +3115,7 @@ Constructs ListStreamProcessorsRequest from required parameters
 #### `newListStreamProcessorsRequest'`
 
 ``` purescript
-newListStreamProcessorsRequest' :: ({ "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (MaxResults) } -> { "NextToken" :: NullOrUndefined (PaginationToken), "MaxResults" :: NullOrUndefined (MaxResults) }) -> ListStreamProcessorsRequest
+newListStreamProcessorsRequest' :: ({ "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (MaxResults) } -> { "NextToken" :: Maybe (PaginationToken), "MaxResults" :: Maybe (MaxResults) }) -> ListStreamProcessorsRequest
 ```
 
 Constructs ListStreamProcessorsRequest's fields from required parameters
@@ -3124,7 +3124,7 @@ Constructs ListStreamProcessorsRequest's fields from required parameters
 
 ``` purescript
 newtype ListStreamProcessorsResponse
-  = ListStreamProcessorsResponse { "NextToken" :: NullOrUndefined (PaginationToken), "StreamProcessors" :: NullOrUndefined (StreamProcessorList) }
+  = ListStreamProcessorsResponse { "NextToken" :: Maybe (PaginationToken), "StreamProcessors" :: Maybe (StreamProcessorList) }
 ```
 
 ##### Instances
@@ -3147,7 +3147,7 @@ Constructs ListStreamProcessorsResponse from required parameters
 #### `newListStreamProcessorsResponse'`
 
 ``` purescript
-newListStreamProcessorsResponse' :: ({ "NextToken" :: NullOrUndefined (PaginationToken), "StreamProcessors" :: NullOrUndefined (StreamProcessorList) } -> { "NextToken" :: NullOrUndefined (PaginationToken), "StreamProcessors" :: NullOrUndefined (StreamProcessorList) }) -> ListStreamProcessorsResponse
+newListStreamProcessorsResponse' :: ({ "NextToken" :: Maybe (PaginationToken), "StreamProcessors" :: Maybe (StreamProcessorList) } -> { "NextToken" :: Maybe (PaginationToken), "StreamProcessors" :: Maybe (StreamProcessorList) }) -> ListStreamProcessorsResponse
 ```
 
 Constructs ListStreamProcessorsResponse's fields from required parameters
@@ -3188,7 +3188,7 @@ Encode MaxResults
 
 ``` purescript
 newtype ModerationLabel
-  = ModerationLabel { "Confidence" :: NullOrUndefined (Percent), "Name" :: NullOrUndefined (String), "ParentName" :: NullOrUndefined (String) }
+  = ModerationLabel { "Confidence" :: Maybe (Percent), "Name" :: Maybe (String), "ParentName" :: Maybe (String) }
 ```
 
 <p>Provides information about a single type of moderated content found in an image or video. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see <a>moderation</a>.</p>
@@ -3213,7 +3213,7 @@ Constructs ModerationLabel from required parameters
 #### `newModerationLabel'`
 
 ``` purescript
-newModerationLabel' :: ({ "Confidence" :: NullOrUndefined (Percent), "Name" :: NullOrUndefined (String), "ParentName" :: NullOrUndefined (String) } -> { "Confidence" :: NullOrUndefined (Percent), "Name" :: NullOrUndefined (String), "ParentName" :: NullOrUndefined (String) }) -> ModerationLabel
+newModerationLabel' :: ({ "Confidence" :: Maybe (Percent), "Name" :: Maybe (String), "ParentName" :: Maybe (String) } -> { "Confidence" :: Maybe (Percent), "Name" :: Maybe (String), "ParentName" :: Maybe (String) }) -> ModerationLabel
 ```
 
 Constructs ModerationLabel's fields from required parameters
@@ -3238,7 +3238,7 @@ Encode ModerationLabels
 
 ``` purescript
 newtype MouthOpen
-  = MouthOpen { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = MouthOpen { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
@@ -3263,7 +3263,7 @@ Constructs MouthOpen from required parameters
 #### `newMouthOpen'`
 
 ``` purescript
-newMouthOpen' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> MouthOpen
+newMouthOpen' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> MouthOpen
 ```
 
 Constructs MouthOpen's fields from required parameters
@@ -3272,7 +3272,7 @@ Constructs MouthOpen's fields from required parameters
 
 ``` purescript
 newtype Mustache
-  = Mustache { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = Mustache { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
@@ -3297,7 +3297,7 @@ Constructs Mustache from required parameters
 #### `newMustache'`
 
 ``` purescript
-newMustache' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> Mustache
+newMustache' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> Mustache
 ```
 
 Constructs Mustache's fields from required parameters
@@ -3404,7 +3404,7 @@ Encode Percent
 
 ``` purescript
 newtype PersonDetail
-  = PersonDetail { "Index" :: NullOrUndefined (PersonIndex), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) }
+  = PersonDetail { "Index" :: Maybe (PersonIndex), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) }
 ```
 
 <p>Details about a person detected in a video analysis request.</p>
@@ -3429,7 +3429,7 @@ Constructs PersonDetail from required parameters
 #### `newPersonDetail'`
 
 ``` purescript
-newPersonDetail' :: ({ "Index" :: NullOrUndefined (PersonIndex), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) } -> { "Index" :: NullOrUndefined (PersonIndex), "BoundingBox" :: NullOrUndefined (BoundingBox), "Face" :: NullOrUndefined (FaceDetail) }) -> PersonDetail
+newPersonDetail' :: ({ "Index" :: Maybe (PersonIndex), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) } -> { "Index" :: Maybe (PersonIndex), "BoundingBox" :: Maybe (BoundingBox), "Face" :: Maybe (FaceDetail) }) -> PersonDetail
 ```
 
 Constructs PersonDetail's fields from required parameters
@@ -3438,7 +3438,7 @@ Constructs PersonDetail's fields from required parameters
 
 ``` purescript
 newtype PersonDetection
-  = PersonDetection { "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail) }
+  = PersonDetection { "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail) }
 ```
 
 <p>Details and tracking information for a single time a person is tracked in a video. Amazon Rekognition operations that track persons return an array of <code>PersonDetection</code> objects with elements for each time a person is tracked in a video. For more information, see . </p>
@@ -3463,7 +3463,7 @@ Constructs PersonDetection from required parameters
 #### `newPersonDetection'`
 
 ``` purescript
-newPersonDetection' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail) }) -> PersonDetection
+newPersonDetection' :: ({ "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail) } -> { "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail) }) -> PersonDetection
 ```
 
 Constructs PersonDetection's fields from required parameters
@@ -3504,7 +3504,7 @@ Encode PersonIndex
 
 ``` purescript
 newtype PersonMatch
-  = PersonMatch { "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail), "FaceMatches" :: NullOrUndefined (FaceMatchList) }
+  = PersonMatch { "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail), "FaceMatches" :: Maybe (FaceMatchList) }
 ```
 
 <p>Information about a person whose face matches a face(s) in a Amazon Rekognition collection. Includes information about the faces in the Amazon Rekognition collection (,information about the person (<a>PersonDetail</a>) and the timestamp for when the person was detected in a video. An array of <code>PersonMatch</code> objects is returned by . </p>
@@ -3529,7 +3529,7 @@ Constructs PersonMatch from required parameters
 #### `newPersonMatch'`
 
 ``` purescript
-newPersonMatch' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail), "FaceMatches" :: NullOrUndefined (FaceMatchList) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "Person" :: NullOrUndefined (PersonDetail), "FaceMatches" :: NullOrUndefined (FaceMatchList) }) -> PersonMatch
+newPersonMatch' :: ({ "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail), "FaceMatches" :: Maybe (FaceMatchList) } -> { "Timestamp" :: Maybe (Timestamp), "Person" :: Maybe (PersonDetail), "FaceMatches" :: Maybe (FaceMatchList) }) -> PersonMatch
 ```
 
 Constructs PersonMatch's fields from required parameters
@@ -3570,7 +3570,7 @@ Encode PersonTrackingSortBy
 
 ``` purescript
 newtype Point
-  = Point { "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) }
+  = Point { "X" :: Maybe (Number), "Y" :: Maybe (Number) }
 ```
 
 <p>The X and Y coordinates of a point on an image. The X and Y values returned are ratios of the overall image size. For example, if the input image is 700x200 and the operation returns X=0.5 and Y=0.25, then the point is at the (350,50) pixel coordinate on the image.</p> <p>An array of <code>Point</code> objects, <code>Polygon</code>, is returned by . <code>Polygon</code> represents a fine-grained polygon around detected text. For more information, see . </p>
@@ -3595,7 +3595,7 @@ Constructs Point from required parameters
 #### `newPoint'`
 
 ``` purescript
-newPoint' :: ({ "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) } -> { "X" :: NullOrUndefined (Number), "Y" :: NullOrUndefined (Number) }) -> Point
+newPoint' :: ({ "X" :: Maybe (Number), "Y" :: Maybe (Number) } -> { "X" :: Maybe (Number), "Y" :: Maybe (Number) }) -> Point
 ```
 
 Constructs Point's fields from required parameters
@@ -3620,7 +3620,7 @@ Encode Polygon
 
 ``` purescript
 newtype Pose
-  = Pose { "Roll" :: NullOrUndefined (Degree), "Yaw" :: NullOrUndefined (Degree), "Pitch" :: NullOrUndefined (Degree) }
+  = Pose { "Roll" :: Maybe (Degree), "Yaw" :: Maybe (Degree), "Pitch" :: Maybe (Degree) }
 ```
 
 <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
@@ -3645,7 +3645,7 @@ Constructs Pose from required parameters
 #### `newPose'`
 
 ``` purescript
-newPose' :: ({ "Roll" :: NullOrUndefined (Degree), "Yaw" :: NullOrUndefined (Degree), "Pitch" :: NullOrUndefined (Degree) } -> { "Roll" :: NullOrUndefined (Degree), "Yaw" :: NullOrUndefined (Degree), "Pitch" :: NullOrUndefined (Degree) }) -> Pose
+newPose' :: ({ "Roll" :: Maybe (Degree), "Yaw" :: Maybe (Degree), "Pitch" :: Maybe (Degree) } -> { "Roll" :: Maybe (Degree), "Yaw" :: Maybe (Degree), "Pitch" :: Maybe (Degree) }) -> Pose
 ```
 
 Constructs Pose's fields from required parameters
@@ -3704,7 +3704,7 @@ Constructs RecognizeCelebritiesRequest's fields from required parameters
 
 ``` purescript
 newtype RecognizeCelebritiesResponse
-  = RecognizeCelebritiesResponse { "CelebrityFaces" :: NullOrUndefined (CelebrityList), "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }
+  = RecognizeCelebritiesResponse { "CelebrityFaces" :: Maybe (CelebrityList), "UnrecognizedFaces" :: Maybe (ComparedFaceList), "OrientationCorrection" :: Maybe (OrientationCorrection) }
 ```
 
 ##### Instances
@@ -3727,7 +3727,7 @@ Constructs RecognizeCelebritiesResponse from required parameters
 #### `newRecognizeCelebritiesResponse'`
 
 ``` purescript
-newRecognizeCelebritiesResponse' :: ({ "CelebrityFaces" :: NullOrUndefined (CelebrityList), "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) } -> { "CelebrityFaces" :: NullOrUndefined (CelebrityList), "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList), "OrientationCorrection" :: NullOrUndefined (OrientationCorrection) }) -> RecognizeCelebritiesResponse
+newRecognizeCelebritiesResponse' :: ({ "CelebrityFaces" :: Maybe (CelebrityList), "UnrecognizedFaces" :: Maybe (ComparedFaceList), "OrientationCorrection" :: Maybe (OrientationCorrection) } -> { "CelebrityFaces" :: Maybe (CelebrityList), "UnrecognizedFaces" :: Maybe (ComparedFaceList), "OrientationCorrection" :: Maybe (OrientationCorrection) }) -> RecognizeCelebritiesResponse
 ```
 
 Constructs RecognizeCelebritiesResponse's fields from required parameters
@@ -3838,7 +3838,7 @@ Encode S3Bucket
 
 ``` purescript
 newtype S3Object
-  = S3Object { "Bucket" :: NullOrUndefined (S3Bucket), "Name" :: NullOrUndefined (S3ObjectName), "Version" :: NullOrUndefined (S3ObjectVersion) }
+  = S3Object { "Bucket" :: Maybe (S3Bucket), "Name" :: Maybe (S3ObjectName), "Version" :: Maybe (S3ObjectVersion) }
 ```
 
 <p>Provides the S3 bucket name and object name.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
@@ -3863,7 +3863,7 @@ Constructs S3Object from required parameters
 #### `newS3Object'`
 
 ``` purescript
-newS3Object' :: ({ "Bucket" :: NullOrUndefined (S3Bucket), "Name" :: NullOrUndefined (S3ObjectName), "Version" :: NullOrUndefined (S3ObjectVersion) } -> { "Bucket" :: NullOrUndefined (S3Bucket), "Name" :: NullOrUndefined (S3ObjectName), "Version" :: NullOrUndefined (S3ObjectVersion) }) -> S3Object
+newS3Object' :: ({ "Bucket" :: Maybe (S3Bucket), "Name" :: Maybe (S3ObjectName), "Version" :: Maybe (S3ObjectVersion) } -> { "Bucket" :: Maybe (S3Bucket), "Name" :: Maybe (S3ObjectName), "Version" :: Maybe (S3ObjectVersion) }) -> S3Object
 ```
 
 Constructs S3Object's fields from required parameters
@@ -3920,7 +3920,7 @@ Encode SNSTopicArn
 
 ``` purescript
 newtype SearchFacesByImageRequest
-  = SearchFacesByImageRequest { "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) }
+  = SearchFacesByImageRequest { "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) }
 ```
 
 ##### Instances
@@ -3943,7 +3943,7 @@ Constructs SearchFacesByImageRequest from required parameters
 #### `newSearchFacesByImageRequest'`
 
 ``` purescript
-newSearchFacesByImageRequest' :: CollectionId -> Image -> ({ "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> { "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) }) -> SearchFacesByImageRequest
+newSearchFacesByImageRequest' :: CollectionId -> Image -> ({ "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) } -> { "CollectionId" :: CollectionId, "Image" :: Image, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) }) -> SearchFacesByImageRequest
 ```
 
 Constructs SearchFacesByImageRequest's fields from required parameters
@@ -3952,7 +3952,7 @@ Constructs SearchFacesByImageRequest's fields from required parameters
 
 ``` purescript
 newtype SearchFacesByImageResponse
-  = SearchFacesByImageResponse { "SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox), "SearchedFaceConfidence" :: NullOrUndefined (Percent), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) }
+  = SearchFacesByImageResponse { "SearchedFaceBoundingBox" :: Maybe (BoundingBox), "SearchedFaceConfidence" :: Maybe (Percent), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -3975,7 +3975,7 @@ Constructs SearchFacesByImageResponse from required parameters
 #### `newSearchFacesByImageResponse'`
 
 ``` purescript
-newSearchFacesByImageResponse' :: ({ "SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox), "SearchedFaceConfidence" :: NullOrUndefined (Percent), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) } -> { "SearchedFaceBoundingBox" :: NullOrUndefined (BoundingBox), "SearchedFaceConfidence" :: NullOrUndefined (Percent), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) }) -> SearchFacesByImageResponse
+newSearchFacesByImageResponse' :: ({ "SearchedFaceBoundingBox" :: Maybe (BoundingBox), "SearchedFaceConfidence" :: Maybe (Percent), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) } -> { "SearchedFaceBoundingBox" :: Maybe (BoundingBox), "SearchedFaceConfidence" :: Maybe (Percent), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) }) -> SearchFacesByImageResponse
 ```
 
 Constructs SearchFacesByImageResponse's fields from required parameters
@@ -3984,7 +3984,7 @@ Constructs SearchFacesByImageResponse's fields from required parameters
 
 ``` purescript
 newtype SearchFacesRequest
-  = SearchFacesRequest { "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) }
+  = SearchFacesRequest { "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) }
 ```
 
 ##### Instances
@@ -4007,7 +4007,7 @@ Constructs SearchFacesRequest from required parameters
 #### `newSearchFacesRequest'`
 
 ``` purescript
-newSearchFacesRequest' :: CollectionId -> FaceId -> ({ "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) } -> { "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: NullOrUndefined (MaxFaces), "FaceMatchThreshold" :: NullOrUndefined (Percent) }) -> SearchFacesRequest
+newSearchFacesRequest' :: CollectionId -> FaceId -> ({ "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) } -> { "CollectionId" :: CollectionId, "FaceId" :: FaceId, "MaxFaces" :: Maybe (MaxFaces), "FaceMatchThreshold" :: Maybe (Percent) }) -> SearchFacesRequest
 ```
 
 Constructs SearchFacesRequest's fields from required parameters
@@ -4016,7 +4016,7 @@ Constructs SearchFacesRequest's fields from required parameters
 
 ``` purescript
 newtype SearchFacesResponse
-  = SearchFacesResponse { "SearchedFaceId" :: NullOrUndefined (FaceId), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) }
+  = SearchFacesResponse { "SearchedFaceId" :: Maybe (FaceId), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -4039,7 +4039,7 @@ Constructs SearchFacesResponse from required parameters
 #### `newSearchFacesResponse'`
 
 ``` purescript
-newSearchFacesResponse' :: ({ "SearchedFaceId" :: NullOrUndefined (FaceId), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) } -> { "SearchedFaceId" :: NullOrUndefined (FaceId), "FaceMatches" :: NullOrUndefined (FaceMatchList), "FaceModelVersion" :: NullOrUndefined (String) }) -> SearchFacesResponse
+newSearchFacesResponse' :: ({ "SearchedFaceId" :: Maybe (FaceId), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) } -> { "SearchedFaceId" :: Maybe (FaceId), "FaceMatches" :: Maybe (FaceMatchList), "FaceModelVersion" :: Maybe (String) }) -> SearchFacesResponse
 ```
 
 Constructs SearchFacesResponse's fields from required parameters
@@ -4048,7 +4048,7 @@ Constructs SearchFacesResponse's fields from required parameters
 
 ``` purescript
 newtype Smile
-  = Smile { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = Smile { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
@@ -4073,7 +4073,7 @@ Constructs Smile from required parameters
 #### `newSmile'`
 
 ``` purescript
-newSmile' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> Smile
+newSmile' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> Smile
 ```
 
 Constructs Smile's fields from required parameters
@@ -4082,7 +4082,7 @@ Constructs Smile's fields from required parameters
 
 ``` purescript
 newtype StartCelebrityRecognitionRequest
-  = StartCelebrityRecognitionRequest { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartCelebrityRecognitionRequest { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4105,7 +4105,7 @@ Constructs StartCelebrityRecognitionRequest from required parameters
 #### `newStartCelebrityRecognitionRequest'`
 
 ``` purescript
-newStartCelebrityRecognitionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }) -> StartCelebrityRecognitionRequest
+newStartCelebrityRecognitionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }) -> StartCelebrityRecognitionRequest
 ```
 
 Constructs StartCelebrityRecognitionRequest's fields from required parameters
@@ -4114,7 +4114,7 @@ Constructs StartCelebrityRecognitionRequest's fields from required parameters
 
 ``` purescript
 newtype StartCelebrityRecognitionResponse
-  = StartCelebrityRecognitionResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartCelebrityRecognitionResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4137,7 +4137,7 @@ Constructs StartCelebrityRecognitionResponse from required parameters
 #### `newStartCelebrityRecognitionResponse'`
 
 ``` purescript
-newStartCelebrityRecognitionResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartCelebrityRecognitionResponse
+newStartCelebrityRecognitionResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartCelebrityRecognitionResponse
 ```
 
 Constructs StartCelebrityRecognitionResponse's fields from required parameters
@@ -4146,7 +4146,7 @@ Constructs StartCelebrityRecognitionResponse's fields from required parameters
 
 ``` purescript
 newtype StartContentModerationRequest
-  = StartContentModerationRequest { "Video" :: Video, "MinConfidence" :: NullOrUndefined (Percent), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartContentModerationRequest { "Video" :: Video, "MinConfidence" :: Maybe (Percent), "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4169,7 +4169,7 @@ Constructs StartContentModerationRequest from required parameters
 #### `newStartContentModerationRequest'`
 
 ``` purescript
-newStartContentModerationRequest' :: Video -> ({ "Video" :: Video, "MinConfidence" :: NullOrUndefined (Percent), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "MinConfidence" :: NullOrUndefined (Percent), "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }) -> StartContentModerationRequest
+newStartContentModerationRequest' :: Video -> ({ "Video" :: Video, "MinConfidence" :: Maybe (Percent), "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "MinConfidence" :: Maybe (Percent), "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }) -> StartContentModerationRequest
 ```
 
 Constructs StartContentModerationRequest's fields from required parameters
@@ -4178,7 +4178,7 @@ Constructs StartContentModerationRequest's fields from required parameters
 
 ``` purescript
 newtype StartContentModerationResponse
-  = StartContentModerationResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartContentModerationResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4201,7 +4201,7 @@ Constructs StartContentModerationResponse from required parameters
 #### `newStartContentModerationResponse'`
 
 ``` purescript
-newStartContentModerationResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartContentModerationResponse
+newStartContentModerationResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartContentModerationResponse
 ```
 
 Constructs StartContentModerationResponse's fields from required parameters
@@ -4210,7 +4210,7 @@ Constructs StartContentModerationResponse's fields from required parameters
 
 ``` purescript
 newtype StartFaceDetectionRequest
-  = StartFaceDetectionRequest { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "FaceAttributes" :: NullOrUndefined (FaceAttributes), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartFaceDetectionRequest { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "FaceAttributes" :: Maybe (FaceAttributes), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4233,7 +4233,7 @@ Constructs StartFaceDetectionRequest from required parameters
 #### `newStartFaceDetectionRequest'`
 
 ``` purescript
-newStartFaceDetectionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "FaceAttributes" :: NullOrUndefined (FaceAttributes), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "FaceAttributes" :: NullOrUndefined (FaceAttributes), "JobTag" :: NullOrUndefined (JobTag) }) -> StartFaceDetectionRequest
+newStartFaceDetectionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "FaceAttributes" :: Maybe (FaceAttributes), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "FaceAttributes" :: Maybe (FaceAttributes), "JobTag" :: Maybe (JobTag) }) -> StartFaceDetectionRequest
 ```
 
 Constructs StartFaceDetectionRequest's fields from required parameters
@@ -4242,7 +4242,7 @@ Constructs StartFaceDetectionRequest's fields from required parameters
 
 ``` purescript
 newtype StartFaceDetectionResponse
-  = StartFaceDetectionResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartFaceDetectionResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4265,7 +4265,7 @@ Constructs StartFaceDetectionResponse from required parameters
 #### `newStartFaceDetectionResponse'`
 
 ``` purescript
-newStartFaceDetectionResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartFaceDetectionResponse
+newStartFaceDetectionResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartFaceDetectionResponse
 ```
 
 Constructs StartFaceDetectionResponse's fields from required parameters
@@ -4274,7 +4274,7 @@ Constructs StartFaceDetectionResponse's fields from required parameters
 
 ``` purescript
 newtype StartFaceSearchRequest
-  = StartFaceSearchRequest { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "FaceMatchThreshold" :: NullOrUndefined (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartFaceSearchRequest { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "FaceMatchThreshold" :: Maybe (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4297,7 +4297,7 @@ Constructs StartFaceSearchRequest from required parameters
 #### `newStartFaceSearchRequest'`
 
 ``` purescript
-newStartFaceSearchRequest' :: CollectionId -> Video -> ({ "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "FaceMatchThreshold" :: NullOrUndefined (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "FaceMatchThreshold" :: NullOrUndefined (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }) -> StartFaceSearchRequest
+newStartFaceSearchRequest' :: CollectionId -> Video -> ({ "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "FaceMatchThreshold" :: Maybe (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "FaceMatchThreshold" :: Maybe (Percent), "CollectionId" :: CollectionId, "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }) -> StartFaceSearchRequest
 ```
 
 Constructs StartFaceSearchRequest's fields from required parameters
@@ -4306,7 +4306,7 @@ Constructs StartFaceSearchRequest's fields from required parameters
 
 ``` purescript
 newtype StartFaceSearchResponse
-  = StartFaceSearchResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartFaceSearchResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4329,7 +4329,7 @@ Constructs StartFaceSearchResponse from required parameters
 #### `newStartFaceSearchResponse'`
 
 ``` purescript
-newStartFaceSearchResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartFaceSearchResponse
+newStartFaceSearchResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartFaceSearchResponse
 ```
 
 Constructs StartFaceSearchResponse's fields from required parameters
@@ -4338,7 +4338,7 @@ Constructs StartFaceSearchResponse's fields from required parameters
 
 ``` purescript
 newtype StartLabelDetectionRequest
-  = StartLabelDetectionRequest { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "MinConfidence" :: NullOrUndefined (Percent), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartLabelDetectionRequest { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "MinConfidence" :: Maybe (Percent), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4361,7 +4361,7 @@ Constructs StartLabelDetectionRequest from required parameters
 #### `newStartLabelDetectionRequest'`
 
 ``` purescript
-newStartLabelDetectionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "MinConfidence" :: NullOrUndefined (Percent), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "MinConfidence" :: NullOrUndefined (Percent), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }) -> StartLabelDetectionRequest
+newStartLabelDetectionRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "MinConfidence" :: Maybe (Percent), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "MinConfidence" :: Maybe (Percent), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }) -> StartLabelDetectionRequest
 ```
 
 Constructs StartLabelDetectionRequest's fields from required parameters
@@ -4370,7 +4370,7 @@ Constructs StartLabelDetectionRequest's fields from required parameters
 
 ``` purescript
 newtype StartLabelDetectionResponse
-  = StartLabelDetectionResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartLabelDetectionResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4393,7 +4393,7 @@ Constructs StartLabelDetectionResponse from required parameters
 #### `newStartLabelDetectionResponse'`
 
 ``` purescript
-newStartLabelDetectionResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartLabelDetectionResponse
+newStartLabelDetectionResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartLabelDetectionResponse
 ```
 
 Constructs StartLabelDetectionResponse's fields from required parameters
@@ -4402,7 +4402,7 @@ Constructs StartLabelDetectionResponse's fields from required parameters
 
 ``` purescript
 newtype StartPersonTrackingRequest
-  = StartPersonTrackingRequest { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }
+  = StartPersonTrackingRequest { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }
 ```
 
 ##### Instances
@@ -4425,7 +4425,7 @@ Constructs StartPersonTrackingRequest from required parameters
 #### `newStartPersonTrackingRequest'`
 
 ``` purescript
-newStartPersonTrackingRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: NullOrUndefined (ClientRequestToken), "NotificationChannel" :: NullOrUndefined (NotificationChannel), "JobTag" :: NullOrUndefined (JobTag) }) -> StartPersonTrackingRequest
+newStartPersonTrackingRequest' :: Video -> ({ "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) } -> { "Video" :: Video, "ClientRequestToken" :: Maybe (ClientRequestToken), "NotificationChannel" :: Maybe (NotificationChannel), "JobTag" :: Maybe (JobTag) }) -> StartPersonTrackingRequest
 ```
 
 Constructs StartPersonTrackingRequest's fields from required parameters
@@ -4434,7 +4434,7 @@ Constructs StartPersonTrackingRequest's fields from required parameters
 
 ``` purescript
 newtype StartPersonTrackingResponse
-  = StartPersonTrackingResponse { "JobId" :: NullOrUndefined (JobId) }
+  = StartPersonTrackingResponse { "JobId" :: Maybe (JobId) }
 ```
 
 ##### Instances
@@ -4457,7 +4457,7 @@ Constructs StartPersonTrackingResponse from required parameters
 #### `newStartPersonTrackingResponse'`
 
 ``` purescript
-newStartPersonTrackingResponse' :: ({ "JobId" :: NullOrUndefined (JobId) } -> { "JobId" :: NullOrUndefined (JobId) }) -> StartPersonTrackingResponse
+newStartPersonTrackingResponse' :: ({ "JobId" :: Maybe (JobId) } -> { "JobId" :: Maybe (JobId) }) -> StartPersonTrackingResponse
 ```
 
 Constructs StartPersonTrackingResponse's fields from required parameters
@@ -4578,7 +4578,7 @@ Encode StopStreamProcessorResponse
 
 ``` purescript
 newtype StreamProcessor
-  = StreamProcessor { "Name" :: NullOrUndefined (StreamProcessorName), "Status" :: NullOrUndefined (StreamProcessorStatus) }
+  = StreamProcessor { "Name" :: Maybe (StreamProcessorName), "Status" :: Maybe (StreamProcessorStatus) }
 ```
 
 <p>An object that recognizes faces in a streaming video. An Amazon Rekognition stream processor is created by a call to . The request parameters for <code>CreateStreamProcessor</code> describe the Kinesis video stream source for the streaming video, face recognition parameters, and where to stream the analysis resullts. </p>
@@ -4603,7 +4603,7 @@ Constructs StreamProcessor from required parameters
 #### `newStreamProcessor'`
 
 ``` purescript
-newStreamProcessor' :: ({ "Name" :: NullOrUndefined (StreamProcessorName), "Status" :: NullOrUndefined (StreamProcessorStatus) } -> { "Name" :: NullOrUndefined (StreamProcessorName), "Status" :: NullOrUndefined (StreamProcessorStatus) }) -> StreamProcessor
+newStreamProcessor' :: ({ "Name" :: Maybe (StreamProcessorName), "Status" :: Maybe (StreamProcessorStatus) } -> { "Name" :: Maybe (StreamProcessorName), "Status" :: Maybe (StreamProcessorStatus) }) -> StreamProcessor
 ```
 
 Constructs StreamProcessor's fields from required parameters
@@ -4628,7 +4628,7 @@ Encode StreamProcessorArn
 
 ``` purescript
 newtype StreamProcessorInput
-  = StreamProcessorInput { "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream) }
+  = StreamProcessorInput { "KinesisVideoStream" :: Maybe (KinesisVideoStream) }
 ```
 
 <p>Information about the source streaming video. </p>
@@ -4653,7 +4653,7 @@ Constructs StreamProcessorInput from required parameters
 #### `newStreamProcessorInput'`
 
 ``` purescript
-newStreamProcessorInput' :: ({ "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream) } -> { "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream) }) -> StreamProcessorInput
+newStreamProcessorInput' :: ({ "KinesisVideoStream" :: Maybe (KinesisVideoStream) } -> { "KinesisVideoStream" :: Maybe (KinesisVideoStream) }) -> StreamProcessorInput
 ```
 
 Constructs StreamProcessorInput's fields from required parameters
@@ -4694,7 +4694,7 @@ Encode StreamProcessorName
 
 ``` purescript
 newtype StreamProcessorOutput
-  = StreamProcessorOutput { "KinesisDataStream" :: NullOrUndefined (KinesisDataStream) }
+  = StreamProcessorOutput { "KinesisDataStream" :: Maybe (KinesisDataStream) }
 ```
 
 <p>Information about the Amazon Kinesis Data Streams stream to which a Rekognition Video stream processor streams the results of a video analysis. For more information, see .</p>
@@ -4719,7 +4719,7 @@ Constructs StreamProcessorOutput from required parameters
 #### `newStreamProcessorOutput'`
 
 ``` purescript
-newStreamProcessorOutput' :: ({ "KinesisDataStream" :: NullOrUndefined (KinesisDataStream) } -> { "KinesisDataStream" :: NullOrUndefined (KinesisDataStream) }) -> StreamProcessorOutput
+newStreamProcessorOutput' :: ({ "KinesisDataStream" :: Maybe (KinesisDataStream) } -> { "KinesisDataStream" :: Maybe (KinesisDataStream) }) -> StreamProcessorOutput
 ```
 
 Constructs StreamProcessorOutput's fields from required parameters
@@ -4728,7 +4728,7 @@ Constructs StreamProcessorOutput's fields from required parameters
 
 ``` purescript
 newtype StreamProcessorSettings
-  = StreamProcessorSettings { "FaceSearch" :: NullOrUndefined (FaceSearchSettings) }
+  = StreamProcessorSettings { "FaceSearch" :: Maybe (FaceSearchSettings) }
 ```
 
 <p>Input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor.</p>
@@ -4753,7 +4753,7 @@ Constructs StreamProcessorSettings from required parameters
 #### `newStreamProcessorSettings'`
 
 ``` purescript
-newStreamProcessorSettings' :: ({ "FaceSearch" :: NullOrUndefined (FaceSearchSettings) } -> { "FaceSearch" :: NullOrUndefined (FaceSearchSettings) }) -> StreamProcessorSettings
+newStreamProcessorSettings' :: ({ "FaceSearch" :: Maybe (FaceSearchSettings) } -> { "FaceSearch" :: Maybe (FaceSearchSettings) }) -> StreamProcessorSettings
 ```
 
 Constructs StreamProcessorSettings's fields from required parameters
@@ -4778,7 +4778,7 @@ Encode StreamProcessorStatus
 
 ``` purescript
 newtype Sunglasses
-  = Sunglasses { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }
+  = Sunglasses { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }
 ```
 
 <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
@@ -4803,7 +4803,7 @@ Constructs Sunglasses from required parameters
 #### `newSunglasses'`
 
 ``` purescript
-newSunglasses' :: ({ "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) } -> { "Value" :: NullOrUndefined (Boolean), "Confidence" :: NullOrUndefined (Percent) }) -> Sunglasses
+newSunglasses' :: ({ "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) } -> { "Value" :: Maybe (Boolean), "Confidence" :: Maybe (Percent) }) -> Sunglasses
 ```
 
 Constructs Sunglasses's fields from required parameters
@@ -4812,7 +4812,7 @@ Constructs Sunglasses's fields from required parameters
 
 ``` purescript
 newtype TextDetection
-  = TextDetection { "DetectedText" :: NullOrUndefined (String), "Type" :: NullOrUndefined (TextTypes), "Id" :: NullOrUndefined (UInteger), "ParentId" :: NullOrUndefined (UInteger), "Confidence" :: NullOrUndefined (Percent), "Geometry" :: NullOrUndefined (Geometry) }
+  = TextDetection { "DetectedText" :: Maybe (String), "Type" :: Maybe (TextTypes), "Id" :: Maybe (UInteger), "ParentId" :: Maybe (UInteger), "Confidence" :: Maybe (Percent), "Geometry" :: Maybe (Geometry) }
 ```
 
 <p>Information about a word or line of text detected by .</p> <p>The <code>DetectedText</code> field contains the text that Amazon Rekognition detected in the image. </p> <p>Every word and line has an identifier (<code>Id</code>). Each word belongs to a line and has a parent identifier (<code>ParentId</code>) that identifies the line of text in which the word appears. The word <code>Id</code> is also an index for the word within a line of words. </p> <p>For more information, see <a>text-detection</a>.</p>
@@ -4837,7 +4837,7 @@ Constructs TextDetection from required parameters
 #### `newTextDetection'`
 
 ``` purescript
-newTextDetection' :: ({ "DetectedText" :: NullOrUndefined (String), "Type" :: NullOrUndefined (TextTypes), "Id" :: NullOrUndefined (UInteger), "ParentId" :: NullOrUndefined (UInteger), "Confidence" :: NullOrUndefined (Percent), "Geometry" :: NullOrUndefined (Geometry) } -> { "DetectedText" :: NullOrUndefined (String), "Type" :: NullOrUndefined (TextTypes), "Id" :: NullOrUndefined (UInteger), "ParentId" :: NullOrUndefined (UInteger), "Confidence" :: NullOrUndefined (Percent), "Geometry" :: NullOrUndefined (Geometry) }) -> TextDetection
+newTextDetection' :: ({ "DetectedText" :: Maybe (String), "Type" :: Maybe (TextTypes), "Id" :: Maybe (UInteger), "ParentId" :: Maybe (UInteger), "Confidence" :: Maybe (Percent), "Geometry" :: Maybe (Geometry) } -> { "DetectedText" :: Maybe (String), "Type" :: Maybe (TextTypes), "Id" :: Maybe (UInteger), "ParentId" :: Maybe (UInteger), "Confidence" :: Maybe (Percent), "Geometry" :: Maybe (Geometry) }) -> TextDetection
 ```
 
 Constructs TextDetection's fields from required parameters
@@ -4960,7 +4960,7 @@ Encode Urls
 
 ``` purescript
 newtype Video
-  = Video { "S3Object" :: NullOrUndefined (S3Object) }
+  = Video { "S3Object" :: Maybe (S3Object) }
 ```
 
 <p>Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as use <code>Video</code> to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.</p>
@@ -4985,7 +4985,7 @@ Constructs Video from required parameters
 #### `newVideo'`
 
 ``` purescript
-newVideo' :: ({ "S3Object" :: NullOrUndefined (S3Object) } -> { "S3Object" :: NullOrUndefined (S3Object) }) -> Video
+newVideo' :: ({ "S3Object" :: Maybe (S3Object) } -> { "S3Object" :: Maybe (S3Object) }) -> Video
 ```
 
 Constructs Video's fields from required parameters
@@ -5010,7 +5010,7 @@ Encode VideoJobStatus
 
 ``` purescript
 newtype VideoMetadata
-  = VideoMetadata { "Codec" :: NullOrUndefined (String), "DurationMillis" :: NullOrUndefined (ULong), "Format" :: NullOrUndefined (String), "FrameRate" :: NullOrUndefined (Number), "FrameHeight" :: NullOrUndefined (ULong), "FrameWidth" :: NullOrUndefined (ULong) }
+  = VideoMetadata { "Codec" :: Maybe (String), "DurationMillis" :: Maybe (ULong), "Format" :: Maybe (String), "FrameRate" :: Maybe (Number), "FrameHeight" :: Maybe (ULong), "FrameWidth" :: Maybe (ULong) }
 ```
 
 <p>Information about a video that Amazon Rekognition analyzed. <code>Videometadata</code> is returned in every page of paginated responses from a Amazon Rekognition video operation.</p>
@@ -5035,7 +5035,7 @@ Constructs VideoMetadata from required parameters
 #### `newVideoMetadata'`
 
 ``` purescript
-newVideoMetadata' :: ({ "Codec" :: NullOrUndefined (String), "DurationMillis" :: NullOrUndefined (ULong), "Format" :: NullOrUndefined (String), "FrameRate" :: NullOrUndefined (Number), "FrameHeight" :: NullOrUndefined (ULong), "FrameWidth" :: NullOrUndefined (ULong) } -> { "Codec" :: NullOrUndefined (String), "DurationMillis" :: NullOrUndefined (ULong), "Format" :: NullOrUndefined (String), "FrameRate" :: NullOrUndefined (Number), "FrameHeight" :: NullOrUndefined (ULong), "FrameWidth" :: NullOrUndefined (ULong) }) -> VideoMetadata
+newVideoMetadata' :: ({ "Codec" :: Maybe (String), "DurationMillis" :: Maybe (ULong), "Format" :: Maybe (String), "FrameRate" :: Maybe (Number), "FrameHeight" :: Maybe (ULong), "FrameWidth" :: Maybe (ULong) } -> { "Codec" :: Maybe (String), "DurationMillis" :: Maybe (ULong), "Format" :: Maybe (String), "FrameRate" :: Maybe (Number), "FrameHeight" :: Maybe (ULong), "FrameWidth" :: Maybe (ULong) }) -> VideoMetadata
 ```
 
 Constructs VideoMetadata's fields from required parameters
